@@ -6,7 +6,7 @@ import {
   Link
 } from 'react-router-dom'
 // import tags for pages
-
+import About from './pages/About'
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         <Switch>
           <Route exact path="/">
             {/* page tags */}
-
+            <About />
           </Route>
         </Switch>
       </div>
