@@ -1,5 +1,5 @@
 // need to insert route links
 
 module.exports = app => {
-    require('')(app)
+    require('./userRoutes')(app)
   }
