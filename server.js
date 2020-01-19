@@ -1,3 +1,4 @@
+require('./config')
 const express = require('express')
 const { join } = require('path')
 
@@ -7,4 +8,5 @@ app.use(express.static(join(__dirname, 'client', 'build')))
 app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 
-app.listen(process.env.PORT || 3001)
+app.listen(3000)
+require('mongoose').connection.once('open', () =>app.listen(3001))

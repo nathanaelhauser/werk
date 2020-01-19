@@ -1,4 +1,4 @@
-const { Users } = require('../Models/Users.js')
+const { Users } = require('../Models')
 
 module.exports = app => {
 
@@ -14,5 +14,5 @@ module.exports = app => {
     Users.create(req.body)
       .then(() => res.sendStatus(200))
       .catch(e => console.log(e))
-
+  })
 }
