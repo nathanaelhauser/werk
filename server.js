@@ -8,5 +8,7 @@ app.use(express.static(join(__dirname, 'client', 'build')))
 app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 
-app.listen(3000)
-require('mongoose').connection.once('open', () =>app.listen(3001))
+require('./routes')(app)
+
+// app.listen(3001)
+require('mongoose').connection.once('open', () => app.listen(3001))
