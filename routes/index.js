@@ -5,4 +5,4 @@ module.exports = app => {
     require('./exerciseRoutes.js')(app)
     require('./userAuthRoutes.js')(app)
     require('./eventRoutes.js')(app)
-  }
+}
