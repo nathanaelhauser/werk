@@ -1,18 +1,40 @@
-const { Users } = require('../Models/Users.js')
+const { User } = require('../Models')
 
 module.exports = app => {
 
-  // GET ONE USER INFO
-  app.get('/users/:id', (req, res) => {
-    Users.find({ _id: req.params.id })
-      .then(user => res.JSON(user))
-      .catch(e => console.log(e))
+  // GET ALL USERS 
+  app.get('/users', (req, res) => {
+    User.find()
+      .then(users => res.json(users))
+      .catch(e => console.error(e))
   })
 
-  //POST USER INFO
+  // GET ONE USER 
+  app.get('/users/:id', (req, res) => {
+    User.find({ _id: req.params.id })
+      .then(user => res.json(user))
+      .catch(e => console.error(e))
+  })
+
+  // POST ONE USER 
   app.post('/users', (req, res) => {
-    Users.create(req.body)
+    User.create(req.body)
+      .then(user => res.json(user))
+      .catch(e => console.error(e))
+  })
+
+  // UPDATE ONE USER
+  app.put('/users/:id', (req, res) => {
+    User.updateOne({ _id: req.params.id }, req.body )
       .then(() => res.sendStatus(200))
-      .catch(e => console.log(e))
+      .catch(e => console.error(e))
+  })
+
+  // DELETE ONE USER
+  app.delete('/users/:id', (req, res) => {
+    User.deleteOne({ _id: req.params.id })
+      .then(() => res.sendStatus(200))
+      .catch(e => console.error(e))
+  })
 
 }

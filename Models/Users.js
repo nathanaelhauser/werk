@@ -4,6 +4,8 @@ module.exports = (model, Schema) =>{
             firstname: String,
             lastname: String,
             age: String},
+        
 
     })
+    return model ('Users', Users)
 }
