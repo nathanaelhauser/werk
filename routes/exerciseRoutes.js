@@ -2,7 +2,7 @@ const { Exercise, Workout } = require('../Models')
 
 module.exports = app => {
 
-  // GET ALL USERS 
+  // GET ALL EXERCISES
   app.get('/exercises', (req, res) => {
     Exercise.find()
       .populate('workout')
@@ -10,7 +10,7 @@ module.exports = app => {
       .catch(e => console.error(e))
   })
 
-  // GET ONE USER 
+  // GET ONE EXERCISE
   app.get('/exercises/:id', (req, res) => {
     Exercise.find({ _id: req.params.id })
       .populate('workout')
@@ -18,7 +18,7 @@ module.exports = app => {
       .catch(e => console.error(e))
   })
 
-  // POST ONE USER 
+  // POST ONE EXERCISE
   app.post('/exercises', (req, res) => {
     Exercise.create(req.body)
       .then(({ _id }) => {
@@ -29,14 +29,14 @@ module.exports = app => {
       .catch(e => console.error(e))
   })
 
-  // UPDATE ONE USER
+  // UPDATE ONE EXERCISE
   app.put('/exercises/:id', (req, res) => {
     Exercise.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.sendStatus(200))
       .catch(e => console.error(e))
   })
 
-  // DELETE ONE USER
+  // DELETE ONE EXERCISE
   app.delete('/exercises/:id', (req, res) => {
     Exercise.deleteOne({ _id: req.params.id })
       .then(() => res.sendStatus(200))
