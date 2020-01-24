@@ -1,7 +1,7 @@
 const {User} = require('../Models')
 const jwt = require  ('jsonwebtoken')
 
-module.export = app => {
+module.exports = app => {
     app.post ('/userAuth', (req, res) => {
         const {userName, email} = req.body
         User.register(new User({userName, email}), req.body.password, e => {if(e){console.log(e)}

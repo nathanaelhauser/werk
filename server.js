@@ -1,4 +1,5 @@
 require('./config')
+require('dotenv').config()
 const express = require('express')
 const { join } = require('path')
 const passport = require('passport')
@@ -21,7 +22,7 @@ passport.deserializeUser(User.deserializeUser())
 
 passport.use(new JWTStrategy({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    }, ({id}, cb) => User.findById(id)
+    secretOrKey: process.env.SECRET}, ({id}, cb) => User.findById(id)
 .then(user => cb(null, user))
 .catch(e => cb(e))))
 
