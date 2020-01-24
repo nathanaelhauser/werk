@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 // import tags for pages
 import About from './pages/About'
+import Quickstart from './pages/Quickstart'
 
 const App = () => {
   return (
@@ -17,6 +18,9 @@ const App = () => {
           <Route exact path="/">
             {/* page tags */}
             <About />
+          </Route>
+          <Route path="/quickstart">
+            <Quickstart />
           </Route>
         </Switch>
       </div>
