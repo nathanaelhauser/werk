@@ -3,8 +3,8 @@ const jwt = require  ('jsonwebtoken')
 
 module.exports = app => {
     app.post ('/userAuth', (req, res) => {
-        const {userName, email} = req.body
-        User.register(new User({userName, email}), req.body.password, e => {if(e){console.log(e)}
+        const {name, username ,email, age, weight} = req.body
+        User.register(new User({name, username, email, age, weight}), req.body.password, e => {if(e){console.log(e)}
         res.sendStatus(200)
         })
     })

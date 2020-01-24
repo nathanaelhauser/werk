@@ -1,6 +1,7 @@
 module.exports = (model, Schema) =>{
     const User = new Schema ({
         name: String,
+        username: String,
         email: String,
         age: Number,
         weight: Number
