@@ -22,13 +22,14 @@ const useStyles = makeStyles({
 
 const Quickstart = () => {
   const classes = useStyles();
+      
 
   return (
     <Grid container spacing={4} direction='row' justify="space-around" alignItems="center">
      <Grid item xs={12}> <h1> What area do you want to werk on?</h1></Grid>
       <Grid item xs={12} sm={6} md={4} className={classes.buttonContainer}>
     {/* //Upper Body Card */}
-    <Button onClick={}>
+    <Button onClick={<UBModal />}>
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
@@ -36,7 +37,7 @@ const Quickstart = () => {
           component="img"
           alt="upperbody"
           image={require('./qsPictures/upperbody.jpg')}
-          height='200'
+          height='230'
           title="Upper body"
         />
         <CardContent>
