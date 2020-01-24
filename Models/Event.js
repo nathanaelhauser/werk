@@ -4,7 +4,7 @@ module.exports = (model, Schema) => {
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     workout: { type: Schema.Types.ObjectId, ref: 'Workout' }
     
-  } { timestamp: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
+  }, { timestamp: { createdAt: 'createdAt', updatedAt: 'updatedAt' } })
 
   return model('Event', Event)
 }
