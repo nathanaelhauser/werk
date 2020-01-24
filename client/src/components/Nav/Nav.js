@@ -1,13 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
+import React, { useContext, useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import DrawerContext from '../../utils/DrawerContext'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import MenuItem from '@material-ui/core/MenuItem'
+import Menu from '@material-ui/core/Menu'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,28 +20,34 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
-}));
+}))
 
 const Nav = () => {
-  const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const classes = useStyles()
+  const [auth, setAuth] = useState(true)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+  const { toggleDrawer } = useContext(DrawerContext)
 
   const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
+          <IconButton 
+            edge="start" 
+            className={classes.menuButton} 
+            color="inherit" 
+            aria-label="menu"
+            onClick={toggleDrawer(true)}>
+              <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             WERK
@@ -79,7 +86,7 @@ const Nav = () => {
         </Toolbar>
       </AppBar>
     </div>
-  );
+  )
 }
 
 export default Nav
