@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,7 +10,24 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import InfoIcon from '@material-ui/icons/Info';
+import { createMuiTheme } from '@material-ui/core/styles';
 import DrawerContext from '../../utils/DrawerContext'
+
+const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#424242',
+      },
+      secondary: {
+        main: '#bf360c',
+      },
+    },
+    typography: {
+      "fontFamily": "\"Bangers\"",
+      "fontSize": 36
+    }
+  
+  });
 
 const useStyles = makeStyles({
   list: {
@@ -66,6 +83,7 @@ const NavDrawer = () => {
   );
 
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <SwipeableDrawer
         open={isOpen}
@@ -74,7 +92,9 @@ const NavDrawer = () => {
       >
         {sideList()}
       </SwipeableDrawer>
-    </div>
+    </div>        
+    </ThemeProvider>
+
   );
 }
 
