@@ -70,15 +70,6 @@ const Nav = () => {
       <ThemeProvider theme={theme}>
       <AppBar position="static">
         <Toolbar>
-<<<<<<< HEAD
-          <IconButton 
-            edge="start" 
-            className={classes.menuButton} 
-            color="inherit" 
-            aria-label="menu"
-            onClick={toggleDrawer(true)}>
-              <MenuIcon />
-=======
           <IconButton
           edge="start"
           className={classes.menuButton}
@@ -86,7 +77,6 @@ const Nav = () => {
           aria-label="menu"
           onClick={toggleDrawer(true)}>
             <MenuOpenIcon />
->>>>>>> c25a5a70df2f881993f0258e5ffb44a264c576b4
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             WERK
