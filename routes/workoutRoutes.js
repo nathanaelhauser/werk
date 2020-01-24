@@ -2,7 +2,7 @@ const { Workout, Exercise } = require('../Models')
 
 module.exports = app => {
 
-  // GET ALL USERS 
+  // GET ALL WORKOUTS 
   app.get('/workouts', (req, res) => {
     Workout.find()
       .populate('exercises')
@@ -10,7 +10,7 @@ module.exports = app => {
       .catch(e => console.error(e))
   })
 
-  // GET ONE USER 
+  // GET ONE WORKOUT 
   app.get('/workouts/:id', (req, res) => {
     Workout.find({ _id: req.params.id })
       .populate('exercises')
@@ -18,21 +18,21 @@ module.exports = app => {
       .catch(e => console.error(e))
   })
 
-  // POST ONE USER 
+  // POST ONE WORKOUT
   app.post('/workouts', (req, res) => {
     Workout.create(req.body)
       .then(workout => res.json(workout))
       .catch(e => console.error(e))
   })
 
-  // UPDATE ONE USER
+  // UPDATE ONE WOKROUT
   app.put('/workouts/:id', (req, res) => {
     Workout.updateOne({ _id: req.params.id }, req.body)
       .then(() => res.sendStatus(200))
       .catch(e => console.error(e))
   })
 
-  // DELETE ONE USER
+  // DELETE ONE WORkOUT
   app.delete('/workouts/:id', (req, res) => {
     Workout.deleteOne({ _id: req.params.id })
       .then(() => res.sendStatus(200))
