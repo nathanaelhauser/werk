@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
 import Drawer from './components/Drawer'
 import DrawerContext from './utils/DrawerContext'
 // import tags for pages
 import About from './pages/About'
+import Nav from './components/Nav'
+import NavDrawer from './components/NavDrawer'
+import DrawerContext from './utils/DrawerContext'
 
 const App = () => {
 
@@ -28,7 +30,8 @@ const App = () => {
       <Router>
         <div>
           {/* link tags */}
-          <Drawer />
+          <Nav />
+          <NavDrawer />
           <Switch>
             <Route exact path="/">
               {/* page tags */}
@@ -36,8 +39,9 @@ const App = () => {
             </Route>
           </Switch>
         </div>
-      </Router>
+      </Router>      
     </DrawerContext.Provider>
+
   )
 }
 
