@@ -6,9 +6,9 @@ module.exports = (model, Schema) => {
     equipment: [String],
     description: String,
     mainMuscles: [String],
-    secondaryMuscles: [String]
+    secondaryMuscles: [String],
+    workout: [{ type: Schema.Types.ObjectId, ref: 'Workout' }]
   })
 
   return model('Exercise', Exercise)
-  
 }
