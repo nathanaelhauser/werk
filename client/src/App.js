@@ -4,8 +4,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import Drawer from './components/Drawer'
-import DrawerContext from './utils/DrawerContext'
 // import tags for pages
 import About from './pages/About'
 import Nav from './components/Nav'

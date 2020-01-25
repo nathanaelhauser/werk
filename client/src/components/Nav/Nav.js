@@ -1,17 +1,4 @@
-<<<<<<< HEAD
-import React, { useContext, useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import DrawerContext from '../../utils/DrawerContext'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import MenuItem from '@material-ui/core/MenuItem'
-import Menu from '@material-ui/core/Menu'
-=======
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -34,7 +21,6 @@ const theme = createMuiTheme({
     },
   },
 });
->>>>>>> c25a5a70df2f881993f0258e5ffb44a264c576b4
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,7 +39,6 @@ const Nav = () => {
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
-  const { toggleDrawer } = useContext(DrawerContext)
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
