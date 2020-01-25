@@ -9,6 +9,7 @@ import About from './pages/About'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
+import RegForm from './components/RegForm'
 
 const App = () => {
 
