@@ -6,21 +6,47 @@ import Container from '@material-ui/core/Container';
 import FormControl from '@material-ui/core/FormControl'
 import Input from '@material-ui/core/Input'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 const useStyles = makeStyles(theme => ({
     root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: 200,
+        '& .MuiTextField-root': {
+          margin: theme.spacing(1),
+          width: 200,
+        },
       },
-    },
-  }));
+      card: {
+        minWidth: 275,
+      },
+      bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+      },
+      title: {
+        fontSize: 14,
+      },
+      pos: {
+        marginBottom: 12,
+      }  
+    }));
 
 const RegForm = () =>{
     const classes = useStyles();
 
     return (
-    <Container  maxWidth ="sm">
+        <Card className={classes.card} variant="outlined">
+      <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          Welcome! Register
+        </Typography>
+        <Typography variant="h5" component="h2">
+          
+        <Container  maxWidth ="sm">
+        <FormControl>
       <div className={classes.root}>
         <div>
         <TextField
@@ -43,22 +69,38 @@ const RegForm = () =>{
             id="margin-none"
             className={classes.textField}
           />
-          <FormControl/>
-          <Input
-            id="standard-adornment-weight"
+          
+          <TextField
+            id="margin-none"
+            label= "Starting Weight"
            // value={values.weight}
             //onChange={handleChange('weight')}
-            endAdornment={<InputAdornment position="end">Lb</InputAdornment>}
             aria-describedby="standard-weight-helper-text"
-            inputProps={{
-              'aria-label': 'weight',
-            }}
+            inputProps={{'aria-label': 'weight',}}
+          />
+          <TextField
+            label="Age"
+            id="margin-none"
+            className={classes.textField}
           />
         </div>
        <br/>
         <Button variant="contained" color="primary"> Submit </Button>
       </div>
+      </FormControl>
       </Container>
+
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          Input  any text here
+        </Typography>
+        <Typography variant="body2" component="p">
+          Input  any text here
+        </Typography>
+      </CardContent>
+      <CardActions>
+      </CardActions>
+    </Card>
     );
   }
 export default RegForm
