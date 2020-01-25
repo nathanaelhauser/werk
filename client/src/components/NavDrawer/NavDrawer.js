@@ -44,7 +44,7 @@ const NavDrawer = () => {
 
   const { isOpen, toggleDrawer } = useContext(DrawerContext) 
 
-  const redirect = page => event => window.location.href = `http://${window.location.host}${page}`
+  const redirect = page => event => window.location.href = `${window.location.protocol}//${window.location.host}${page}`
 
   const sideList = () => (
     <div
