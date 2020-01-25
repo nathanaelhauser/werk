@@ -95,7 +95,7 @@ const RegForm = () =>{
       </FormControl>
       </Container>
         </Typography>
-       <> </>
+       <br/> 
         <Typography className={classes.pos} color="textSecondary">
           Input  any text here
         </Typography>
