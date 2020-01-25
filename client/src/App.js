@@ -15,6 +15,27 @@ import DrawerContext from './utils/DrawerContext'
 import RegForm from './components/RegForm'
 
 import Custom from './pages/Custom'
+import { createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#424242',
+    },
+    secondary: {
+      main: "#86DEB7"
+    },
+  },
+  typography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 36
+  }
+
+});
+
 const App = () => {
 
   const [drawerState, setDrawerState] = useState({
@@ -29,6 +50,7 @@ const App = () => {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <DrawerContext.Provider value={drawerState}>
       <Router>
         <div>
@@ -63,6 +85,7 @@ const App = () => {
         </div>
       </Router>      
     </DrawerContext.Provider>
+    </ThemeProvider>
 
   )
 }
