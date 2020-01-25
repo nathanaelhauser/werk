@@ -1,10 +1,10 @@
 import React from 'react'
 
-const Custom = () => {
+const MyProfile = () => {
   return(
     <div>
-      What is up
+      
     </div>
   )
 }
-export default Custom
+export default MyProfile
