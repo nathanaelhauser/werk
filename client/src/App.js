@@ -13,7 +13,6 @@ import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
 import RegForm from './components/RegForm'
-
 import Custom from './pages/Custom'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
@@ -62,6 +61,10 @@ const App = () => {
             <Route exact path="/">
               {/* page tags */}
               <Landing />
+            </Route>
+            <Route path="/home">
+              {/* page tags */}
+              <Home />
             </Route>
             <Route path="/about">
               <About />

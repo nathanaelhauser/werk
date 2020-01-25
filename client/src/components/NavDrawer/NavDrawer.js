@@ -55,7 +55,7 @@ const NavDrawer = () => {
     >
       <List>
           {/* home */}
-        <ListItem button key={'Home'} onClick={redirect('/')}>
+        <ListItem button key={'Home'} onClick={redirect('/home')}>
           <ListItemIcon><HomeIcon /></ListItemIcon>
           <ListItemText primary={'Home'} />
         </ListItem>
