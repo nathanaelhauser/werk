@@ -10,6 +10,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { createMuiTheme } from '@material-ui/core/styles';
 import DrawerContext from '../../utils/DrawerContext'
+import lightGreen from '@material-ui/core/colors/lightGreen'
+import red from '@material-ui/core/colors/red'
 
 const theme = createMuiTheme({
   palette: {
@@ -17,7 +19,7 @@ const theme = createMuiTheme({
       main: '#424242',
     },
     secondary: {
-      main: '#bf360c',
+      main: "#86DEB7"
     },
   },
   typography: {
@@ -33,17 +35,23 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    color:"#86DEB7"
+  }, 
+  signInButton: {
+    color:"#86DEB7"
   },
   title: {
     flexGrow: 1,
+    color: "#86DEB7"
   },
 }))
 
 const Nav = () => {
-  const classes = useStyles()
-  const [auth, setAuth] = useState(true)
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
+  const classes = useStyles();
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
@@ -62,8 +70,8 @@ const Nav = () => {
         <Toolbar>
           <IconButton
           edge="start"
-          className={classes.menuButton}
-          color="inherit"
+          className={classes.signInButton}
+          color='inherit'
           aria-label="menu"
           onClick={toggleDrawer(true)}>
             <MenuOpenIcon />
@@ -74,6 +82,7 @@ const Nav = () => {
           {auth && (
             <div>
               <IconButton
+                className = {classes.menuButton}
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
