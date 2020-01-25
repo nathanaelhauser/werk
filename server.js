@@ -5,6 +5,7 @@ const { join } = require('path')
 const passport = require('passport')
 const {Strategy} = require('passport-local')
 const {Strategy: JWTStrategy, ExtractJwt} = require('passport-jwt')
+const PORT = process.env.PORT || 3001
 
 const app = express()
 const {User} = require('./Models')
@@ -29,4 +30,4 @@ passport.use(new JWTStrategy({
 require('./routes')(app)
 
 // app.listen(3001)
-require('mongoose').connection.once('open', () => app.listen(3001))
+require('mongoose').connection.once('open', () => app.listen(PORT))
