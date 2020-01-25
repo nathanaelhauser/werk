@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 // import tags for pages
 import About from './pages/About'
+import Landing from './pages/Landing'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
@@ -33,6 +34,9 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               {/* page tags */}
+              <Landing />
+            </Route>
+            <Route path="/about">
               <About />
             </Route>
           </Switch>
