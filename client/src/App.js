@@ -5,11 +5,15 @@ import {
   Route
 } from 'react-router-dom'
 // import tags for pages
+import About from './pages/About'
+import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
+import RegForm from './components/RegForm'
+
 import Custom from './pages/Custom'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
@@ -53,10 +57,14 @@ const App = () => {
           {/* link tags */}
           <Nav />
           <NavDrawer />
+          <RegForm/>
           <Switch>
             <Route exact path="/">
               {/* page tags */}
-              <Home />
+              <Landing />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/quickstart">
               <Quickstart />
