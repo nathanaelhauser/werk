@@ -6,11 +6,15 @@ import {
 } from 'react-router-dom'
 // import tags for pages
 import About from './pages/About'
+import Landing from './pages/Landing'
+import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
+import RegForm from './components/RegForm'
 
+import Custom from './pages/Custom'
 const App = () => {
 
   const [drawerState, setDrawerState] = useState({
@@ -31,13 +35,20 @@ const App = () => {
           {/* link tags */}
           <Nav />
           <NavDrawer />
+          <RegForm/>
           <Switch>
             <Route exact path="/">
               {/* page tags */}
+              <Landing />
+            </Route>
+            <Route path="/about">
               <About />
             </Route>
             <Route path="/quickstart">
               <Quickstart />
+            </Route>
+            <Route path="/custom">
+              <Custom />
             </Route>
           </Switch>
         </div>
