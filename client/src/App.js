@@ -25,22 +25,6 @@ const App = () => {
   }
 
   return (
-<<<<<<< HEAD
-    <Router>
-      <div>
-        {/* link tags */}
-        <Switch>
-          <Route exact path="/">
-            {/* page tags */}
-            <About />
-          </Route>
-          <Route path="/quickstart">
-            <Quickstart />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-=======
     <DrawerContext.Provider value={drawerState}>
       <Router>
         <div>
@@ -57,7 +41,6 @@ const App = () => {
       </Router>      
     </DrawerContext.Provider>
 
->>>>>>> c25a5a70df2f881993f0258e5ffb44a264c576b4
   )
 }
 
