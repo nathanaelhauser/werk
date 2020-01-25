@@ -5,6 +5,8 @@ import {
   Route
 } from 'react-router-dom'
 // import tags for pages
+import About from './pages/About'
+import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
 import Nav from './components/Nav'
@@ -34,7 +36,10 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               {/* page tags */}
-              <Home />
+              <Landing />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/quickstart">
               <Quickstart />
