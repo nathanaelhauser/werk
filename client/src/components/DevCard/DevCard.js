@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import CodeIcon from '@material-ui/icons/Code';
+import CodeIcon from '@material-ui/icons/Code'
 
 const useStyles = makeStyles({
   card: {
@@ -30,26 +30,18 @@ const DevCard = props => {
           title="Developers"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h3">
             {props.name}
           </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            <CodeIcon /> {props.role}
+          <Typography variant="h4" color="textSecondary">
+            <CodeIcon fontSize="large"/> {props.role}
           </Typography>
           <br/>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="subtitle1" color="textSecondary">
             Favorite Workout: {props.favorite}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
     </Card>
   )
 }
