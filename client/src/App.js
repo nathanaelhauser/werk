@@ -42,6 +42,15 @@ const App = () => {
             <Route path="/custom">
               <Custom />
             </Route>
+            <Route path="/landing">
+              <Custom />
+            </Route>
+            <Route path="/profile">
+              <Custom />
+            </Route>
+            <Route path="/workout">
+              <Custom />
+            </Route>
           </Switch>
         </div>
       </Router>      
