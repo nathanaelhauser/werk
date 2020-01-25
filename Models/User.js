@@ -1,9 +1,10 @@
 module.exports = (model, Schema) => {
     
     const User = new Schema ({
-        firstname: String,
-        lastname: String,
-        age: Number
+        name: String,
+        email: String,
+        age: Number,
+        weight: Number
     })
 
     return model('User', User)

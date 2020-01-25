@@ -1,13 +1,26 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useContext } from 'react';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuOpenIcon from '@material-ui/icons/MenuOpen';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { createMuiTheme } from '@material-ui/core/styles';
+import DrawerContext from '../../utils/DrawerContext'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#424242',
+    },
+    secondary: {
+      main: '#bf360c',
+    },
+  },
+});
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,12 +48,20 @@ const Nav = () => {
     setAnchorEl(null);
   };
 
+  const { toggleDrawer } = useContext(DrawerContext)
+
   return (
     <div className={classes.root}>
+      <ThemeProvider theme={theme}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
+          <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="menu"
+          onClick={toggleDrawer(true)}>
+            <MenuOpenIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             WERK
@@ -71,13 +92,15 @@ const Nav = () => {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My Workouts</MenuItem>
+                <MenuItem onClick={handleClose}>Sign Out</MenuItem>
               </Menu>
             </div>
           )}
         </Toolbar>
       </AppBar>
+      </ThemeProvider>
     </div>
   );
 }

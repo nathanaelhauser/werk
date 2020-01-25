@@ -1,1 +1,1 @@
-export { default } from './WorkoutAPI'
+export { default } from './WorkoutAPI.js'
