@@ -20,6 +20,11 @@ const theme = createMuiTheme({
       main: '#bf360c',
     },
   },
+  typography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 36
+  }
+
 });
 
 const useStyles = makeStyles(theme => ({
@@ -64,7 +69,7 @@ const Nav = () => {
             <MenuOpenIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            WERK
+            W E R K
           </Typography>
           {auth && (
             <div>
