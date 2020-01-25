@@ -49,7 +49,7 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
     <DrawerContext.Provider value={drawerState}>
       <Router>
         <div>
@@ -78,7 +78,7 @@ const App = () => {
         </div>
       </Router>      
     </DrawerContext.Provider>
-    </ThemeProvider>
+    // </ThemeProvider>
 
   )
 }
