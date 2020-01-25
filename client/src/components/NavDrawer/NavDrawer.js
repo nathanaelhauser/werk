@@ -12,6 +12,7 @@ import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import InfoIcon from '@material-ui/icons/Info';
 import { createMuiTheme } from '@material-ui/core/styles';
 import DrawerContext from '../../utils/DrawerContext'
+import QuickStart from '../../pages/Quickstart'
 
 const theme = createMuiTheme({
     palette: {
@@ -59,7 +60,7 @@ const NavDrawer = () => {
           <ListItemText primary={'Home'} />
         </ListItem>
         {/* quickstart */}
-        <ListItem button key={'QuickStart'} onClick={redirect('/quickstart')}>
+        <ListItem button key={'Quickstart'} onClick={redirect('/quickstart')}>
           <ListItemIcon><PlayArrowIcon /></ListItemIcon>
           <ListItemText primary={'QuickStart'} />
         </ListItem>
