@@ -12,6 +12,8 @@ import Quickstart from './pages/Quickstart'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
+import RegForm from './components/RegForm'
+
 import Custom from './pages/Custom'
 const App = () => {
 
@@ -33,6 +35,7 @@ const App = () => {
           {/* link tags */}
           <Nav />
           <NavDrawer />
+          <RegForm/>
           <Switch>
             <Route exact path="/">
               {/* page tags */}
