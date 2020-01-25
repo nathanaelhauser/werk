@@ -1,17 +1,17 @@
 const mongoose = require('mongoose')
 
-const MONDODB_URI = process.env.MONDODB_URI || 'mongodb://localhost/werkdb'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/werkdb'
 
 
 console.log(`
 ---------------------------------------------
 ---------------------------------------------
-${MONDODB_URI}
+${MONGODB_URI}
 ---------------------------------------------
 ---------------------------------------------
 `)
 
-module.exports = mongoose.connect(MONDODB_URI, {
+module.exports = mongoose.connect(MONGODB_URI, {
   useCreateIndex: true,
   useFindAndModify: true,
   useNewUrlParser: true,
