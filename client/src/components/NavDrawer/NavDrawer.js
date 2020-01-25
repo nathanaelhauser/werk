@@ -11,6 +11,7 @@ import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import InfoIcon from '@material-ui/icons/Info';
 import DrawerContext from '../../utils/DrawerContext'
+import QuickStart from '../../pages/Quickstart'
 
 const useStyles = makeStyles({
   list: {
@@ -42,7 +43,7 @@ const NavDrawer = () => {
           <ListItemText primary={'Home'} />
         </ListItem>
         {/* quickstart */}
-        <ListItem button key={'QuickStart'} onClick={redirect('/quickstart')}>
+        <ListItem button key={'Quickstart'} onClick={redirect('/quickstart')}>
           <ListItemIcon><PlayArrowIcon /></ListItemIcon>
           <ListItemText primary={'QuickStart'} />
         </ListItem>

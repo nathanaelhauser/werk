@@ -36,6 +36,9 @@ const App = () => {
               {/* page tags */}
               <About />
             </Route>
+            <Route path="/quickstart">
+              <Quickstart />
+            </Route>
           </Switch>
         </div>
       </Router>      

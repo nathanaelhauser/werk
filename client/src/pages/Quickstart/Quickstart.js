@@ -9,73 +9,47 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import UBModal from '../../components/UBModal'
+import LBModal from '../../components/LBModal';
 
 
 const useStyles = makeStyles({
-  card: {
-    maxWidth: 345,
+  button: {
+    marginTop: 70,
+    marginBottom: 70
   },
-  media: {
-    height: 140,
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-});
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+})
 
 const Quickstart = () => {
   const classes = useStyles();
-      
+  const UBClick = () => {
+    return(<div>
+
+    </div>)
+  }
 
   return (
     <Grid container spacing={4} direction='row' justify="space-around" alignItems="center">
      <Grid item xs={12}> <h1> What area do you want to werk on?</h1></Grid>
       <Grid item xs={12} sm={6} md={4} className={classes.buttonContainer}>
-    {/* //Upper Body Card */}
-    <Button onClick={<UBModal />}>
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          
-          component="img"
-          alt="upperbody"
-          image={require('./qsPictures/upperbody.jpg')}
-          height='230'
-          title="Upper body"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Upper Body
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Don't tri and get bi
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-    </Button>
+        <UBModal/>
+      </Grid>
+   =
+      <Grid item xs={12} sm={6} md={4} className={classes.buttonContainer}>
+        <LBModal/>
+      </Grid>
+  
     </Grid>
-
-    {/* //Lower Body Card */}
-    <Grid item xs={12} sm={6} md={4} className={classes.buttonContainer}>
-    <Card className={classes.card}>
-    <CardActionArea>
-      <CardMedia
-         component="img"
-         alt="upperbody"
-         image={require('./qsPictures/lowerBody.jpg')}
-         height='230'
-         title="Lower body"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          Lower Body
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Squat til you can't squat no more, then squat some more
-        </Typography>
-      </CardContent>
-    </CardActionArea>
-  </Card>
-  </Grid>
-  </Grid>
   );
 }
 
