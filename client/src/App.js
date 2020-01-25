@@ -35,7 +35,6 @@ const App = () => {
           {/* link tags */}
           <Nav />
           <NavDrawer />
-          <RegForm/>
           <Switch>
             <Route exact path="/">
               {/* page tags */}
