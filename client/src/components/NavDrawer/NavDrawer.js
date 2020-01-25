@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
@@ -15,20 +16,20 @@ import DrawerContext from '../../utils/DrawerContext'
 import QuickStart from '../../pages/Quickstart'
 
 const theme = createMuiTheme({
-    palette: {
-      primary: {
-        main: '#424242',
-      },
-      secondary: {
-        main: '#bf360c',
-      },
+  palette: {
+    primary: {
+      main: '#424242',
     },
-    typography: {
-      "fontFamily": "\"Bangers\"",
-      "fontSize": 36
-    }
-  
-  });
+    secondary: {
+      main: '#bf360c',
+    },
+  },
+  typography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 36
+  }
+
+});
 
 const useStyles = makeStyles({
   list: {
@@ -42,9 +43,12 @@ const useStyles = makeStyles({
 const NavDrawer = () => {
   const classes = useStyles();
 
-  const { isOpen, toggleDrawer } = useContext(DrawerContext) 
+  const { isOpen, toggleDrawer } = useContext(DrawerContext)
 
-  const redirect = page => event => window.location.href = `${window.location.protocol}//${window.location.host}${page}`
+  const redirect = page =>
+    event =>
+      window.location.href =
+      `${window.location.protocol}//${window.location.host}${page}`
 
   const sideList = () => (
     <div
@@ -54,46 +58,56 @@ const NavDrawer = () => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-          {/* home */}
-        <ListItem button key={'Home'} onClick={redirect('/')}>
-          <ListItemIcon><HomeIcon /></ListItemIcon>
-          <ListItemText primary={'Home'} />
-        </ListItem>
+        {/* home */}
+        <Link to="/">
+          <ListItem button key={'Home'}>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary={'Home'} />
+          </ListItem>
+        </Link>
         {/* quickstart */}
-        <ListItem button key={'Quickstart'} onClick={redirect('/quickstart')}>
-          <ListItemIcon><PlayArrowIcon /></ListItemIcon>
-          <ListItemText primary={'QuickStart'} />
-        </ListItem>
+        <Link to="/quickstart">
+          <ListItem button key={'Quickstart'}>
+            <ListItemIcon><PlayArrowIcon /></ListItemIcon>
+            <ListItemText primary={'QuickStart'} />
+          </ListItem>
+        </Link>
         {/* custom */}
-        <ListItem button key={'Custom'} onClick={redirect('/custom')}>
-          <ListItemIcon><FitnessCenterIcon /></ListItemIcon>
-          <ListItemText primary={'Custom'} />
-        </ListItem>
+        <Link to="/custom">
+          <ListItem button key={'Custom'}>
+            <ListItemIcon><FitnessCenterIcon /></ListItemIcon>
+            <ListItemText primary={'Custom'} />
+          </ListItem>
+        </Link>
         {/* exercises */}
-        <ListItem button key={'Exercises'} onClick={redirect('/exercises')}>
-          <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
-          <ListItemText primary={'Exercises'} />
-        </ListItem>
+        <Link to="/exercises">
+          <ListItem button key={'Exercises'}>
+            <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
+            <ListItemText primary={'Exercises'} />
+          </ListItem>
+        </Link>
         {/* about */}
-        <ListItem button key={'About'} onClick={redirect('/about')}>
-          <ListItemIcon><InfoIcon /></ListItemIcon>
-          <ListItemText primary={'About'} />
-        </ListItem>
+        <Link to="/about">
+          <ListItem button key={'About'}>
+            <ListItemIcon><InfoIcon /></ListItemIcon>
+            <ListItemText primary={'About'} />
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
 
   return (
     <ThemeProvider theme={theme}>
-    <div>
-      <SwipeableDrawer
-        open={isOpen}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
-      >
-        {sideList()}
-      </SwipeableDrawer>
-    </div>        
+      <div>
+        <SwipeableDrawer
+          open={isOpen}
+          onClose={toggleDrawer(false)}
+          onOpen={toggleDrawer(true)}
+        >
+          {sideList()}
+        </SwipeableDrawer>
+      </div>
     </ThemeProvider>
 
   );
