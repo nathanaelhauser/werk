@@ -14,7 +14,6 @@ import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
 import RegForm from './components/RegForm'
-
 import Custom from './pages/Custom'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
@@ -51,7 +50,7 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
     <DrawerContext.Provider value={drawerState}>
       <Router>
         <div>
@@ -63,6 +62,10 @@ const App = () => {
               {/* page tags */}
               <Landing />
             </Route>
+            <Route path="/home">
+              {/* page tags */}
+              <Home />
+            </Route>
             <Route path="/about">
               <About />
             </Route>
@@ -72,11 +75,20 @@ const App = () => {
             <Route path="/custom">
               <Custom />
             </Route>
+            <Route path="/landing">
+              <Custom />
+            </Route>
+            <Route path="/profile">
+              <Custom />
+            </Route>
+            <Route path="/workout">
+              <Custom />
+            </Route>
           </Switch>
         </div>
       </Router>      
     </DrawerContext.Provider>
-    </ThemeProvider>
+    // </ThemeProvider>
 
   )
 }

@@ -1,18 +1,22 @@
 import React from 'react'
 import { Parallax, Background } from 'react-parallax'
+import LaxCard from '../LaxCard'
 
 const Parallaxx = _ => {
     return (
     <div>
         {/* -----basic config-----*/}
         <Parallax
-            blur={10}
-            bgImage={require('./ParallaxImages/p1.jpg')}
+            blur={15}
+            bgImage={require('./ParallaxImages/p3.jpg')}
             bgImageAlt="the cat"
-            strength={200}
+            strength={400}
         >
             <div>
                 <h1>WEEEERRRRKKKKK</h1>
+                <LaxCard
+                image="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fitzfit.com%2Fwp-content%2Fuploads%2F2014%2F05%2FP90-300x211.png&f=1&nofb=1"
+                name="WELCOME TO WERK!"/>
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
@@ -20,10 +24,10 @@ const Parallaxx = _ => {
         {/* -----dynamic blur-----*/}
         <Parallax
             // blur={{ min: -15, max: 15 }}
-            blur={10}
-            bgImage={require('./ParallaxImages/p1.jpg')}
+            blur={15}
+            bgImage={require('./ParallaxImages/p3.jpg')}
             bgImageAlt="the dog"
-            strength={-200}
+            strength={-400}
         >
             <div>
                 <h1>THIS WILL LOOK COOL EVENTUALLY</h1>
@@ -33,10 +37,10 @@ const Parallaxx = _ => {
 
         <Parallax
             // blur={{ min: -15, max: 15 }}
-            blur={10}
-            bgImage={require('./ParallaxImages/p1.jpg')}
+            blur={15}
+            bgImage={require('./ParallaxImages/p3.jpg')}
             bgImageAlt="the dog"
-            strength={-200}
+            strength={-400}
         >
             <div>
                 <h1>I PROMISE</h1>
@@ -54,7 +58,7 @@ const Parallaxx = _ => {
  
         {/* -----renderProp: "renderLayer"-----*/}
         <Parallax
-            bgImage={'./ParallaxImages/p3.jpg'}
+            bgImage={'./ParallaxImages/nathan.jpg'}
             strength={400}
             renderLayer={percentage => (
                 <div
