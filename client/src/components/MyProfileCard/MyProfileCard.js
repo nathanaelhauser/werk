@@ -9,6 +9,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
 
 
 function TabPanel(props) {
@@ -76,6 +78,7 @@ const classes = useStyles();
       setValue(newValue);
     };
 return(
+<Grid  maxWidth = "sm" style = {{position: '', direction: 'row', justify: 'flexstart'}}>
       <div className={classes.root}>
         <Tabs
           orientation="vertical"
@@ -91,6 +94,7 @@ return(
           <Tab label="Item Four" {...a11yProps(3)} />
         </Tabs>
         <TabPanel value={value} index={0}>
+        
         <Card className={classes.card} variant="outlined">
       <CardContent>
         <Typography className={classes.pos} color="textSecondary">
@@ -107,6 +111,7 @@ return(
         <Button size="small">Edit Information</Button>
       </CardActions>
     </Card>
+    
         </TabPanel>
         <TabPanel value={value} index={1}>
           Item Two
@@ -117,8 +122,9 @@ return(
         <TabPanel value={value} index={3}>
           Item Four
         </TabPanel>
-
+ 
       </div>
+     </Grid>
     );
 }
 
