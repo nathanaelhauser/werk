@@ -29,7 +29,8 @@ const useCardStyles = makeStyles({
     maxWidth: 370,
   },
   media: {
-    height: 240,
+    height: "100%",
+    width: "100%"
   },
 });
 
@@ -51,10 +52,10 @@ const LBModal = () => {
       <Card className={cardClasses.card} onClick={handleOpen}>
     <CardActionArea>
       <CardMedia
+         className={cardClasses.media}
          component="img"
          alt="upperbody"
          image={require('./qsPictures/lowerBody.jpg')}
-         height='230'
          title="Lower body"
       />
       <CardContent>
