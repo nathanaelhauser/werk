@@ -1,19 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import HomeIcon from '@material-ui/icons/Home'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
-import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
-import InfoIcon from '@material-ui/icons/Info';
-import { createMuiTheme } from '@material-ui/core/styles';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow'
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
+import DirectionsRunIcon from '@material-ui/icons/DirectionsRun'
+import InfoIcon from '@material-ui/icons/Info'
+import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
 import QuickStart from '../../pages/Quickstart'
 
@@ -31,7 +29,7 @@ const theme = createMuiTheme({
     "fontSize": 36
   }
 
-});
+})
 
 const useStyles = makeStyles({
   list: {
@@ -56,10 +54,10 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     display: 'flex'
   }
-});
+})
 
 const NavDrawer = () => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const { isOpen, toggleDrawer } = useContext(DrawerContext)
 
@@ -158,7 +156,7 @@ const NavDrawer = () => {
         </Link>
       </List>
     </div>
-  );
+  )
 
   return (
     <ThemeProvider theme={theme}>
@@ -173,7 +171,7 @@ const NavDrawer = () => {
       </div>
     </ThemeProvider>
 
-  );
+  )
 }
 
 export default NavDrawer
