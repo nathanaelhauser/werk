@@ -7,13 +7,11 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import CodeIcon from '@material-ui/icons/Code'
-import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 345,
-    background: "#86DEB7"
+    maxWidth: 1000,
   },
   media: {
     height: 345,
@@ -21,7 +19,7 @@ const useStyles = makeStyles({
   },
 })
 
-const DevCard = props => {
+const LaxCard = props => {
   const classes = useStyles()
   return (
     <Card className={classes.card}>
@@ -29,18 +27,18 @@ const DevCard = props => {
         <CardMedia
           className={classes.media}
           image={props.image}
-          title="Developers"
+          title="Welcome"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5">
+          <Typography gutterBottom variant="h3">
             {props.name}
           </Typography>
-          <Typography variant="subtitle2">
-            <CodeIcon fontSize="small"/> {props.role}
+          <Typography variant="h4" color="textSecondary">
+            <FitnessCenterIcon fontSize="large"/> {props.role}
           </Typography>
           <br/>
-          <Typography variant="subtitle2">
-            <FitnessCenterIcon fontSize="small"/> Favorite Workout: {props.favorite}
+          <Typography variant="subtitle1" color="textSecondary">
+            TBD {props.favorite}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -48,4 +46,4 @@ const DevCard = props => {
   )
 }
 
-export default DevCard
+export default LaxCard

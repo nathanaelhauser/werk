@@ -5,12 +5,36 @@ import {
   Route
 } from 'react-router-dom'
 // import tags for pages
+import About from './pages/About'
+import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
+import RegForm from './components/RegForm'
 import Custom from './pages/Custom'
+import { createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#424242',
+    },
+    secondary: {
+      main: "#86DEB7"
+    },
+  },
+  typography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 36
+  }
+
+});
+
 const App = () => {
 
   const [drawerState, setDrawerState] = useState({
@@ -25,6 +49,7 @@ const App = () => {
   }
 
   return (
+    // <ThemeProvider theme={theme}>
     <DrawerContext.Provider value={drawerState}>
       <Router>
         <div>
@@ -34,7 +59,14 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               {/* page tags */}
+              <Landing />
+            </Route>
+            <Route path="/home">
+              {/* page tags */}
               <Home />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/quickstart">
               <Quickstart />
@@ -42,10 +74,20 @@ const App = () => {
             <Route path="/custom">
               <Custom />
             </Route>
+            <Route path="/landing">
+              <Custom />
+            </Route>
+            <Route path="/profile">
+              <Custom />
+            </Route>
+            <Route path="/workout">
+              <Custom />
+            </Route>
           </Switch>
         </div>
       </Router>      
     </DrawerContext.Provider>
+    // </ThemeProvider>
 
   )
 }

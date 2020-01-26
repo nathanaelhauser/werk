@@ -13,10 +13,11 @@ import Button from '@material-ui/core/Button';
 
 const useCardStyles = makeStyles({
   card: {
-    maxWidth: 370,
+    maxWidth: 370
   },
   media: {
-    height: 170,
+    height: "100%",
+    width: "100%",
   },
 });
 
@@ -52,7 +53,7 @@ const UBModal = () => {
       <Card className={cardClasses.card} onClick={handleOpen}>
       <CardActionArea >
         <CardMedia
-          
+          className={cardClasses.media}
           component="img"
           alt="upperbody"
           image={require('./qsPictures/upperbody.jpg')}
