@@ -6,6 +6,8 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText';
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import HomeIcon from '@material-ui/icons/Home'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
@@ -39,7 +41,20 @@ const useStyles = makeStyles({
     width: 'auto',
   },
   link: {
-    color: 'white'
+    color: '#424242',
+    textDecorationLine: 'none'
+  },
+  gridItem: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex'
+  },
+  typography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+    display: 'flex'
   }
 });
 
@@ -57,38 +72,88 @@ const NavDrawer = () => {
     >
       <List>
         {/* home */}
-        <Link to="/">
+        <Link to="/" className={classes.link}>
           <ListItem button key={'Home'}>
-            <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText primary={'Home'} />
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <HomeIcon />
+              </Grid>
+              <Grid item xs={8} className={classes.gridItem}>
+                <Typography
+                  className={classes.typography}
+                  component="span">
+                  Home
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
         </Link>
         {/* quickstart */}
-        <Link to="/quickstart">
+        <Link to="/quickstart" className={classes.link}>
           <ListItem button key={'Quickstart'}>
-            <ListItemIcon><PlayArrowIcon /></ListItemIcon>
-            <ListItemText primary={'QuickStart'} />
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <PlayArrowIcon />
+              </Grid>
+              <Grid item xs={8} className={classes.gridItem}>
+                <Typography
+                  className={classes.typography}
+                  component="span">
+                  QuickStart
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
         </Link>
         {/* custom */}
-        <Link to="/custom">
+        <Link to="/custom" className={classes.link}>
           <ListItem button key={'Custom'}>
-            <ListItemIcon><FitnessCenterIcon /></ListItemIcon>
-            <ListItemText primary={'Custom'} />
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <FitnessCenterIcon />
+              </Grid>
+              <Grid item xs={8} className={classes.gridItem}>
+                <Typography
+                  className={classes.typography}
+                  component="span">
+                  Custom
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
         </Link>
         {/* exercises */}
-        <Link to="/exercises">
+        <Link to="/exercises" className={classes.link}>
           <ListItem button key={'Exercises'}>
-            <ListItemIcon><DirectionsRunIcon /></ListItemIcon>
-            <ListItemText primary={'Exercises'} />
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <DirectionsRunIcon />
+              </Grid>
+              <Grid item xs={8} className={classes.gridItem}>
+                <Typography
+                  className={classes.typography}
+                  component="span">
+                  Exercises
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
         </Link>
         {/* about */}
-        <Link to="/about">
+        <Link to="/about" className={classes.link}>
           <ListItem button key={'About'}>
-            <ListItemIcon><InfoIcon /></ListItemIcon>
-            <ListItemText primary={'About'} />
+            <Grid container spacing={3}>
+              <Grid item xs={4}>
+                <InfoIcon />
+              </Grid>
+              <Grid item xs={8} className={classes.gridItem}>
+                <Typography
+                  className={classes.typography}
+                  component="span">
+                    About
+                </Typography>
+              </Grid>
+            </Grid>
           </ListItem>
         </Link>
       </List>
