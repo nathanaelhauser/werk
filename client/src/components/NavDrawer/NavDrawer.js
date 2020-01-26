@@ -38,17 +38,15 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
+  link: {
+    color: 'white'
+  }
 });
 
 const NavDrawer = () => {
   const classes = useStyles();
 
   const { isOpen, toggleDrawer } = useContext(DrawerContext)
-
-  const redirect = page =>
-    event =>
-      window.location.href =
-      `${window.location.protocol}//${window.location.host}${page}`
 
   const sideList = () => (
     <div
