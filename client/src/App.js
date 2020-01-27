@@ -84,6 +84,7 @@ const App = () => {
             <Route path="/workout">
               <Custom />
             </Route>
+            
           </Switch>
         </div>
       </Router>      
