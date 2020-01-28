@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
+import RecentWO from '../../components/RecentWO'
 
 
 
@@ -81,10 +82,12 @@ return(
       <MyProfileCard/>
     </TabPanel>
     <TabPanel value={value} index={1}>
+      <Container>
       <CustomCard/>
+      </Container>
     </TabPanel>
     <TabPanel value={value} index={2}>
-      Item Three
+      <RecentWO/>
     </TabPanel>
     <TabPanel value={value} index={3}>
       Item Four
