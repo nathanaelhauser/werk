@@ -114,9 +114,6 @@ const Nav = () => {
                 <Link to="/profile" className={classes.link}>
                 <MenuItem onClick={handleClose}>My Profile</MenuItem>
                 </Link>
-                <Link to="/workouts" className={classes.link}>
-                <MenuItem onClick={handleClose}>My Workouts</MenuItem>
-                </Link>
                 <MenuItem onClick={handleClose}>Sign Out</MenuItem>
               </Menu>
             </div>
