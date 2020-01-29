@@ -1,6 +1,7 @@
 import React from 'react'
 import { Parallax, Background } from 'react-parallax'
 import LaxCard from '../LaxCard'
+import LaxCarousel from '../LaxCarousel'
 
 const Parallaxx = _ => {
     return (
@@ -14,9 +15,10 @@ const Parallaxx = _ => {
         >
             <div>
                 <h1>WEEEERRRRKKKKK</h1>
-                <LaxCard
+                {/* <LaxCard
                 image="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fitzfit.com%2Fwp-content%2Fuploads%2F2014%2F05%2FP90-300x211.png&f=1&nofb=1"
-                name="WELCOME TO WERK!"/>
+                name="WELCOME TO WERK!"/> */}
+                <LaxCarousel />
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
