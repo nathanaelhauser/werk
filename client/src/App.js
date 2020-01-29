@@ -9,7 +9,10 @@ import About from './pages/About'
 import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
+<<<<<<< HEAD
 import Workout from './pages/Workout'
+=======
+>>>>>>> 83aa582b432681df5bcb6ce45d2ed866c3afe711
 import Profile from './pages/Profile'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
@@ -87,9 +90,7 @@ const App = () => {
             <Route path="/profile">
               <Profile />
             </Route>
-            <Route path="/workout">
-              <Workout />
-            </Route>
+            
           </Switch>
         </div>
       </Router>
