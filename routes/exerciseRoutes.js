@@ -21,10 +21,11 @@ module.exports = app => {
   // POST ONE EXERCISE
   app.post('/exercises', (req, res) => {
     Exercise.create(req.body)
-      .then(({ _id }) => {
-        Workout.updateOne({ _id: req.body.workout }, { $push: { exercises: _id }})
-          .then(exercise => res.json(exercise))
-          .catch(e => console.error(e))
+      .then(exercise => {
+        // Workout.updateOne({ _id: req.body.workout }, { $push: { exercises: _id }})
+        //   .then(exercise => res.json(exercise))
+        //   .catch(e => console.error(e))
+        res.json(exercise)
       })
       .catch(e => console.error(e))
   })

@@ -9,7 +9,7 @@ import About from './pages/About'
 import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
-import Profile from './pages/Profile'
+import Workout from './pages/Workout'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
@@ -55,8 +55,16 @@ const App = () => {
       <Router>
         <div>
           {/* link tags */}
-          <Nav />
-          <NavDrawer />
+          {
+            window.location.pathname !== '/'
+              ? (
+                <>
+                  <Nav />
+                  <NavDrawer />
+                </>
+              )
+              : ''
+          }
           <Switch>
             <Route exact path="/">
               {/* page tags */}
@@ -75,18 +83,21 @@ const App = () => {
             <Route path="/custom">
               <Custom />
             </Route>
+<<<<<<< HEAD
             <Route path="/landing">
               <Landing />
             </Route>
+=======
+>>>>>>> b3d7a72ea43372a1f17bd2613cb4c8d10e2866dc
             <Route path="/profile">
               <Profile />
             </Route>
             <Route path="/workout">
-              <Custom />
+              <Workout />
             </Route>
           </Switch>
         </div>
-      </Router>      
+      </Router>
     </DrawerContext.Provider>
     // </ThemeProvider>
 

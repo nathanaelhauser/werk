@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     color: "#86DEB7"
   },
-}));
+}))
 
 const Nav = () => {
   const classes = useStyles();
@@ -59,12 +59,12 @@ const Nav = () => {
   
 
   const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const { toggleDrawer } = useContext(DrawerContext)
 
@@ -125,7 +125,7 @@ const Nav = () => {
       </AppBar>
       </ThemeProvider>
     </div>
-  );
+  )
 }
 
 export default Nav
