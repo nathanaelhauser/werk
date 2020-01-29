@@ -9,6 +9,7 @@ import About from './pages/About'
 import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
+import Profile from './pages/Profile'
 import Workout from './pages/Workout'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
@@ -84,11 +85,12 @@ const App = () => {
               <Custom />
             </Route>
             <Route path="/profile">
-              <Custom />
+              <Profile />
             </Route>
             <Route path="/workout">
               <Workout />
             </Route>
+            
           </Switch>
         </div>
       </Router>
