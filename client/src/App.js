@@ -55,8 +55,16 @@ const App = () => {
       <Router>
         <div>
           {/* link tags */}
-          <Nav />
-          <NavDrawer />
+          {
+            window.location.pathname !== '/'
+              ? (
+                <>
+                  <Nav />
+                  <NavDrawer />
+                </>
+              )
+              : ''
+          }
           <Switch>
             <Route exact path="/">
               {/* page tags */}
@@ -75,9 +83,6 @@ const App = () => {
             <Route path="/custom">
               <Custom />
             </Route>
-            <Route path="/landing">
-              <Custom />
-            </Route>
             <Route path="/profile">
               <Custom />
             </Route>
@@ -86,7 +91,7 @@ const App = () => {
             </Route>
           </Switch>
         </div>
-      </Router>      
+      </Router>
     </DrawerContext.Provider>
     // </ThemeProvider>
 
