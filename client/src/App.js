@@ -10,6 +10,7 @@ import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
 import Workout from './pages/Workout'
+import Profile from './pages/Profile'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
@@ -83,12 +84,6 @@ const App = () => {
             <Route path="/custom">
               <Custom />
             </Route>
-<<<<<<< HEAD
-            <Route path="/landing">
-              <Landing />
-            </Route>
-=======
->>>>>>> b3d7a72ea43372a1f17bd2613cb4c8d10e2866dc
             <Route path="/profile">
               <Profile />
             </Route>

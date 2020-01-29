@@ -1,24 +1,39 @@
 import React from 'react'
 import { Parallax, Background } from 'react-parallax'
 import LaxCard from '../LaxCard'
-import LaxCarousel from '../LaxCarousel'
+import LandingTitle from '../LandingTitle'
+import { createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: '#424242',
+      },
+      secondary: {
+        main: "#86DEB7"
+      },
+    },
+    typography: {
+      "fontFamily": "\"Bangers\"",
+      "fontSize": 36
+    }
+  
+  });
 
 const Parallaxx = _ => {
     return (
+        <ThemeProvider theme={theme}>
     <div>
         {/* -----basic config-----*/}
         <Parallax
             blur={15}
             bgImage={require('./ParallaxImages/p3.jpg')}
             bgImageAlt="the cat"
-            strength={400}
+            strength={600}
         >
             <div>
-                <h1>WEEEERRRRKKKKK</h1>
-                {/* <LaxCard
-                image="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fitzfit.com%2Fwp-content%2Fuploads%2F2014%2F05%2FP90-300x211.png&f=1&nofb=1"
-                name="WELCOME TO WERK!"/> */}
-                <LaxCarousel />
+                <LandingTitle />
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
@@ -29,7 +44,7 @@ const Parallaxx = _ => {
             blur={15}
             bgImage={require('./ParallaxImages/p3.jpg')}
             bgImageAlt="the dog"
-            strength={-400}
+            strength={-600}
         >
             <div>
                 <h1>THIS WILL LOOK COOL EVENTUALLY</h1>
@@ -42,7 +57,7 @@ const Parallaxx = _ => {
             blur={15}
             bgImage={require('./ParallaxImages/p3.jpg')}
             bgImageAlt="the dog"
-            strength={-400}
+            strength={-600}
         >
             <div>
                 <h1>I PROMISE</h1>
@@ -78,6 +93,7 @@ const Parallaxx = _ => {
             <p></p>
         </Parallax>
     </div>
+    </ThemeProvider>
     )
 };
 export default Parallaxx

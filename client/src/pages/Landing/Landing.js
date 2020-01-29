@@ -4,7 +4,9 @@ import Parallaxx from '../../components/Parallaxx'
 
 const Landing = () => {
     return (
+        <>
         <Parallaxx />
+        </>
     )
 }
 
