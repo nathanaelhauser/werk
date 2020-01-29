@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -39,6 +40,10 @@ const useStyles = makeStyles(theme => ({
   }, 
   signInButton: {
     color:"#86DEB7"
+  },
+  link: {
+    color: '#424242',
+    textDecorationLine: 'none'
   },
   title: {
     flexGrow: 1,
@@ -106,8 +111,12 @@ const Nav = () => {
                 open={open}
                 onClose={handleClose}
               >
+                <Link to="/profile" className={classes.link}>
                 <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                </Link>
+                <Link to="/workouts" className={classes.link}>
                 <MenuItem onClick={handleClose}>My Workouts</MenuItem>
+                </Link>
                 <MenuItem onClick={handleClose}>Sign Out</MenuItem>
               </Menu>
             </div>

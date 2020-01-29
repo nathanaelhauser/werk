@@ -22,6 +22,10 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  typography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 36
+  }
 })
 
 const Quickstart = () => {
