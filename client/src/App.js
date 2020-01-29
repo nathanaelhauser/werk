@@ -79,7 +79,7 @@ const App = () => {
               <Custom />
             </Route>
             <Route path="/profile">
-              <Custom />
+              <Profile />
             </Route>
             <Route path="/workout">
               <Custom />
