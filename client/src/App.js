@@ -13,10 +13,9 @@ import Profile from './pages/Profile'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
-import RegForm from './components/RegForm'
 import Custom from './pages/Custom'
 import { createMuiTheme } from '@material-ui/core/styles';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 
 
@@ -51,47 +50,47 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <DrawerContext.Provider value={drawerState}>
-      <Router>
-        <div>
-          {/* link tags */}
-          {
-            window.location.pathname !== '/'
-              ? (
-                <>
-                  <Nav />
-                  <NavDrawer />
-                </>
-              )
-              : ''
-          }
-          <Switch>
-            <Route exact path="/">
-              {/* page tags */}
-              <Landing />
-            </Route>
-            <Route path="/home">
-              {/* page tags */}
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/quickstart">
-              <Quickstart />
-            </Route>
-            <Route path="/custom">
-              <Custom />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            
-          </Switch>
-        </div>
-      </Router>
-    </DrawerContext.Provider>
-    // </ThemeProvider>
+      <DrawerContext.Provider value={drawerState}>
+        <Router>
+          <div>
+            {/* link tags */}
+            {
+              window.location.pathname !== '/'
+                ? (
+                  <>
+                    <Nav />
+                    <NavDrawer />
+                  </>
+                )
+                : ''
+            }
+            <Switch>
+              <Route exact path="/">
+                {/* page tags */}
+                <Landing />
+              </Route>
+              <Route path="/home">
+                {/* page tags */}
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+              <Route path="/quickstart">
+                <Quickstart />
+              </Route>
+              <Route path="/custom">
+                <Custom />
+              </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+
+            </Switch>
+          </div>
+        </Router>
+      </DrawerContext.Provider>
+    </ThemeProvider>
 
   )
 }
