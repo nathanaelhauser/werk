@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import AutoWhatever from 'react-autowhatever'
 
 
 const Custom = () => {
@@ -20,9 +19,6 @@ const Custom = () => {
     <div>
       <h1>Custom Workout</h1>
       <br />
-      <AutoWhatever 
-        
-      />
     </div>
   )
 }

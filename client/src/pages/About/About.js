@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from '../../components/Nav'
 import DevCard from '../../components/DevCard'
 import Grid from '@material-ui/core/Grid'
@@ -11,6 +11,11 @@ import DoubleArrowIcon from '@material-ui/icons/DoubleArrow'
 
 
 const About = () => {
+
+    useEffect(() => {
+        
+    }, [])
+
     return (
         
         <Grid container spacing={4} align="center">
