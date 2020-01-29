@@ -1,4 +1,5 @@
 const { Event, User, Workout } = require('../Models')
+const passport = require('passport')
 
 module.exports = app => {
 

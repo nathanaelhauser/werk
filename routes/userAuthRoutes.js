@@ -1,5 +1,6 @@
 const { User } = require('../Models')
 const jwt = require('jsonwebtoken')
+const passport = require('passport')
 
 module.exports = app => {
     app.post('/userAuth', (req, res) => {
