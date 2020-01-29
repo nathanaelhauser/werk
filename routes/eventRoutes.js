@@ -3,9 +3,9 @@ const { Event, User, Workout } = require('../Models')
 module.exports = app => {
 
   // GET ALL EVENTS FOR USER
-  app.get('/events', (req, res) => {
-    Event.find()
-      .populate('user')
+  app.get('/events', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { _id } = req.user
+    Event.find({ user: _id })
       .populate('workout')
       .then(events => res.json(events))
       .catch(e => console.error(e))
