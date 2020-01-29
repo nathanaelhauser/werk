@@ -2,10 +2,46 @@ import React from 'react'
 import Nav from '../../components/Nav'
 import DevCard from '../../components/DevCard'
 import Grid from '@material-ui/core/Grid'
+import { Typography } from '@material-ui/core'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow'
+
 
 const About = () => {
     return (
+        
         <Grid container spacing={4} align="center">
+            <Grid item xs={12}>
+                <Typography variant="h3">
+                    What is WERK?
+                </Typography>
+                <Typography variant="body1">
+                    WERK can help you stay on track of your fitness goals.  When you join the WERK community you can:
+                </Typography>
+                <List>
+                    
+                    <ListItem>
+                        <ListItemText align="center" primary="Have access to pre-made workouts for upper, lower, and total body"/>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText align="center" primary="Create your own custom workout through our vast database of exercises"/>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText align="center" primary="Log and track your workout so that you can see your progress"/>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText align="center" primary="Be a part of an open and caring community of fellow health enthusiasts"/>
+                    </ListItem>
+                </List>
+            </Grid>
+            <Grid item xs={12}>
+                <Typography variant="h3">
+                    Meet The WERK Team
+                </Typography>
+            </Grid>
             <Grid item xs={12} sm={6} md={3} align="center">
                 <DevCard
                     image="https://ca.slack-edge.com/TKAFG5QD9-ULXR8AFUZ-c9a095d1d510-512"
