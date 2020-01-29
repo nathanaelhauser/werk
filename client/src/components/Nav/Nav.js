@@ -12,6 +12,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import DrawerContext from '../../utils/DrawerContext'
 import lightGreen from '@material-ui/core/colors/lightGreen'
 import red from '@material-ui/core/colors/red'
+import { Link } from 'react-router-dom'
 
 const theme = createMuiTheme({
   palette: {
@@ -30,6 +31,10 @@ const theme = createMuiTheme({
 });
 
 const useStyles = makeStyles(theme => ({
+  link: {
+    color: '#424242',
+    textDecorationLine: 'none'
+  },
   root: {
     flexGrow: 1,
   },
@@ -106,8 +111,12 @@ const Nav = () => {
                 open={open}
                 onClose={handleClose}
               >
+                <Link to="/profile" className={classes.link}>
                 <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                </Link>
+                <Link to= "/" className= {classes.link}>
                 <MenuItem onClick={handleClose}>My Workouts</MenuItem>
+                </Link>
                 <MenuItem onClick={handleClose}>Sign Out</MenuItem>
               </Menu>
             </div>

@@ -11,6 +11,8 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Grid from '@material-ui/core/Grid'
+import RegContext from '../../utils/RegContext'
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -39,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 const RegForm = () =>{
     const classes = useStyles();
-
+    const {handleInputChange} = useContext(RegContext)
     return (
         <Container maxWitdth ="sm">
         <Card className={classes.card} variant="outlined">
@@ -90,7 +92,7 @@ const RegForm = () =>{
           />
         </div>
        <br/>
-        <Button variant="contained" color="primary"> Submit </Button>
+        <Button variant="contained" color="primary" onChange= {handleInputChange}> Submit </Button>
       </div>
       </FormControl>
       </Container>
