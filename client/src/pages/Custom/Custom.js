@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import Autocomplete from '@material-ui/lab/Autocomplete'
+import AsyncAutoComplete from '../../components/AsyncAutoComplete'
 
 const Custom = () => {
 
@@ -19,6 +20,7 @@ const Custom = () => {
     <div>
       <h1>Custom Workout</h1>
       <br />
+      <AsyncAutoComplete />
     </div>
   )
 }
