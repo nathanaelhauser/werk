@@ -19,11 +19,10 @@ const AsyncAutoComplete = () => {
 
     (async () => {
       const response = await axios.get('/exercises')
-      const exercises = await JSON.parse(response)
+      const { data: exercises } = await response
 
       if (active) {
-        console.log(response)
-        // setOptions(exercises.map(({ name, _id }) => ({ name, _id })))
+        setOptions(exercises.map(({ name, _id }) => ({ name, _id })))
       }
     })()
 
