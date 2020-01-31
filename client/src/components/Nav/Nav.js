@@ -29,6 +29,10 @@ const theme = createMuiTheme({
 })
 
 const useStyles = makeStyles(theme => ({
+  link: {
+    color: '#424242',
+    textDecorationLine: 'none'
+  },
   root: {
     flexGrow: 1,
   },
