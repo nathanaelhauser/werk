@@ -7,8 +7,8 @@ import Jumbotron from '../../components/Jumbotron'
 const Landing = () => {
     return (
         <>
-        <Jumbotron />
-        {/* <Parallaxx /> */}
+        {/* <Jumbotron /> */}
+        <Parallaxx />
         </>
     )
 }

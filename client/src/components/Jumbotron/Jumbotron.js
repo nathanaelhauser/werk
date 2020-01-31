@@ -24,11 +24,12 @@ const Jumbotron = () => {
         alignItems='center'
       >
         <Grid item>
-          <h1>TITLE HERE</h1>
+        <Typography variant="h3">WERK</Typography>
         </Grid>
         <Grid item>
-          <p>SUBTITLE HERE</p>
+        <Typography variant="h7">© the-group 2020</Typography>
         </Grid>
+        <br/><br/><br/>
         <Grid item>
           <Button>Sign In</Button>
         </Grid>
