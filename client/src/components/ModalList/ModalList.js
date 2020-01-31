@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -11,9 +11,7 @@ import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Grid from '@material-ui/core/Grid'
-import DeleteIcon from '@material-ui/icons/Delete'
-import WorkoutContext from '../../utils/WorkoutContext'
-
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,33 +34,27 @@ function generate(element) {
   )
 }
 
-const WorkoutList = () => {
+const ModalList = () => {
   const classes = useStyles()
   const [dense, setDense] = React.useState(false)
   const [secondary, setSecondary] = React.useState(false)
   return(
-    <Grid container spacing={2}>
-      <Grid item xs={12} md={6}>
-        <div className={classes.demo}>
-          <List>
-            {generate(
-              <ListItem>
-                <ListItemText
-                  primary="Single-line item"
-                  secondary={secondary ? 'Secondary text' : null}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>,
-            )}
-          </List>
-        </div>
-      </Grid>
-    </Grid>
+    <List>
+      {generate(
+        <ListItem>
+          <ListItemText
+            primary="Workout"
+            secondary={secondary ? 'Secondary text' : null}
+          />
+          <ListItemSecondaryAction>
+            <IconButton edge="end" aria-label="delete">
+              <LibraryAddIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>,
+      )}
+    </List>
   )
 }
 
-export default WorkoutList
+export default ModalList
