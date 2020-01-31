@@ -1,6 +1,7 @@
 import React from 'react'
 import { Parallax, Background } from 'react-parallax'
 import LaxCard from '../LaxCard'
+import Jumbotron from '../Jumbotron'
 import LaxContainer from '../LaxContainer'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
@@ -34,7 +35,8 @@ const Parallaxx = _ => {
         >
             <div>
                 <br/>
-                <LaxContainer />
+                {/* <LaxContainer /> */}
+                <Jumbotron />
                 {/* <LaxCard /> */}
             </div>
             <div style={{ height: '800px' }} />
