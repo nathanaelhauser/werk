@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Typography } from '@material-ui/core'
 import AsyncAutoComplete from '../../components/AsyncAutoComplete'
 import CustomForm from '../../components/CustomForm'
 
@@ -18,9 +19,10 @@ const Custom = () => {
 
   return (
     <div>
-      <h1>Custom Workout</h1>
+           <Typography variant="h6">build WERKout</Typography>
       <br />
       <AsyncAutoComplete />
+      <br/>
       <CustomForm />
     </div>
   )
