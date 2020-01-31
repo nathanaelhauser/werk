@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import LandingContext from '../../utils/LandingContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -64,6 +66,7 @@ const Jumbotron = () => {
   const classes = useStyles()
   const [openRegister, setOpenRegister] = useState(false)
   const [openLogin, setOpenLogin] = useState(false)
+  const { name, username, password, confirmPassword, age, weight } = useContext(LandingContext)
 
   const handleClickOpen = type => event => {
     if (type === 'register') {
@@ -83,15 +86,21 @@ const Jumbotron = () => {
 
   const handleLogin = async event => {
     console.log('Trying to login!')
-    // const response = await 
+    console.log(`Username: ${username}`)
+    console.log(`Password: ${password}`)
+    // const response = await UserAuthAPI.loginUser()
   }
 
-  const login = () => {
-    const username = 'JoEdIrT'
-    const password = 'pass1234'
-    axios.post('/login', { username, password })
-      .then(token => localStorage.setItem('werkToken', token))
-      .catch(e => console.error(e))
+  const handleRegister = async event => {
+    if (password !== confirmPassword) {
+      return
+    }
+    console.log('Trying to register!')
+    console.log(`Name: ${name}`)
+    console.log(`Username: ${username}`)
+    console.log(`Password: ${password}`)
+    console.log(`Age: ${age}`)
+    console.log(`Weight: ${weight}`)
   }
 
   return (
@@ -125,7 +134,6 @@ const Jumbotron = () => {
                 onClick={handleLogin} 
                 color="primary" 
                 variant="contained"
-                name="login"
               >
                 Login
               </Button>
@@ -142,7 +150,12 @@ const Jumbotron = () => {
               <RegForm />
             </DialogContent>
             <DialogActions>
-              <Button autoFocus onClick={handleClose('register')} color="primary">
+              <Button 
+                autoFocus 
+                onClick={handleRegister} 
+                color="primary"
+                variant="container"
+              >
                 Create Account
               </Button>
             </DialogActions>

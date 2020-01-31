@@ -8,6 +8,7 @@ const Landing = () => {
         name: '',
         username: '',
         password: '',
+        confirmPassword: '',
         age: 0,
         weight: 0
     })
