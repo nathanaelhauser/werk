@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import LandingContext from '../../utils/LandingContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -11,6 +13,7 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import RegForm from '../RegForm'
+import LoginForm from '../LoginForm'
 
 const useStyles = makeStyles({
   root: {
@@ -60,62 +63,103 @@ const DialogActions = withStyles(theme => ({
 
 const Jumbotron = () => {
   const classes = useStyles()
-  const [open, setOpen] = React.useState(false);
+  const [openRegister, setOpenRegister] = useState(false)
+  const [openLogin, setOpenLogin] = useState(false)
+  const { name, username, password, confirmPassword, age, weight } = useContext(LandingContext)
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClickOpen = type => event => {
+    if (type === 'register') {
+      setOpenRegister(true)
+    } else {
+      setOpenLogin(true)
+    }
+  }
+
+  const handleClose = type => event => {
+    if (type === 'register') {
+      setOpenRegister(false)
+    } else {
+      setOpenLogin(false)
+    }
+  }
+
+  const handleLogin = async event => {
+    console.log('Trying to login!')
+    const response = await UserAuthAPI.loginUser({ username, password })
+    const { data:{ token }} = await response
+    sessionStorage.setItem('werkToken', token)
+    window.location.pathname = '/home'
+  }
+
+  const handleRegister = async event => {
+    if (password !== confirmPassword) {
+      return
+    }
+    console.log('Trying to register!')
+    const response = await UserAuthAPI.registerUser({ name, username, password, age, weight })
+    const { status } = await response
+    if (status === 200) {
+      handleLogin(event)
+    }
+  }
 
   return (
     <Container className={classes.root}>
-      <Grid 
-        container 
+      <Grid
+        container
         spacing={3}
         direction='column'
         justify='center'
         alignItems='center'
       >
         <Grid item>
-        <Typography variant="h3">WERK</Typography>
+          <Typography variant="h3">WERK</Typography>
         </Grid>
         <Grid item>
-        <Typography variant="h7">© the-group 2020</Typography>
+          <Typography variant="h6">© the-group 2020</Typography>
         </Grid>
-        <br/><br/><br/>
+        <br /><br /><br />
         <Grid item>
-          <Button onClick={handleClickOpen}>Sign In</Button>
-          {/* <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Sign In
-        </DialogTitle>
-        <DialogContent dividers>
-          <SigninForm />
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Log In
-          </Button>
-        </DialogActions>
-      </Dialog> */}
+          <Button onClick={handleClickOpen('login')}>Login</Button>
+          <Dialog onClose={handleClose('login')} aria-labelledby="customized-dialog-title" open={openLogin}>
+            <DialogTitle id="customized-dialog-title" onClose={handleClose('login')}>
+              Welcome back bitch!
+            </DialogTitle>
+            <DialogContent dividers>
+              <LoginForm />
+            </DialogContent>
+            <DialogActions>
+              <Button 
+                autoFocus 
+                onClick={handleLogin} 
+                color="primary" 
+                variant="contained"
+              >
+                Login
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Grid>
         <Grid item>
-          <Button onClick={handleClickOpen}>Register</Button>
-          <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Register
-        </DialogTitle>
-        <DialogContent dividers>
-          <RegForm />
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
-            Create Account
-          </Button>
-        </DialogActions>
-      </Dialog>
+          <Button onClick={handleClickOpen('register')}>Register</Button>
+          <Dialog onClose={handleClose('register')} aria-labelledby="customized-dialog-title" open={openRegister}>
+            <DialogTitle id="customized-dialog-title" onClose={handleClose('register')}>
+              Register urself!
+            </DialogTitle>
+            <DialogContent dividers>
+              <RegForm />
+            </DialogContent>
+            <DialogActions>
+              <Button 
+                autoFocus 
+                onClick={handleRegister} 
+                color="primary"
+                variant="contained"
+              >
+                Create Account
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Grid>
       </Grid>
     </Container>
