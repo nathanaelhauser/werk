@@ -2,7 +2,6 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
@@ -27,7 +26,6 @@ const useStyles = makeStyles({
 const RecentWO = () => {
 
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
   
     return (
     <Container>

@@ -27,7 +27,6 @@ const useStyles = makeStyles({
 const MyProfileCard = () => {
 
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
   
     return (
     <Container>
