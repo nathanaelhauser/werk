@@ -10,6 +10,7 @@ import Landing from './pages/Landing'
 import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
 import Profile from './pages/Profile'
+import Workout from './pages/Workout'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
@@ -84,6 +85,9 @@ const App = () => {
               </Route>
               <Route path="/profile">
                 <Profile />
+              </Route>
+              <Route path="/workout">
+                <Workout />
               </Route>
 
             </Switch>
