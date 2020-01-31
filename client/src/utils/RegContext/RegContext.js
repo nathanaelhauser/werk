@@ -6,6 +6,7 @@ const RegContext = createContext ({
     age: '',
     weight: '',
     handleInputChange: () => {},
+    handleAddReg: () => {}
     
 })
 
