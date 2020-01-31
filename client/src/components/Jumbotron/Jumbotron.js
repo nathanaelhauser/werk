@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react'
-import axios from 'axios'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import LandingContext from '../../utils/LandingContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
@@ -86,9 +85,10 @@ const Jumbotron = () => {
 
   const handleLogin = async event => {
     console.log('Trying to login!')
-    console.log(`Username: ${username}`)
-    console.log(`Password: ${password}`)
-    // const response = await UserAuthAPI.loginUser()
+    const response = await UserAuthAPI.loginUser({ username, password })
+    const { data:{ token }} = await response
+    sessionStorage.setItem('werkToken', token)
+    window.location.pathname = '/home'
   }
 
   const handleRegister = async event => {
@@ -96,11 +96,11 @@ const Jumbotron = () => {
       return
     }
     console.log('Trying to register!')
-    console.log(`Name: ${name}`)
-    console.log(`Username: ${username}`)
-    console.log(`Password: ${password}`)
-    console.log(`Age: ${age}`)
-    console.log(`Weight: ${weight}`)
+    const response = await UserAuthAPI.registerUser({ name, username, password, age, weight })
+    const { status } = await response
+    if (status === 200) {
+      handleLogin(event)
+    }
   }
 
   return (

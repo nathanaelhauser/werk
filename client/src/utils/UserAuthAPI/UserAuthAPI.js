@@ -8,7 +8,7 @@ const UserAuthAPI = {
     type: 'get',
     url: '/authorize',
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('werkToken')}`
+      'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
     }
   })
 
