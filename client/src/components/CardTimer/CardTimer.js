@@ -42,15 +42,15 @@ const useStyles = makeStyles({
                 direction="backward"
                 checkpoints={[ {
                     time: 45000,
-                    callback: () => console.log('CheckPoint C')
+                    callback: () => console.log('CheckPoint A')
                 },
                     {
                         time: 30000,
-                        callback: () => console.log('Checkpoint A'),
+                        callback: () => console.log('Checkpoint B'),
                     },
                     {
                         time: 15000,
-                        callback: () => console.log('Checkpoint B'),
+                        callback: () => console.log('Checkpoint C'),
                     }
                 ]}
           >
