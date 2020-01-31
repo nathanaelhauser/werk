@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 const RecentWO = () => {
 
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
+    
   
     return (
     <Container>
