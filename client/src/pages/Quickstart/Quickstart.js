@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import QuickstartContext from '../../utils/QuickstartContext'
+import { getWorkouts } from '../../utils/WorkoutAPI'
 import { Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import UBModal from '../../components/UBModal'
@@ -31,21 +33,60 @@ const useStyles = makeStyles({
 
 const Quickstart = () => {
   const classes = useStyles();
+  const [quickState, setQuickState] = useState({
+    area: '',
+    workouts: []
+  })
+
+  const getRandomWorkouts = workouts => {
+    let index, indices = []
+    for (let i = 0; i < 3; i++) {
+      do {
+        index = Math.floor(Math.random() * (workouts.length - 1))
+      }
+      while (indices.includes(index))
+      indices.push(index)
+    }
+    return [workouts[indices[0]], workouts[indices[1]], workouts[indices[2]]]
+  }
+
+  quickState.getWorkouts = () => getRandomWorkouts(quickState.workouts.filter(workout => workout.area === quickState.area))
+
+
+  useEffect(() => {
+    getWorkouts()
+      .then(workouts => setQuickState({ ...quickState, workouts }))
+      .catch(e => console.error(e))
+  }, [quickState])
 
   return (
-    <Grid container spacing={4} direction='row' justify="space-around" alignItems="center">
-     <Grid item xs={12} sm={12} align="center"> 
-     <Typography variant="h6">pick your poison:</Typography>
-     </Grid>
-      <Grid item xs={12} sm={3} className={classes.buttonContainer}>
-        <UBModal/>
+    <QuickstartContext.Provider value={quickState}>
+      <Grid container spacing={4} direction='row' justify="space-around" alignItems="center">
+        <Grid item xs={12} sm={12} align="center">
+          <Typography variant="h6">pick your poison:</Typography>
+        </Grid>
+        <Grid 
+          item 
+          xs={12} 
+          sm={3} 
+          className={classes.buttonContainer} 
+          onClick={() => setQuickState({ ...quickState, area: 'upper'})}
+        >
+          <UBModal />
+        </Grid>
+
+        <Grid 
+          item 
+          xs={12} 
+          sm={3} 
+          className={classes.buttonContainer}
+          onClick={() => setQuickState({ ...quickState, area: 'lower'})}
+        >
+          <LBModal />
+        </Grid>
+
       </Grid>
-   
-      <Grid item xs={12} sm={3} className={classes.buttonContainer}>
-        <LBModal/>
-      </Grid>
-  
-    </Grid>
+    </QuickstartContext.Provider>
   );
 }
 
