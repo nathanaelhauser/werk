@@ -40,6 +40,19 @@ const useStyles = makeStyles({
                 initialTime={60000}
                 startImmediately={false}
                 direction="backward"
+                checkpoints={[ {
+                    time: 45000,
+                    callback: () => console.log('CheckPoint C')
+                },
+                    {
+                        time: 30000,
+                        callback: () => console.log('Checkpoint A'),
+                    },
+                    {
+                        time: 15000,
+                        callback: () => console.log('Checkpoint B'),
+                    }
+                ]}
           >
          {({ start, resume, pause, stop, reset, timerState }) => (
         <React.Fragment>
