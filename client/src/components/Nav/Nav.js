@@ -1,17 +1,16 @@
-import React, { useContext } from 'react';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import { createMuiTheme } from '@material-ui/core/styles';
+import React, { useContext, useState } from 'react'
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import MenuOpenIcon from '@material-ui/icons/MenuOpen'
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import MenuItem from '@material-ui/core/MenuItem'
+import Menu from '@material-ui/core/Menu'
+import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
-import lightGreen from '@material-ui/core/colors/lightGreen'
-import red from '@material-ui/core/colors/red'
 
 const theme = createMuiTheme({
   palette: {
@@ -27,7 +26,7 @@ const theme = createMuiTheme({
     "fontSize": 36
   }
 
-});
+})
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,26 +39,30 @@ const useStyles = makeStyles(theme => ({
   signInButton: {
     color:"#86DEB7"
   },
+  link: {
+    color: '#424242',
+    textDecorationLine: 'none'
+  },
   title: {
     flexGrow: 1,
     color: "#86DEB7"
   },
-}));
+}))
 
 const Nav = () => {
-  const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  const classes = useStyles()
+  const [auth, setAuth] = useState(true)
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
   
 
   const handleMenu = event => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
 
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
 
   const { toggleDrawer } = useContext(DrawerContext)
 
@@ -106,8 +109,9 @@ const Nav = () => {
                 open={open}
                 onClose={handleClose}
               >
+                <Link to="/profile" className={classes.link}>
                 <MenuItem onClick={handleClose}>My Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My Workouts</MenuItem>
+                </Link>
                 <MenuItem onClick={handleClose}>Sign Out</MenuItem>
               </Menu>
             </div>
@@ -116,7 +120,7 @@ const Nav = () => {
       </AppBar>
       </ThemeProvider>
     </div>
-  );
+  )
 }
 
 export default Nav

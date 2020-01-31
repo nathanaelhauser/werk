@@ -4,11 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import lightGreen from '@material-ui/core/colors/lightGreen'
-import { spacing } from '@material-ui/system';
-import { flexbox } from '@material-ui/system';
 
 const useStyles = makeStyles({
   card: {
@@ -54,7 +50,7 @@ const Home = () => {
       </CardActionArea>
     </Card>
     </Grid>
-
+    <hr/>
     <Grid item xs={12} sm={6} align="center">
     <Card className={classes.card} onClick={redirect('/custom')}>
     <CardActionArea>
