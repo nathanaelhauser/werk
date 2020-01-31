@@ -55,7 +55,7 @@ const AsyncAutoComplete = () => {
       renderInput={params => (
         <TextField
           {...params}
-          label="Asynchronous"
+          label="Search Exercises"
           fullWidth
           variant="outlined"
           InputProps={{
