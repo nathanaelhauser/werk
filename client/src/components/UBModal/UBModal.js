@@ -1,15 +1,16 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import { makeStyles } from '@material-ui/core/styles'
+import Modal from '@material-ui/core/Modal'
+import Backdrop from '@material-ui/core/Backdrop'
+import Fade from '@material-ui/core/Fade'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
+import ModalList from '../ModalList'
 
 const useCardStyles = makeStyles({
   card: {
@@ -26,12 +27,16 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
   paper: {
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
+    backgroundColor: '#86DEB7',
+    // border: '2px solid #000',
+    // boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    outline: 0,
+    fontFamily: 'Bangers',
+    borderRadius: '25px'
   },
 }));
 
@@ -84,8 +89,9 @@ const UBModal = () => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">What area do you want to focus on?</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p>
+            <h1 id="transition-modal-title">Select an Upper Body Workout and get to WERK!</h1>
+            {/* <h1 id="transition-modal-description">Select a workout and get to WERK!</h1> */}
+            <ModalList />
           </div>
         </Fade>
       </Modal>
