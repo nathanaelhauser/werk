@@ -70,7 +70,7 @@ const NavDrawer = () => {
     >
       <List>
         {/* home */}
-        <Link to="/" className={classes.link}>
+        <Link to="/home" className={classes.link}>
           <ListItem button key={'Home'}>
             <Grid container spacing={3}>
               <Grid item xs={4}>

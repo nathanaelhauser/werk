@@ -39,7 +39,7 @@ const Home = () => {
 
   return (
     <div className = {gridClasses.root} >
-      <Grid container direction="row" >
+      <Grid container direction="row" spacing={2}>
       <Grid item xs={12} sm={6} align="center">
       <Card className={classes.card} onClick={redirect('/quickstart')} >
       <CardActionArea>
