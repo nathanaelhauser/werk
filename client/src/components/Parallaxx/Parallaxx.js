@@ -1,7 +1,7 @@
 import React from 'react'
 import { Parallax, Background } from 'react-parallax'
 import LaxCard from '../LaxCard'
-import LandingTitle from '../LandingTitle'
+import LaxContainer from '../LaxContainer'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 
@@ -33,7 +33,8 @@ const Parallaxx = _ => {
             strength={600}
         >
             <div>
-                <LandingTitle />
+                <br/>
+                <LaxContainer />
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
@@ -47,7 +48,7 @@ const Parallaxx = _ => {
             strength={-600}
         >
             <div>
-                <h1>THIS WILL LOOK COOL EVENTUALLY</h1>
+                <h1></h1>
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
@@ -60,7 +61,7 @@ const Parallaxx = _ => {
             strength={-600}
         >
             <div>
-                <h1>I PROMISE</h1>
+                <h1></h1>
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
