@@ -2,7 +2,8 @@ import React, { createContext } from 'react'
 
 const QuickstartContext = createContext({
   area: '',
-  workouts: []
+  workouts: [],
+  getWorkouts: () => {}
 })
 
 export default QuickstartContext

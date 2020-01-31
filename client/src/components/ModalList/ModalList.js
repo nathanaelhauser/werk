@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import QuickstartContext from '../../utils/QuickstartContext'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -36,8 +37,9 @@ function generate(element) {
 
 const ModalList = () => {
   const classes = useStyles()
-  const [dense, setDense] = React.useState(false)
-  const [secondary, setSecondary] = React.useState(false)
+  const [dense, setDense] = useState(false)
+  const [secondary, setSecondary] = useState(false)
+  const { getWorkouts } = useContext(QuickstartContext)
   return(
     <List>
       {generate(
