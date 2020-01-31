@@ -4,12 +4,13 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import LaxCard from '../LaxCard'
 
 const useStyles = makeStyles(theme => ({
     root: {
       '& > *': {
-        margin: theme.spacing(1),
-      },
+        margin: theme.spacing(1)
+      }
     },
   }));
 
@@ -18,17 +19,14 @@ const LaxContainer = () => {
   return (
     <React.Fragment>
       <CssBaseline />
+      {/* for logo */}
+      <LaxCard />
       <Container maxWidth="sm">
         {/* <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} /> */}
-        <h1>WERLCOME TO WERK !</h1>
-        <br/><br/><br/>
         <div className={classes.root}>
         <Button variant="contained" color="secondary">
         Log In / Sign Up
-      </Button>
-      <Button variant="contained" color="secondary">
-        CONTINUE WITHOUT ACCOUNT
-      </Button>            
+      </Button>           
         </div>
       </Container>
     </React.Fragment>

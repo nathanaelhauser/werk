@@ -35,6 +35,7 @@ const Parallaxx = _ => {
             <div>
                 <br/>
                 <LaxContainer />
+                {/* <LaxCard /> */}
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
