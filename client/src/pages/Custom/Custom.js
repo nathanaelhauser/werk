@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import AsyncAutoComplete from '../../components/AsyncAutoComplete'
+import CustomForm from '../../components/CustomForm'
 
 const Custom = () => {
 
@@ -20,6 +21,7 @@ const Custom = () => {
       <h1>Custom Workout</h1>
       <br />
       <AsyncAutoComplete />
+      <CustomForm />
     </div>
   )
 }
