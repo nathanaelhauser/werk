@@ -116,7 +116,7 @@ const Jumbotron = () => {
           <Typography variant="h3">WERK</Typography>
         </Grid>
         <Grid item>
-          <Typography variant="h7">© the-group 2020</Typography>
+          <Typography variant="h6">© the-group 2020</Typography>
         </Grid>
         <br /><br /><br />
         <Grid item>
@@ -154,7 +154,7 @@ const Jumbotron = () => {
                 autoFocus 
                 onClick={handleRegister} 
                 color="primary"
-                variant="container"
+                variant="contained"
               >
                 Create Account
               </Button>

@@ -1,15 +1,12 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import FormControl from '@material-ui/core/FormControl';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-
-import RegContext from '../../utils/RegContext'
+import LandingContext from '../../utils/LandingContext'
 
 
 const useStyles = makeStyles(theme => ({
@@ -39,14 +36,14 @@ const useStyles = makeStyles(theme => ({
 
 const RegForm = () => {
   const classes = useStyles();
-  const { handleInputChange } = useContext(RegContext)
+  const { name, username, password, confirmPassword, handleInputChange } = useContext(LandingContext)
   return (
-    <Container maxWitdth="sm">
+    <Container maxWidth="sm">
       <Card className={classes.card} variant="outlined">
         <CardContent>
 
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Welcome! Register
+            Get an account!
           </Typography>
 
           <Typography variant="h5" component="h2">
@@ -57,37 +54,56 @@ const RegForm = () => {
                     label="Username"
                     id="margin-none"
                     name="username"
+                    value={username}
+                    onChange={handleInputChange}
                     className={classes.textField}
                   />
                   <TextField
                     label="Name"
                     id="margin-none"
+                    name="name"
+                    value={name}
+                    onChange={handleInputChange}
                     className={classes.textField}
                   />
                   <TextField
+                    type="password"
                     label="Password"
                     id="margin-none"
+                    name="password"
+                    value={password}
+                    onChange={handleInputChange}
                     className={classes.textField}
                   />
                   <TextField
+                    type="password"
                     label="Comfirm Password"
                     id="margin-none"
+                    name="confirmPassword"
+                    value={confirmPassword}
+                    onChange={handleInputChange}
                     className={classes.textField}
                   />
 
-                  <TextField
+                  {/* <TextField
+                    type="number"
                     id="margin-none"
                     label="Starting Weight"
-                    // value={values.weight}
-                    //onChange={handleChange('weight')}
+                    name="weight"
+                    value={weight}
+                    onChanage={handleInputChange}
                     aria-describedby="standard-weight-helper-text"
                     inputProps={{ 'aria-label': 'weight', }}
                   />
                   <TextField
-                    label="Age"
+                    type="number"
                     id="margin-none"
+                    label="Age"
+                    name="age"
+                    value={age}
+                    onChange={handleInputChange}
                     className={classes.textField}
-                  />
+                  /> */}
                 </div>
               </FormControl>
             </Container>
