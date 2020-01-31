@@ -5,7 +5,6 @@ module.exports = app => {
   // GET ALL EXERCISES
   app.get('/exercises', (req, res) => {
     Exercise.find()
-      .populate('workout')
       .then(exercises => res.json(exercises))
       .catch(e => console.error(e))
   })
@@ -13,7 +12,6 @@ module.exports = app => {
   // GET ONE EXERCISE
   app.get('/exercises/:id', (req, res) => {
     Exercise.find({ _id: req.params.id })
-      .populate('workout')
       .then(exercise => res.json(exercise))
       .catch(e => console.error(e))
   })

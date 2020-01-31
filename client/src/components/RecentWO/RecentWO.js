@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 const RecentWO = () => {
 
     const classes = useStyles();
-    
   
     return (
     <Container>
