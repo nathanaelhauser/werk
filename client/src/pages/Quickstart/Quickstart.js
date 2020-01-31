@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import QuickstartContext from '../../utils/QuickstartContext'
-import { getWorkouts } from '../../utils/WorkoutAPI'
+import WorkoutAPI from '../../utils/WorkoutAPI'
 import { Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import UBModal from '../../components/UBModal'
@@ -54,10 +54,10 @@ const Quickstart = () => {
 
 
   useEffect(() => {
-    getWorkouts()
-      .then(workouts => setQuickState({ ...quickState, workouts }))
+    WorkoutAPI.getAllWorkouts()
+      .then(({ data: workouts }) => setQuickState({ ...quickState, workouts }))
       .catch(e => console.error(e))
-  }, [quickState])
+  }, [])
 
   return (
     <QuickstartContext.Provider value={quickState}>
