@@ -1,9 +1,10 @@
 import React from 'react'
 import { Parallax, Background } from 'react-parallax'
-import LaxCard from '../LaxCard'
+import Jumbotron from '../Jumbotron'
 import LaxContainer from '../LaxContainer'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 
 const theme = createMuiTheme({
     palette: {
@@ -18,7 +19,6 @@ const theme = createMuiTheme({
       "fontFamily": "\"Bangers\"",
       "fontSize": 36
     }
-  
   });
 
 const Parallaxx = _ => {
@@ -34,8 +34,8 @@ const Parallaxx = _ => {
         >
             <div>
                 <br/>
-                <LaxContainer />
-                {/* <LaxCard /> */}
+                {/* <LaxContainer /> */}
+                <Jumbotron />
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>
@@ -62,7 +62,7 @@ const Parallaxx = _ => {
             strength={-600}
         >
             <div>
-                <h1></h1>
+                <Typography variant="h6"></Typography>
             </div>
             <div style={{ height: '800px' }} />
         </Parallax>

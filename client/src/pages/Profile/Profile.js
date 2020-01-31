@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container'
 import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
 import RecentWO from '../../components/RecentWO'
+import CardTimer from '../../components/CardTimer'
 
 
 
@@ -89,7 +90,7 @@ return(
       <RecentWO/>
     </TabPanel>
     <TabPanel value={value} index={3}>
-      Item Four
+      <CardTimer/>
     </TabPanel>
   </div>
     );
