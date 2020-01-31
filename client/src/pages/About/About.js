@@ -19,10 +19,13 @@ const About = () => {
 
 
     useEffect(() => {
-        axios({
-            method: 'get',
-
-        })
+        // axios({
+        //     method: 'get',
+        //     url: '/authorize',
+        //     headers: {
+        //         'Authorization': `Bearer ${localStorage.getItem('werkToken')}`
+        //     }
+        // })
     }, [])
 
     return (
