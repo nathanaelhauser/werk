@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import WorkoutContext from '../../utils/WorkoutContext'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
@@ -21,22 +22,7 @@ const Workout = () => {
 
   return (
     <Container>
-      <div className={classes.root}>
-        <Grid 
-          container 
-          spacing={3}
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item>
-            <h1>{workout}</h1>
-          </Grid>
-          <Grid item>
-            <Button variant="contained" color="primary">START!</Button>
-          </Grid>
-        </Grid>
-      </div>
+      <h1>{workout}</h1>
     </Container>
   )
 }
