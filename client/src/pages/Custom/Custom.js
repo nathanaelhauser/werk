@@ -53,6 +53,10 @@ const Custom = () => {
       .catch(e => console.error(e))
   }
 
+  customState.handleCustomTitleChange = (event) => {
+    setCustomState({ ...customState, workoutTitle: event.target.value })
+    console.log(customState.workoutTitle)
+  }
   customState.handleCustomRemoveExercise = (id) => {
     deleteExercise(id)
     .then(() => {
@@ -66,10 +70,10 @@ const Custom = () => {
   return (
     <CustomContext.Provider value={customState}>
     <Grid container className={classes.root} spacing={2}>
-    <Grid item xs={12}>
+    <Grid item xs={12} sm={6}>
     <CustomForm/>
     </Grid>
-    <Grid item xs={12}>
+    <Grid item xs={6} sm={6} >
     <CustomList />
     </Grid>
   </Grid>
