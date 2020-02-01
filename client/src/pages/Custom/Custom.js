@@ -39,12 +39,13 @@ const Custom = () => {
   })
 
   customState.handleCustomInputChange = event => {
-    setCustomState({ ...customState, value: event.target.value })
+   
+    setCustomState({ ...customState, [event.target.name]: event.target.value })
   }
 
   customState.handleCustomAddExercise = event => {
     event.preventDefault()
-    addExercise({ text: customState.exercise })
+    addExercise({ name: customState.exercise })
       .then(({data: exercise}) => {
         let exercises = JSON.parse(JSON.stringify(customState.exercises))
         exercises.push(exercise)
