@@ -38,9 +38,8 @@ const Custom = () => {
     exercises: []
   })
 
-  customState.handleCustomInputChange = event => {
-   
-    setCustomState({ ...customState, [event.target.name]: event.target.value })
+  customState.handleCustomInputChange = (event, exercise) => {
+    setCustomState({ ...customState, exercise })
   }
 
   customState.handleCustomAddExercise = event => {
@@ -49,7 +48,7 @@ const Custom = () => {
       .then(({data: exercise}) => {
         let exercises = JSON.parse(JSON.stringify(customState.exercises))
         exercises.push(exercise)
-        setCustomState({...customState, exercises})
+        setCustomState({...customState, exercises })
       })
       .catch(e => console.error(e))
   }
