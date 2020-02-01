@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import axios from 'axios'
 import { makeStyles } from '@material-ui/core/styles'
 import DevCard from '../../components/DevCard'
 import Grid from '@material-ui/core/Grid'
@@ -7,6 +6,7 @@ import { Typography } from '@material-ui/core'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import UserAuthAPI from '../../utils/UserAuthAPI'
 
 const useStyles = makeStyles({
     link: {
@@ -19,13 +19,7 @@ const About = () => {
 
 
     useEffect(() => {
-        // axios({
-        //     method: 'get',
-        //     url: '/authorize',
-        //     headers: {
-        //         'Authorization': `Bearer ${localStorage.getItem('werkToken')}`
-        //     }
-        // })
+        UserAuthAPI.authorizeUser()
     }, [])
 
     return (
