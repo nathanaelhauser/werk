@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Nav = () => {
+const Nav = props => {
   const classes = useStyles()
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
@@ -70,8 +70,14 @@ const Nav = () => {
 
   const { toggleDrawer } = useContext(DrawerContext)
 
+  const renderNav = () => {
+    console.log(props)
+    return ''
+  }
+
   return (
     <div className={classes.root}>
+      {renderNav()}
       <ThemeProvider theme={theme}>
       <AppBar position="static">
         <Toolbar>

@@ -11,7 +11,7 @@ const CustomList = () => {
     {
       exercises.length ? exercises.map(exercise => (
         <p>
-          <span>{exercise.text}</span>
+          <span>{exercise.name}</span>
           <button onClick={() => handleCustomRemoveExercise(exercise._id)}>X</button>
         </p>
         )) : null
