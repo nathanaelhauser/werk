@@ -20,7 +20,16 @@ module.exports = app => {
         })
     })
 
-    app.post('/authorize',  passport.authenticate('jwt', { failureRedirect: '/' }), (req, res) => {
+    app.post('/authorize', (req, res, next) => {
+        passport.authenticate('jwt', (err, user, info) => {
+            if (err) {
+                res.sendStatus(404)
+            }
+            if (!user) {
+                res.sendStatus(401)
+            }
+            res.sendStatus(200)
+        })
         res.sendStatus(200)
     })
 }
