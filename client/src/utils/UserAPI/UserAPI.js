@@ -14,7 +14,7 @@ const UserAPI = {
       'Authorization': `Bearer ${token}`
     }
   }),
-authUserSignOut: (id, token) => axios.delete(`/users/${id}`),
+authUserSignOut: (id, token) => axios.delete(`/users/${token}`),
 }
 
 export default UserAPI
