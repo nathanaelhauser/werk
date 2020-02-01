@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { withRouter } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
@@ -38,10 +39,10 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color:"#86DEB7"
-  }, 
+    color: "#86DEB7"
+  },
   signInButton: {
-    color:"#86DEB7"
+    color: "#86DEB7"
   },
   link: {
     color: '#424242',
@@ -53,12 +54,14 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Nav = props => {
+const Nav = withRouter(props => <NavGuts {...props} />)
+
+const NavGuts = props => {
   const classes = useStyles()
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
-  
+
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
@@ -70,67 +73,69 @@ const Nav = props => {
 
   const { toggleDrawer } = useContext(DrawerContext)
 
-  const renderNav = () => {
-    console.log(props)
-    return ''
-  }
-
   return (
-    <div className={classes.root}>
-      {renderNav()}
-      <ThemeProvider theme={theme}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-          edge="start"
-          className={classes.signInButton}
-          color='inherit'
-          aria-label="menu"
-          onClick={toggleDrawer(true)}>
-            <MenuOpenIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            W E R K
-          </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                className = {classes.menuButton}
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <Link to="/profile" className={classes.link}>
-                <MenuItem onClick={handleClose}>My Profile</MenuItem>
-                </Link>
-                <MenuItem onClick={handleClose}>Sign Out</MenuItem>
-              </Menu>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-      </ThemeProvider>
-    </div>
+    <>
+      {props.location.pathname !== '/'
+        ? <div className={classes.root}>
+          <ThemeProvider theme={theme}>
+            <AppBar position="static">
+              <Toolbar>
+                <IconButton
+                  edge="start"
+                  className={classes.signInButton}
+                  color='inherit'
+                  aria-label="menu"
+                  onClick={toggleDrawer(true)}>
+                  <MenuOpenIcon />
+                </IconButton>
+                <Typography variant="h6" className={classes.title}>
+                  W E R K
+                </Typography>
+                {auth && (
+                  <div>
+                    <IconButton
+                      className={classes.menuButton}
+                      aria-label="account of current user"
+                      aria-controls="menu-appbar"
+                      aria-haspopup="true"
+                      onClick={handleMenu}
+                      color="inherit"
+                    >
+                      <AccountCircle />
+                    </IconButton>
+                    <Menu
+                      id="menu-appbar"
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      open={open}
+                      onClose={handleClose}
+                    >
+                      <Link to="/profile" className={classes.link}>
+                        <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                      </Link>
+                      <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                    </Menu>
+                  </div>
+                )}
+              </Toolbar>
+            </AppBar>
+          </ThemeProvider>
+        </div>
+        : ''
+      }
+
+    </>
   )
+
+
 }
 
 export default Nav
