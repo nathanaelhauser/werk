@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
+import CustomContext from '../../utils/CustomContext'
 import axios from 'axios'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
@@ -26,21 +27,19 @@ const useButtonStyles = makeStyles(theme => ({
   },
 }));
 
+// useEffect(() => {
+// }, [])
 
 const CustomForm = () => {
   const classes = useStyles();
   const buttonClasses = useButtonStyles()
- 
-
-
-  useEffect(() => {
-  }, [])
+  const { handleCustomInputSelect, workout, exercise} = useContext(CustomContext)
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Name your workout" variant="outlined"/>
-      <AsyncAutoComplete/>
-      <Button className={buttonClasses.root} variant="contained" color="primary">
+      <TextField id="outlined-basic" label="Name your workout" variant="outlined" value={workout}/>
+      <AsyncAutoComplete value={exercise}/>
+      <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomInputSelect}>
         Add Exercise
       </Button>
 

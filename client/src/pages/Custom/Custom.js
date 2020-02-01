@@ -10,6 +10,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
 import CustomCard from '../../components/CustomCard'
+import CustomContext from '../../utils/CustomContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,21 +36,23 @@ const Custom = () => {
     exercises: []
   })
 
-  customState.handleInputChange = event => {
+  customState.handleCustomInputChange = event => {
     setCustomState({ ...customState, value: event.target.value })
   }
 
-  customState.handleInputSelect = value => {
+  customState.handleCustomInputSelect = value => {
     setCustomState({ ...customState, value })
   }
 
   return (
+    <CustomContext.Provider value={customState}>
     <Grid container className={classes.root} spacing={2}>
     <Grid item xs={12}>
     <CustomForm/>
     </Grid>
 
   </Grid>
+  </CustomContext.Provider>
   )
 }
 export default Custom
