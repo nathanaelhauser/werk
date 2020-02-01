@@ -65,8 +65,8 @@ const Home = () => {
         </CardContent>
       </CardActionArea>
     </Card>
+    <br/>
     </Grid>
-    <hr/>
     <Grid item xs={12} sm={6} align="center">
     <Card className={classes.card} onClick={() => setGoCustom(true)}>
     <CardActionArea>

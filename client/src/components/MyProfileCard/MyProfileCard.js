@@ -7,8 +7,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container'
 
-
-
 const useStyles = makeStyles({
     card: {
       minWidth: 275,
@@ -34,18 +32,23 @@ const MyProfileCard = () => {
     <Container>
       <Card className={classes.card} variant="outlined">
         <CardContent>
+          {/* user's username will populate */}
           <Typography variant="h5" component="h2">
             Username{}
           </Typography>
           <Card className={classes.card} variant="outlined">
       <CardContent>
         <Typography variant="body2" component="p">
+          {/* user's name will populate */}
          <p>Name:{}</p> 
+         {/* age will populate as N/A */}
          <p>Age: {} </p>
+         {/* weight will populate as N/A */}
          <p>Weight: {}</p>
         </Typography>
       </CardContent>
       <CardActions>
+        {/* user can add age and weight here */}
         <Button size="small">Edit Information</Button>
       </CardActions>
     </Card>
