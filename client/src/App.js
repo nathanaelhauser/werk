@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import Quickstart from './pages/Quickstart'
 import Profile from './pages/Profile'
 import Workout from './pages/Workout'
+import Exercises from './pages/Exercises'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
@@ -36,7 +37,7 @@ const theme = createMuiTheme({
 
 });
 
-const App = () => {
+const App = props => {
 
   const [drawerState, setDrawerState] = useState({
     isOpen: false
@@ -54,17 +55,8 @@ const App = () => {
       <DrawerContext.Provider value={drawerState}>
         <Router>
           <div>
-            {/* link tags */}
-            {
-              window.location.pathname !== '/'
-                ? (
-                  <>
-                    <Nav />
-                    <NavDrawer />
-                  </>
-                )
-                : ''
-            }
+            <Nav />
+            <NavDrawer />
             <Switch>
               <Route exact path="/">
                 {/* page tags */}
@@ -88,6 +80,9 @@ const App = () => {
               </Route>
               <Route path="/workout">
                 <Workout />
+              </Route>
+              <Route path="/exercises">
+                <Exercises />
               </Route>
 
             </Switch>

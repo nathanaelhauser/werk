@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -30,14 +31,29 @@ const useGridStyles = makeStyles(theme => ({
 const Home = () => {
   const classes = useStyles();
   const gridClasses = useGridStyles()
+  const [goCustom, setGoCustom] = useState(false)
+  const [goQuickstart, setGoQuickstart] = useState(false)
   const redirect = page => event => window.location.href = `http://${window.location.host}${page}`
  
+  const renderRedirectCustom = () => {
+    if (goCustom) {
+      return <Redirect to="/custom" />
+    }
+  }
+
+  const renderRedirectQuickstart = () => {
+    if (goQuickstart) {
+      return <Redirect to="/quickstart" />
+    }
+  }
 
   return (
     <div className = {gridClasses.root} >
+      {renderRedirectCustom()}
+      {renderRedirectQuickstart()}
       <Grid container direction="row" >
       <Grid item xs={12} sm={6} align="center">
-      <Card className={classes.card} onClick={redirect('/quickstart')} >
+      <Card className={classes.card} onClick={() => setGoQuickstart(true)} >
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -49,10 +65,10 @@ const Home = () => {
         </CardContent>
       </CardActionArea>
     </Card>
+    <br/>
     </Grid>
-    <hr/>
     <Grid item xs={12} sm={6} align="center">
-    <Card className={classes.card} onClick={redirect('/custom')}>
+    <Card className={classes.card} onClick={() => setGoCustom(true)}>
     <CardActionArea>
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
