@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react' 
+import { Link, withRouter } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import List from '@material-ui/core/List'
@@ -55,7 +55,9 @@ const useStyles = makeStyles({
   }
 })
 
-const NavDrawer = () => {
+const NavDrawer = withRouter(props => <NavDrawerGuts {...props} />)
+
+const NavDrawerGuts = props => {
   const classes = useStyles()
 
   const { isOpen, toggleDrawer } = useContext(DrawerContext)
@@ -160,13 +162,17 @@ const NavDrawer = () => {
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <SwipeableDrawer
-          open={isOpen}
-          onClose={toggleDrawer(false)}
-          onOpen={toggleDrawer(true)}
-        >
-          {sideList()}
-        </SwipeableDrawer>
+        {
+          props.location.pathname !== '/'
+            ? <SwipeableDrawer
+                open={isOpen}
+                onClose={toggleDrawer(false)}
+                onOpen={toggleDrawer(true)}
+              >
+               {sideList()}
+              </SwipeableDrawer>
+            : ''
+        }
       </div>
     </ThemeProvider>
 
