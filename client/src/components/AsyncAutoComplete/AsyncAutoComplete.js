@@ -1,15 +1,15 @@
 import 'isomorphic-fetch'
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect, Fragment, useContext } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import axios from 'axios'
-
+import CustomContext from '../../utils/CustomContext'
 const AsyncAutoComplete = () => {
   const [open, setOpen] = useState(false)
   const [options, setOptions] = useState([])
   const loading = open && options.length === 0
-
+  const { exercise, handleCustomInputChange } = useContext(CustomContext)
   useEffect(() => {
     let active = true
 
@@ -54,6 +54,8 @@ const AsyncAutoComplete = () => {
       loading={loading}
       renderInput={params => (
         <TextField
+        value={exercise}
+        onChange={handleCustomInputChange}
           {...params}
           label="Search Exercises"
           fullWidth

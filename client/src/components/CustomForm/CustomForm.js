@@ -27,19 +27,16 @@ const useButtonStyles = makeStyles(theme => ({
   },
 }));
 
-// useEffect(() => {
-// }, [])
-
 const CustomForm = () => {
   const classes = useStyles();
   const buttonClasses = useButtonStyles()
-  const { handleCustomInputSelect, workout, exercise} = useContext(CustomContext)
+  const { handleCustomAddExercise, workout} = useContext(CustomContext)
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <TextField id="outlined-basic" label="Name your workout" variant="outlined" value={workout}/>
-      <AsyncAutoComplete value={exercise}/>
-      <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomInputSelect}>
+      <AsyncAutoComplete />
+      <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomAddExercise}>
         Add Exercise
       </Button>
 

@@ -11,7 +11,9 @@ import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
 import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
+import ExerciseAPI from '../../utils/ExerciseAPI'
 
+const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -40,8 +42,25 @@ const Custom = () => {
     setCustomState({ ...customState, value: event.target.value })
   }
 
-  customState.handleCustomInputSelect = value => {
-    setCustomState({ ...customState, value })
+  customState.handleCustomAddExercise = event => {
+    event.preventDefault()
+    addExercise({ text: customState.exercise })
+      .then(({data: exercise}) => {
+        let exercises = JSON.parse(JSON.stringify(customState.exercises))
+        exercises.push(exercise)
+        setCustomState({...customState, exercises})
+      })
+      .catch(e => console.error(e))
+  }
+
+  customState.handleCustomRemoveExercise = (id) => {
+    deleteExercise(id)
+    .then(() => {
+      let exercises = JSON.parse(JSON.stringify(customState.exercises))
+      let exercisesFiltered = exercises.filter(exercise => exercise._id !== id)
+      setCustomState({...customState, exercises: exercisesFiltered})
+    })
+    .catch(e => console.error(e))
   }
 
   return (
