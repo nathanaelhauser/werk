@@ -12,7 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Grid from '@material-ui/core/Grid'
-import LibraryAddIcon from '@material-ui/icons/LibraryAdd'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,7 +50,7 @@ const ModalList = () => {
           />
           <ListItemSecondaryAction>
             <IconButton edge="end" aria-label="delete">
-              <LibraryAddIcon />
+              <ExitToAppIcon />
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>,
