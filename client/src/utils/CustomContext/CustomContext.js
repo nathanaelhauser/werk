@@ -2,7 +2,7 @@ import { createContext } from 'react'
 import CustomCard from '../../components/CustomCard'
 
 const CustomContext = createContext({
-  workout: '',
+  workoutTitle: '',
     exercise: '',
     exercises: [],
     handleCustomInputChange: () => {},

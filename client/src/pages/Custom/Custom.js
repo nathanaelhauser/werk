@@ -9,7 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
-import CustomCard from '../../components/CustomCard'
+import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
 
 const useStyles = makeStyles(theme => ({
@@ -31,7 +31,7 @@ const Custom = () => {
   const classes = useStyles();
  
   const [customState, setCustomState] = useState({
-    workout: '',
+    workoutTitle: '',
     exercise: '',
     exercises: []
   })
@@ -50,7 +50,9 @@ const Custom = () => {
     <Grid item xs={12}>
     <CustomForm/>
     </Grid>
-
+    <Grid item xs={12}>
+    <CustomList />
+    </Grid>
   </Grid>
   </CustomContext.Provider>
   )
