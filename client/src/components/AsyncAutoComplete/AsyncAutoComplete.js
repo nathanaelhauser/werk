@@ -50,12 +50,11 @@ const AsyncAutoComplete = () => {
       }}
       getOptionSelected={(option, value) => option.name === value.name}
       getOptionLabel={option => option.name}
+      onInputChange={handleCustomInputChange}
       options={options}
       loading={loading}
       renderInput={params => (
         <TextField
-        value={exercise}
-        onChange={handleCustomInputChange}
           {...params}
           label="Search Exercises"
           fullWidth
