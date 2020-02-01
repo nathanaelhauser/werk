@@ -10,8 +10,13 @@ import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
 import RecentWO from '../../components/RecentWO'
 import CardTimer from '../../components/CardTimer'
+import UserAPI from '../../utils/UserAPI'
 
 
+const {getUser} = UserAPI
+getUser()
+.then(r =>console.log(r))
+.catch(e => console.log(e))
 
 
 function TabPanel(props) {

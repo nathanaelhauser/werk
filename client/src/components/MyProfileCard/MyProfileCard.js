@@ -8,7 +8,6 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container'
 
 
-
 const useStyles = makeStyles({
     card: {
       minWidth: 275,
