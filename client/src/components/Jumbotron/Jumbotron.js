@@ -116,11 +116,11 @@ const Jumbotron = () => {
           <Typography variant="h3">WERK</Typography>
         </Grid>
         <Grid item>
-          <Typography variant="h6">© the-group 2020</Typography>
+          <Typography variant="subtitle1">© the-group 2020</Typography>
         </Grid>
-        <br /><br /><br />
+        <br /><br /><br /><br/><br/><br/><br/><br/>
         <Grid item>
-          <Button onClick={handleClickOpen('login')}>Login</Button>
+          <Button onClick={handleClickOpen('login')}color="secondary">Login</Button>
           <Dialog onClose={handleClose('login')} aria-labelledby="customized-dialog-title" open={openLogin}>
             <DialogTitle id="customized-dialog-title" onClose={handleClose('login')}>
               Welcome back bitch!
@@ -135,13 +135,13 @@ const Jumbotron = () => {
                 color="primary" 
                 variant="contained"
               >
-                Login
+              Login
               </Button>
             </DialogActions>
           </Dialog>
         </Grid>
         <Grid item>
-          <Button onClick={handleClickOpen('register')}>Register</Button>
+          <Button onClick={handleClickOpen('register')} color="secondary">Register</Button>
           <Dialog onClose={handleClose('register')} aria-labelledby="customized-dialog-title" open={openRegister}>
             <DialogTitle id="customized-dialog-title" onClose={handleClose('register')}>
               Register urself!
