@@ -18,11 +18,21 @@ const useStyles = makeStyles({
       transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 14,
+      fontSize: 24,
     },
     pos: {
       marginBottom: 12,
     },
+    mins: {
+      fontSize: 40,
+      display: 'inline-block',
+      alignItems: 'center'
+    },
+    secs: {
+      fontSize: 40,
+      display: 'inline-block',
+      alignItems: 'right'
+    }
   });
 
   const CardTimer = () => {
@@ -31,10 +41,11 @@ const useStyles = makeStyles({
   
     return (
     <Container maxWidth = "md">
+      <br/>
       <Card className={classes.card} variant="outlined">
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Hit Start 
+            TIMER
           </Typography>
           <Timer
                 initialTime={60000}
@@ -58,9 +69,11 @@ const useStyles = makeStyles({
          {({ start, resume, pause, stop, reset, timerState }) => (
         <React.Fragment>
             <div>
-                <Timer.Minutes/> Mins
+              <br/>
+              <Typography className={classes.mins} color="primary">----- <Timer.Minutes/> Mins -----</Typography>
                 <br/>
-                <Timer.Seconds/> Secs
+              <Typography className={classes.secs} color="primary">----- <Timer.Seconds/> Secs -----</Typography>
+                
             </div>
             {/* <div>{timerState}</div> */}
             <br />
