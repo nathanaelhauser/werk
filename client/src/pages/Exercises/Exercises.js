@@ -1,9 +1,11 @@
 import React from 'react'
 import CardTimer from '../../components/CardTimer'
 
+const Exercises = () => {
 return (
-    <div>
-    <CardTimer/>
-    </div>
+    <>
+        <CardTimer />
+    </>
 )
+}
 export default Exercises
