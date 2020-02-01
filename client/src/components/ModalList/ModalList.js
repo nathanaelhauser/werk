@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import QuickstartContext from '../../utils/QuickstartContext'
+import WorkoutListItem from '../../components/WorkoutListItem'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -12,7 +13,8 @@ import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Grid from '@material-ui/core/Grid'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd'
+import { PromiseProvider } from 'mongoose'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,34 +29,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function generate(element) {
-  return [0, 1, 2].map(value =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  )
-}
-
 const ModalList = () => {
   const classes = useStyles()
-  const [dense, setDense] = useState(false)
-  const [secondary, setSecondary] = useState(false)
-  const { getWorkouts } = useContext(QuickstartContext)
+  const { getWorkouts, workouts } = useContext(QuickstartContext)
+  console.log(workouts)
   return(
     <List>
-      {generate(
-        <ListItem>
-          <ListItemText
-            primary="Workout"
-            secondary={secondary ? 'Secondary text' : null}
-          />
-          <ListItemSecondaryAction>
-            <IconButton edge="end" aria-label="delete">
-              <ExitToAppIcon />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>,
-      )}
+      {workouts.map(workout => <WorkoutListItem workout={workout} />)}
     </List>
   )
 }
