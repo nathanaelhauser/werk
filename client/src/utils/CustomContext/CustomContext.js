@@ -7,7 +7,8 @@ const CustomContext = createContext({
     exercises: [],
     handleCustomInputChange: () => {},
     handleCustomAddExercise: () => {},
-    handleCustomRemoveExercise: () => {}
+    handleCustomRemoveExercise: () => {},
+    handleCustomTitleChange: () => {}
 })
 
 export default CustomContext
