@@ -37,7 +37,7 @@ const theme = createMuiTheme({
 
 });
 
-const App = () => {
+const App = props => {
 
   const [drawerState, setDrawerState] = useState({
     isOpen: false
@@ -55,17 +55,8 @@ const App = () => {
       <DrawerContext.Provider value={drawerState}>
         <Router>
           <div>
-            {/* link tags */}
-            {
-              window.location.pathname !== '/'
-                ? (
-                  <>
-                    <Nav />
-                    <NavDrawer />
-                  </>
-                )
-                : ''
-            }
+            <Nav />
+            <NavDrawer />
             <Switch>
               <Route exact path="/">
                 {/* page tags */}

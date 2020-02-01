@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { Redirect } from 'react-router-dom'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import LandingContext from '../../utils/LandingContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
@@ -65,6 +66,7 @@ const Jumbotron = () => {
   const classes = useStyles()
   const [openRegister, setOpenRegister] = useState(false)
   const [openLogin, setOpenLogin] = useState(false)
+  const [toHome, setToHome] = useState(false)
   const { name, username, password, confirmPassword, age, weight } = useContext(LandingContext)
 
   const handleClickOpen = type => event => {
@@ -88,7 +90,7 @@ const Jumbotron = () => {
     const response = await UserAuthAPI.loginUser({ username, password })
     const { data:{ token }} = await response
     sessionStorage.setItem('werkToken', token)
-    window.location.pathname = '/home'
+    setToHome(true)
   }
 
   const handleRegister = async event => {
@@ -103,8 +105,15 @@ const Jumbotron = () => {
     }
   }
 
+  const renderRedirect = () => {
+    if (toHome) {
+      return <Redirect to="/home" />
+    }
+  }
+
   return (
     <Container className={classes.root}>
+      {renderRedirect()}
       <Grid
         container
         spacing={3}
