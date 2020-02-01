@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
   
     },
   },
@@ -30,11 +30,11 @@ const useButtonStyles = makeStyles(theme => ({
 const CustomForm = () => {
   const classes = useStyles();
   const buttonClasses = useButtonStyles()
-  const { handleCustomAddExercise, workout} = useContext(CustomContext)
+  const { handleCustomAddExercise, workoutTitle, handleCustomTitleChange} = useContext(CustomContext)
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <TextField id="outlined-basic" label="Name your workout" variant="outlined" value={workout}/>
+      <TextField id="outlined-basic" label="Name your workout" variant="outlined" value={workoutTitle} onChange={handleCustomTitleChange}/>
       <AsyncAutoComplete />
       <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomAddExercise}>
         Add Exercise

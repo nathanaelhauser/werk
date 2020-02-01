@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 import QuickstartContext from '../../utils/QuickstartContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 import { Typography } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
 import UBModal from '../../components/UBModal'
-import LBModal from '../../components/LBModal';
+import LBModal from '../../components/LBModal'
 
 
 
