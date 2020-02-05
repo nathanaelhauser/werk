@@ -24,8 +24,7 @@ const useStyles = makeStyles({
     },
   });
 const ExerciseCard = () => {
-const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
+  const classes = useStyles();
     return (
       <Container>
       <Card className={classes.root} variant="outlined">
