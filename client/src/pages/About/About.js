@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import DevCard from '../../components/DevCard'
 import Grid from '@material-ui/core/Grid'
@@ -7,8 +7,9 @@ import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import UserAuthAPI from '../../utils/UserAuthAPI'
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import StarIcon from '@material-ui/icons/Star';
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import StarIcon from '@material-ui/icons/Star'
+import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const useStyles = makeStyles({
     link: {
@@ -18,15 +19,20 @@ const useStyles = makeStyles({
 
 const About = () => {
     const classes = useStyles()
-
+    const [authorizedState, setAuthorizedState] = useState(true)
 
     useEffect(() => {
         UserAuthAPI.authorizeUser()
+            .then(({ data: { isAuthorized }}) => {
+                setAuthorizedState(isAuthorized)
+            })
+            .catch(e => console.error(e))
     }, [])
 
     return (
 
         <Grid container spacing={4} align="center">
+            <UnauthorizedRedirect authorized={authorizedState} />
             <Grid item xs={12}>
                 <Typography variant="h5">
                     What is WERK?
