@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -73,7 +72,7 @@ const NavGuts = props => {
   }
 
   const handleClose = () => {
-    
+    setAnchorEl(false)
   }
 
   const { toggleDrawer } = useContext(DrawerContext)
@@ -123,12 +122,14 @@ const NavGuts = props => {
                       open={open}
                       onClose={handleClose}
                     >
-                      <Link to="/profile" className={classes.link}>
-                        <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                      <Link to= "/profile">
+                      <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
+                      <Link to = "/">
                       <MenuItem onClick={handleClose}>Sign Out</MenuItem>
-                      
+                      </Link>
                     </Menu>
+                    
                   </div>
                 )}
               </Toolbar>
