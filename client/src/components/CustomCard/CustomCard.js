@@ -7,18 +7,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
-import FolderIcon from '@material-ui/icons/Folder';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme=> ({
     card: {
-      minWidth: 350,
+      minWidth: 275,
     },
     bullet: {
       display: 'inline-block',
@@ -26,7 +23,7 @@ const useStyles = makeStyles(theme=> ({
       transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 14,
+      fontSize: 10,
     },
     pos: {
       marginBottom: 12,
@@ -61,20 +58,15 @@ const useStyles = makeStyles(theme=> ({
       <Card className={classes.card} variant="outlined">
         <CardContent>
         <Grid item xs={12} md={6}>
-          <Typography variant="h6" className={classes.title}>
-            Custom Workout List
-          </Typography>
+          {/* <Typography variant="h6" className={classes.title}>
+            WORKOUTS
+          </Typography> */}
           <div className={classes.demo}>
             <List dense={dense}>
               {generate(
                 <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>
-                      <FolderIcon />
-                    </Avatar>
-                  </ListItemAvatar>
                   <ListItemText
-                    primary="Single-line item"
+                    primary="Workout"
                     secondary={secondary ? 'Secondary text' : null}
                   />
                   <ListItemSecondaryAction>

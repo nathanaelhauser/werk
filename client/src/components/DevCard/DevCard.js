@@ -11,7 +11,8 @@ import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
-    background: "#86DEB7"
+    // background: "#86DEB7"
+    background: "#f44336"
   },
   media: {
     height: 345,

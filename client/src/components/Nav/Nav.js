@@ -17,14 +17,16 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#424242',
+
     },
     secondary: {
-      main: "#86DEB7"
+      main: "#f44336"
     },
   },
   typography: {
     "fontFamily": "\"Bangers\"",
-    "fontSize": 36
+    "fontSize": 36,
+    color: '#eceff1'
   }
 
 })
@@ -39,10 +41,12 @@ const useStyles = makeStyles(theme => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    color: "#86DEB7"
+    // color: "#86DEB7"
+    color: "#f44336"
   },
   signInButton: {
-    color: "#86DEB7"
+    // color: "#86DEB7"
+    color: "#f44336"
   },
   link: {
     color: '#424242',
@@ -50,7 +54,8 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
-    color: "#86DEB7"
+    // color: "#86DEB7"
+    // color: "#f44336"
   },
 }))
 
