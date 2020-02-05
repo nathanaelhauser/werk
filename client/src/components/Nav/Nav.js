@@ -73,7 +73,7 @@ const NavGuts = props => {
   }
 
   const handleClose = () => {
-    setAnchorEl(null)
+    
   }
 
   const { toggleDrawer } = useContext(DrawerContext)
@@ -127,6 +127,7 @@ const NavGuts = props => {
                         <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
                       <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                      
                     </Menu>
                   </div>
                 )}

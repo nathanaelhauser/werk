@@ -1,10 +1,11 @@
 import React from 'react'
-import CardTimer from '../../components/CardTimer'
+import ExerciseCard from '../../components/ExerciseCard'
 
 const Exercises = () => {
 return (
     <>
-        <CardTimer />
+
+        <ExerciseCard/>
     </>
 )
 }

@@ -35,7 +35,7 @@ const ModalList = () => {
   console.log(workouts)
   return(
     <List>
-      {workouts.map(workout => <WorkoutListItem workout={workout} />)}
+      {getWorkouts().map(workout => <WorkoutListItem workout={workout} />)}
     </List>
   )
 }
