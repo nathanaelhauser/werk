@@ -122,6 +122,7 @@ const NavGuts = props => {
                         <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
                       <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                      
                     </Menu>
                   </div>
                 )}

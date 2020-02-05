@@ -20,6 +20,11 @@ module.exports = app => {
         })
     })
 
+    app.get('/logout/:id', (req, res) => {
+        req.logout();
+        res.redirect('/');
+      })
+
     app.post('/authorize',  passport.authenticate('jwt', { failureRedirect: '/' }), (req, res) => {
         res.sendStatus(200)
     })
