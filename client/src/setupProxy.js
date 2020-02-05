@@ -9,7 +9,9 @@ module.exports = function(app) {
         '/workouts', 
         '/userAuth', 
         '/login',
-        '/authorize'
+        '/authorize',
+        
+        
       ], { target: "http://localhost:3001", changeOrigin: true }
     )
   )
