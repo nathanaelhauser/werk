@@ -14,7 +14,7 @@ import SignOutButton from '../../components/SignOutButton'
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
-  return (
+    return (
     <Typography
       component="div"
       role="tabpanel"

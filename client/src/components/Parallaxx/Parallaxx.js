@@ -12,7 +12,7 @@ const theme = createMuiTheme({
         main: '#424242',
       },
       secondary: {
-        main: "#86DEB7"
+        main: "#f44336"
       },
     },
     typography: {
