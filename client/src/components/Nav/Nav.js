@@ -73,7 +73,7 @@ const NavGuts = props => {
   }
 
   const handleClose = () => {
-    
+    setAnchorEl(false)
   }
 
   const { toggleDrawer } = useContext(DrawerContext)

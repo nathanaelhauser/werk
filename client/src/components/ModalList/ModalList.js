@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import QuickstartContext from '../../utils/QuickstartContext'
 import WorkoutListItem from '../../components/WorkoutListItem'
 import Typography from '@material-ui/core/Typography'
@@ -31,11 +31,23 @@ const useStyles = makeStyles(theme => ({
 
 const ModalList = () => {
   const classes = useStyles()
+  const [ randomWorkouts, setRandomWorkouts ] = useState({
+    workouts: []
+  })
   const { getWorkouts, workouts } = useContext(QuickstartContext)
+
+  useEffect(() => {
+    setRandomWorkouts({ ...randomWorkouts, workouts: getWorkouts() })
+  }, [])
+
+
   console.log(workouts)
   return(
     <List>
-      {getWorkouts().map(workout => <WorkoutListItem workout={workout} />)}
+      {randomWorkouts.workouts
+        ? randomWorkouts.workouts.map(workout => <WorkoutListItem workout={workout} />)
+        : ''
+      }
     </List>
   )
 }
