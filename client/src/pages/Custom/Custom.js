@@ -4,16 +4,13 @@ import AsyncAutoComplete from '../../components/AsyncAutoComplete'
 import CustomForm from '../../components/CustomForm'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import FormLabel from '@material-ui/core/FormLabel'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import Radio from '@material-ui/core/Radio'
 import Paper from '@material-ui/core/Paper'
 import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import ExerciseCard from '../../components/ExerciseCard'
 
 const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
@@ -87,8 +84,10 @@ const Custom = () => {
         <Grid item xs={6} sm={6} >
           <CustomList />
         </Grid>
+        <ExerciseCard/>
       </Grid>
     </CustomContext.Provider>
+    
   )
 }
 export default Custom

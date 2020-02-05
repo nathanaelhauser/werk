@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ExerciseCard from '../../components/ExerciseCard'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import ExcerciseAPI from '../../utils/ExerciseAPI'
 
 const Exercises = () => {
     const [authorizedState, setAuthorizedState] = useState(true)

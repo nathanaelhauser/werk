@@ -5,7 +5,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container'
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles({
     root: {
@@ -28,6 +29,7 @@ const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
     return (
       <Container>
+        <Paper>
       <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography className={classes.pos} color="textSecondary">
@@ -42,6 +44,7 @@ const classes = useStyles();
           <Button size="small">Add to Custom Workouts</Button>
         </CardActions>
       </Card>
+      </Paper>
       </Container>
     );
   }

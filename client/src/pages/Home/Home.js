@@ -95,7 +95,6 @@ const Home = () => {
     </Card>
     </Grid>
     </Grid>
-  <ExerciseCard/>
     </div>
   )
 }
