@@ -39,16 +39,21 @@ const Quickstart = () => {
   })
 
   const getRandomWorkouts = workouts => {
-    let index, indices = []
-    for (let i = 0; i < 3; i++) {
-      do {
-        index = Math.floor(Math.random() * (workouts.length - 1))
-      }
-      while (indices.includes(index))
-      indices.push(index)
-      console.log(indices)
+    let m = workouts.length, t, i
+
+    // WHILE THERE REMAINS ELEMENTS TO SHUFFLE
+    while (m) {
+
+      // PICK A REMAINING ELEMENT
+      i = Math.floor(Math.random() * m--)
+
+      // AND SWAP IT WITH CURRENT ELEMENT
+      t = workouts[m]
+      workouts[m] = workouts[i]
+      workouts[i] = t
     }
-    return [workouts[indices[0]], workouts[indices[1]], workouts[indices[2]]]
+
+    return workouts[0, 1, 2]
   }
 
   quickState.getWorkouts = () => getRandomWorkouts(quickState.workouts.filter(workout => workout.area === quickState.area))
