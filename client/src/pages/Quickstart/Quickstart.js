@@ -47,6 +47,7 @@ const Quickstart = () => {
       }
       while (indices.includes(index))
       indices.push(index)
+      console.log(indices)
     }
     return [workouts[indices[0]], workouts[indices[1]], workouts[indices[2]]]
   }

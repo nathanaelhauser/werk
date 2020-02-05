@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CardTimer from '../../components/CardTimer'
+import ExerciseCard from '../../components/ExerciseCard'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
@@ -17,8 +17,10 @@ const Exercises = () => {
     return (
         <>
             <UnauthorizedRedirect authorized={authorizedState} />
-            <CardTimer />
+            <ExerciseCard/>
         </>
     )
+
 }
+
 export default Exercises

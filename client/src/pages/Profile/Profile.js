@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import Container from '@material-ui/core/Container'
+// ----------------------
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
-import RecentWO from '../../components/RecentWO'
-import CardTimer from '../../components/CardTimer'
+import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
-const TabPanel = props => {
-  const { children, value, index, ...other } = props
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-  return (
+    return (
     <Typography
       component="div"
       role="tabpanel"
       hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
       {...other}
     >
       {value === index && <Box p={3}>{children}</Box>}
@@ -34,35 +34,32 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
-}
+};
 
 function a11yProps(index) {
   return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  }
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  };
 }
 
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
+    width: '100%',
     backgroundColor: theme.palette.background.paper,
-    display: 'flex',
-    height: 224,
+    alignItems: 'center'
   },
-  tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
-  },
-}))
+}));
 
 const Profile = () => {
-  const classes = useStyles()
-  const [value, setValue] = useState(0)
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0)
   const [authorizedState, setAuthorizedState] = useState(true)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
 
   useEffect(() => {
     UserAuthAPI.authorizeUser()
@@ -75,38 +72,30 @@ const Profile = () => {
   return (
     <div className={classes.root}>
       <UnauthorizedRedirect authorized={authorizedState} />
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        <Tab label="My Profile" {...a11yProps(0)} />
-        <Tab label="Custom Workout" {...a11yProps(1)} />
-        <Tab label="Recent Workout" {...a11yProps(2)} />
-        <Tab label="Item Four" {...a11yProps(3)} />
-      </Tabs>
+      <AppBar position="static" color="default">
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          indicatorColor="primary"
+          textColor="primary"
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          <Tab label="My Profile" {...a11yProps(0)} />
+          <Tab label="My Workouts" {...a11yProps(1)} />
+        </Tabs>
+      </AppBar>
       <TabPanel value={value} index={0}>
         <MyProfileCard />
+        <SignOutButton />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Container>
-          <CustomCard />
-        </Container>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <RecentWO />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <CardTimer />
+        <CustomCard />
       </TabPanel>
     </div>
-  )
+  );
 }
-
-
 
 
 export default Profile

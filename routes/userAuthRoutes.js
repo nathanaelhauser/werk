@@ -21,9 +21,10 @@ module.exports = app => {
         })
     })
 
-    // app.get('/authorize', passport.authorize('jwt'), (req, res) => {
-    //     res.sendStatus(200)
-    // })
+    app.get('/logout/:id', (req, res) => {
+        req.logout();
+        res.redirect('/');
+    })
 
     app.get('/authorize', (req, res, next) => {
         passport.authenticate('jwt', (err, user, info) => {

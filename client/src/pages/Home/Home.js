@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import ExerciseCard from '../../components/ExerciseCard'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
-    background: "#86DEB7",
-    
-  },
-})
+    // background: "#86DEB7",
+    background: "#f44336",
+    text: '#eceff1'
+  }
+});
 
 const useGridStyles = makeStyles(theme => ({
   root: {
@@ -70,7 +72,7 @@ const Home = () => {
           <Typography gutterBottom variant="h5" component="h2">
             Quick Start
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color={classes.text} component="p">
             Just choose what area you want to focus and get to work
           </Typography>
         </CardContent>
@@ -85,7 +87,7 @@ const Home = () => {
         <Typography gutterBottom variant="h5" component="h2">
           Create a workout
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color={classes.text} component="p">
           Create the workout that is best for you
         </Typography>
       </CardContent>
@@ -93,7 +95,7 @@ const Home = () => {
     </Card>
     </Grid>
     </Grid>
-
+  <ExerciseCard/>
     </div>
   )
 }
