@@ -4,7 +4,8 @@ module.exports = (model, Schema) =>{
         username: String,
         email: String,
         age: Number,
-        weight: Number
+        weight: Number,
+        workouts: [{ type: Schema.Types.ObjectId, ref: 'Workout' }]
     })
 
 User.plugin(require('passport-local-mongoose'))
