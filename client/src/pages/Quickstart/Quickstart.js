@@ -46,6 +46,7 @@ const Quickstart = () => {
       }
       while (indices.includes(index))
       indices.push(index)
+      console.log(indices)
     }
     return [workouts[indices[0]], workouts[indices[1]], workouts[indices[2]]]
   }
@@ -65,22 +66,22 @@ const Quickstart = () => {
         <Grid item xs={12} sm={12} align="center">
           <Typography variant="h6">pick your poison:</Typography>
         </Grid>
-        <Grid 
-          item 
-          xs={12} 
-          sm={3} 
-          className={classes.buttonContainer} 
-          onClick={() => setQuickState({ ...quickState, area: 'upper'})}
+        <Grid
+          item
+          xs={12}
+          sm={3}
+          className={classes.buttonContainer}
+          onClick={() => setQuickState({ ...quickState, area: 'upper' })}
         >
           <UBModal />
         </Grid>
 
-        <Grid 
-          item 
-          xs={12} 
-          sm={3} 
+        <Grid
+          item
+          xs={12}
+          sm={3}
           className={classes.buttonContainer}
-          onClick={() => setQuickState({ ...quickState, area: 'lower'})}
+          onClick={() => setQuickState({ ...quickState, area: 'lower' })}
         >
           <LBModal />
         </Grid>
