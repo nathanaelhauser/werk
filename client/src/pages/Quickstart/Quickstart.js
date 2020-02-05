@@ -54,7 +54,7 @@ const Quickstart = () => {
       workouts[i] = t
     }
 
-    return workouts[0, 1, 2]
+    return [ workouts[0], workouts[1], workouts[2] ]
   }
 
   quickState.getWorkouts = () => getRandomWorkouts(quickState.workouts.filter(workout => workout.area === quickState.area))

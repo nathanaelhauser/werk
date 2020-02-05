@@ -31,21 +31,20 @@ const useStyles = makeStyles(theme => ({
 
 const ModalList = () => {
   const classes = useStyles()
-  const [ randomWorkouts, setRandomWorkouts ] = useState({
+  const [randomWorkouts, setRandomWorkouts] = useState({
     workouts: []
   })
   const { getWorkouts, workouts } = useContext(QuickstartContext)
 
   useEffect(() => {
-    setRandomWorkouts({ ...randomWorkouts, workouts: getWorkouts() })
+    setRandomWorkouts({ ...randomWorkouts, workouts: getWorkouts()})
   }, [])
 
-
   console.log(workouts)
-  return(
+  return (
     <List>
       {randomWorkouts.workouts
-        ? randomWorkouts.workouts.map(workout => <WorkoutListItem workout={workout} />)
+        ? randomWorkouts.workouts.map(workout => <WorkoutListItem key={workout._id} workout={workout} />)
         : ''
       }
     </List>
@@ -53,3 +52,5 @@ const ModalList = () => {
 }
 
 export default ModalList
+
+// randomWorkouts.workouts.map(workout => <WorkoutListItem workout={workout} />)
