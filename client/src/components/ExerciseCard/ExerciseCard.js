@@ -17,7 +17,7 @@ const useStyles = makeStyles({
       transform: 'scale(0.8)',
     },
     title: {
-      fontSize: 16,
+      fontSize: 10,
     },
     pos: {
       marginBottom: 10,
@@ -33,14 +33,13 @@ const classes = useStyles();
           <Typography className={classes.pos} color="textSecondary">
             Name of Exercise
           </Typography>
-          <Typography variant="body2" component="p">
+          <Typography variant="body2" component="h2">
             well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+      
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button size="small">Add to Custom Workouts</Button>
         </CardActions>
       </Card>
       </Container>
