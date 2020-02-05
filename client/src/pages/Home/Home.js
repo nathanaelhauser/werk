@@ -11,9 +11,10 @@ import ExerciseCard from '../../components/ExerciseCard'
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
-    background: "#86DEB7",
-    
-  },
+    // background: "#86DEB7",
+    background: "#f44336",
+    text: '#eceff1'
+  }
 });
 
 const useGridStyles = makeStyles(theme => ({
@@ -60,7 +61,7 @@ const Home = () => {
           <Typography gutterBottom variant="h5" component="h2">
             Quick Start
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color={classes.text} component="p">
             Just choose what area you want to focus and get to work
           </Typography>
         </CardContent>
@@ -75,7 +76,7 @@ const Home = () => {
         <Typography gutterBottom variant="h5" component="h2">
           Create a workout
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color={classes.text} component="p">
           Create the workout that is best for you
         </Typography>
       </CardContent>

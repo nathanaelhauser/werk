@@ -20,14 +20,14 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import UserAPI from './utils/UserAPI'
 
-
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#424242',
     },
     secondary: {
-      main: "#86DEB7"
+      // main: "#86DEB7"
+      main: "#f44336"
     },
   },
   typography: {
