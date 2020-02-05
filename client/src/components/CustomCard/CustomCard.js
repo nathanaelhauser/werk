@@ -40,20 +40,20 @@ const useStyles = makeStyles(theme=> ({
       },
   }));
 
-  function generate(element) {
-    return [0, 1, 2].map(value =>
-      React.cloneElement(element, {
-        key: value,
-      }),
-    );
-  }
+function generate(element) {
+  return [0, 1, 2].map(value =>
+    React.cloneElement(element, {
+      key: value,
+    }),
+  );
+}
 
-  const CustomCard = () => {
-    const classes = useStyles();
-    const [dense, setDense] = React.useState(false);
-    const [secondary, setSecondary] = React.useState(false);
-    
-    return (
+const CustomCard = () => {
+  const classes = useStyles();
+  const [dense, setDense] = React.useState(false);
+  const [secondary, setSecondary] = React.useState(false);
+
+  return (
     <Container>
       <Card className={classes.card} variant="outlined">
         <CardContent>
@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme=> ({
         <CardActions>
         </CardActions>
       </Card>
-      </Container>
-    );
-  }
-  export default CustomCard
+    </Container>
+  );
+}
+export default CustomCard

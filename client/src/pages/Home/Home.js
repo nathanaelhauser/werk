@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -7,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ExerciseCard from '../../components/ExerciseCard'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const useStyles = makeStyles({
   card: {
@@ -28,14 +30,14 @@ const useGridStyles = makeStyles(theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   }
-}));
+}))
 
 const Home = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const gridClasses = useGridStyles()
   const [goCustom, setGoCustom] = useState(false)
   const [goQuickstart, setGoQuickstart] = useState(false)
-  const redirect = page => event => window.location.href = `http://${window.location.host}${page}`
+  const [authorizedState, setAuthorizedState] = useState(true)
  
   const renderRedirectCustom = () => {
     if (goCustom) {
@@ -49,8 +51,17 @@ const Home = () => {
     }
   }
 
+  useEffect(() => {
+    UserAuthAPI.authorizeUser()
+      .then(({ data: { isAuthorized } }) => {
+        setAuthorizedState(isAuthorized)
+      })
+      .catch(e => console.error(e))
+  }, [])
+
   return (
     <div className = {gridClasses.root} >
+      <UnauthorizedRedirect authorized={authorizedState} />
       {renderRedirectCustom()}
       {renderRedirectQuickstart()}
       <Grid container direction="row" >
@@ -86,6 +97,6 @@ const Home = () => {
     </Grid>
   <ExerciseCard/>
     </div>
-  );
+  )
 }
 export default Home

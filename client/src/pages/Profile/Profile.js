@@ -1,5 +1,5 @@
 // ----------------------
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -10,6 +10,8 @@ import Box from '@material-ui/core/Box';
 import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
 import SignOutButton from '../../components/SignOutButton'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -25,7 +27,7 @@ function TabPanel(props) {
     >
       {value === index && <Box p={3}>{children}</Box>}
     </Typography>
-  );
+  )
 }
 
 TabPanel.propTypes = {
@@ -52,14 +54,24 @@ const useStyles = makeStyles(theme => ({
 
 const Profile = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(0)
+  const [authorizedState, setAuthorizedState] = useState(true)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    UserAuthAPI.authorizeUser()
+      .then(({ data: { isAuthorized } }) => {
+        setAuthorizedState(isAuthorized)
+      })
+      .catch(e => console.error(e))
+  }, [])
+
   return (
     <div className={classes.root}>
+      <UnauthorizedRedirect authorized={authorizedState} />
       <AppBar position="static" color="default">
         <Tabs
           value={value}

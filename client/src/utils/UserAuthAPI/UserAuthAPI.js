@@ -4,9 +4,7 @@ const UserAuthAPI = {
 
   registerUser: user => axios.post('/userAuth', user),
   loginUser: user => axios.post('/login', user),
-  authorizeUser: () => axios({
-    type: 'get',
-    url: '/authorize',
+  authorizeUser: () => axios.get('/authorize', {
     headers: {
       'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
     }
