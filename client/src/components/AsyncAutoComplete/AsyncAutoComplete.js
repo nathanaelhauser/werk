@@ -9,7 +9,7 @@ const AsyncAutoComplete = () => {
   const [open, setOpen] = useState(false)
   const [options, setOptions] = useState([])
   const loading = open && options.length === 0
-  const { exercise, handleCustomInputChange } = useContext(CustomContext)
+  const { handleCustomInputChange } = useContext(CustomContext)
   useEffect(() => {
     let active = true
 

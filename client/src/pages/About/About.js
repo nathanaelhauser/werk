@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import DevCard from '../../components/DevCard'
 import Grid from '@material-ui/core/Grid'
@@ -7,8 +6,10 @@ import { Typography } from '@material-ui/core'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import StarIcon from '@material-ui/icons/Star';
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import StarIcon from '@material-ui/icons/Star'
+import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const useStyles = makeStyles({
     link: {
@@ -18,21 +19,20 @@ const useStyles = makeStyles({
 
 const About = () => {
     const classes = useStyles()
-
+    const [authorizedState, setAuthorizedState] = useState(true)
 
     useEffect(() => {
-        // axios({
-        //     method: 'get',
-        //     url: '/authorize',
-        //     headers: {
-        //         'Authorization': `Bearer ${localStorage.getItem('werkToken')}`
-        //     }
-        // })
+        UserAuthAPI.authorizeUser()
+            .then(({ data: { isAuthorized }}) => {
+                setAuthorizedState(isAuthorized)
+            })
+            .catch(e => console.error(e))
     }, [])
 
     return (
 
         <Grid container spacing={4} align="center">
+            <UnauthorizedRedirect authorized={authorizedState} />
             <Grid item xs={12}>
                 <Typography variant="h5">
                     What is WERK?
@@ -78,7 +78,7 @@ const About = () => {
                 <a href="https://github.com/mesmerizingYeti" className={classes.link}>
                     <DevCard
                         image="https://ca.slack-edge.com/TKAFG5QD9-ULXR8AFUZ-c9a095d1d510-512"
-                        name="Nathan"
+                        name="LORD NATHAN SAMA"
                         role="Git Master"
                         favorite="Anything Glute"
                     />

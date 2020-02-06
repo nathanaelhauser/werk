@@ -1,9 +1,8 @@
 import React from 'react'
-import { Parallax, Background } from 'react-parallax'
+import { Parallax } from 'react-parallax'
 import Jumbotron from '../Jumbotron'
-import LaxContainer from '../LaxContainer'
 import { createMuiTheme } from '@material-ui/core/styles';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
 const theme = createMuiTheme({
@@ -12,7 +11,7 @@ const theme = createMuiTheme({
         main: '#424242',
       },
       secondary: {
-        main: "#86DEB7"
+        main: "#f44336"
       },
     },
     typography: {

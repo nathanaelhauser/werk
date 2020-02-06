@@ -2,6 +2,7 @@ const { User } = require('../Models')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
+
 module.exports = app => {
     app.post('/userAuth', (req, res) => {
         const { name, username, email, age, weight } = req.body
@@ -20,7 +21,27 @@ module.exports = app => {
         })
     })
 
-    app.post('/authorize',  passport.authenticate('jwt', { failureRedirect: '/' }), (req, res) => {
-        res.sendStatus(200)
+    app.get('/logout/:id', (req, res) => {
+        req.logout();
+        res.redirect('/');
+    })
+
+    app.get('/authorize', (req, res, next) => {
+        passport.authenticate('jwt', (err, user, info) => {
+            if (err) {
+                next(err)
+            }
+            if (!user) {
+                res.json({ isAuthorized: false })
+            } else {
+                req.logIn(user, err => {
+                    if (err) {
+                        next(err)
+                    }
+                    return res.json({ isAuthorized: true })
+                })
+            }
+
+        })(req, res, next)
     })
 }

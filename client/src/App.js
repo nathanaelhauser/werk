@@ -19,15 +19,14 @@ import Custom from './pages/Custom'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-
-
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#424242',
     },
     secondary: {
-      main: "#86DEB7"
+      // main: "#86DEB7"
+      main: "#f44336"
     },
   },
   typography: {
