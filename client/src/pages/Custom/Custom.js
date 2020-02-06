@@ -12,7 +12,9 @@ import Paper from '@material-ui/core/Paper';
 import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
 import ExerciseAPI from '../../utils/ExerciseAPI'
+import WorkoutAPI from '../../utils/WorkoutAPI'
 
+const {createWorkout } = WorkoutAPI
 const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,6 +65,15 @@ const Custom = () => {
       let exercises = JSON.parse(JSON.stringify(customState.exercises))
       let exercisesFiltered = exercises.filter(exercise => exercise._id !== id)
       setCustomState({...customState, exercises: exercisesFiltered})
+    })
+    .catch(e => console.error(e))
+  }
+
+  customState.handleCustomAddWorkout = (event) => {
+    createWorkout({text: customState.workoutTitle})
+    .then(({data}) => {
+      let tempWorkout = []
+      
     })
     .catch(e => console.error(e))
   }
