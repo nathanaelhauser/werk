@@ -1,10 +1,11 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React, { useState, useEffect } from 'react'
+import UserAPI from '../../utils/UserAPI'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles({
@@ -26,7 +27,20 @@ const useStyles = makeStyles({
 
 const MyProfileCard = () => {
 
-    const classes = useStyles();
+    const classes = useStyles()
+
+    const [userState, setUserState] = useState({
+      username: '',
+      name: '',
+      age: '',
+      weight: ''
+    })
+
+    useEffect(() => {
+      UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
+        .then(({ data: user }) => setUserState({ ...user }))
+        .catch(e => console.error(e))
+    })
   
     return (
 
@@ -35,17 +49,17 @@ const MyProfileCard = () => {
         <CardContent>
           {/* user's username will populate */}
           <Typography variant="h5" component="h2">
-            Username{}
+            {userState.username}
           </Typography>
           <Card className={classes.card} variant="outlined">
       <CardContent>
         <Typography variant="body2" component="p">
           {/* user's name will populate */}
-         <p>Name:{}</p> 
+         <p>Name: {userState.name}</p> 
          {/* age will populate as N/A */}
-         <p>Age: {} </p>
+         <p>Age: {userState.age} </p>
          {/* weight will populate as N/A */}
-         <p>Weight: {}</p>
+         <p>Weight: {userState.weight}</p>
         </Typography>
       </CardContent>
       <CardActions>
