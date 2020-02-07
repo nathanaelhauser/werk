@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper'
+import ExerciseAPI from '../../utils/ExerciseAPI'
 
 const useStyles = makeStyles({
     root: {
@@ -24,6 +25,8 @@ const useStyles = makeStyles({
       marginBottom: 10,
     },
   });
+
+
 const ExerciseCard = () => {
   const classes = useStyles();
     return (
