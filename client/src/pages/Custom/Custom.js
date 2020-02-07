@@ -7,7 +7,7 @@ import CustomContext from '../../utils/CustomContext'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
-import ExerciseCard from '../../components/ExerciseCard'
+
 
 const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
@@ -80,7 +80,6 @@ const Custom = () => {
         <Grid item xs={6} sm={6} >
           <CustomList />
         </Grid>
-        <ExerciseCard/>
       </Grid>
     </CustomContext.Provider>
     

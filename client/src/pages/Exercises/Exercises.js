@@ -4,11 +4,25 @@ import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import ExerciseContext from '../../utils/ExerciseContext'
+import WorkoutAPI from '../../utils/WorkoutAPI'
 
 const {getExercises} = ExerciseAPI
+const {createWorkout} = WorkoutAPI
 
 const Exercises = () => {
     const [authorizedState, setAuthorizedState] = useState(true)
+    const [exerciseState, setExerciseState] = useState({
+        exerciseName: '',
+        mainMuscles: '',
+        secondaryMuscles: '',
+        exerciseDespcription: '',
+        exerciseEquipment: '',
+    })
+    
+exerciseState.handleAddFav= event =>{
+    event.preventDefault()
+    createWorkout({})
+}
 
     useEffect(() => {
         UserAuthAPI.authorizeUser()
@@ -20,8 +34,10 @@ const Exercises = () => {
 
     return (
         <>
+        <ExerciseContext.Provider value = {exerciseState}>
             <UnauthorizedRedirect authorized={authorizedState} />
             <ExerciseCard/>
+            </ExerciseContext.Provider>
         </>
     )
 
