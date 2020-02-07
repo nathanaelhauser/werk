@@ -6,27 +6,9 @@ import ExerciseAPI from '../../utils/ExerciseAPI'
 import ExerciseContext from '../../utils/ExerciseContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 
-const {getExercises} = ExerciseAPI
-const {createWorkout} = WorkoutAPI
-
 const Exercises = () => {
     const [authorizedState, setAuthorizedState] = useState(true)
-    const [exerciseState, setExerciseState] = useState({
-        exerciseName: '',
-        mainMuscles: '',
-        secondaryMuscles: '',
-        exerciseDespcription: '',
-        exerciseEquipment: '',
-        addFav: [],
-    })
-    
-exerciseState.handleAddFav= event =>{
-    event.preventDefault()
-    createWorkout({})
-}
-
-//exerciseState.getExercises=() =>
-
+  
     useEffect(() => {
         UserAuthAPI.authorizeUser()
             .then(({ data: { isAuthorized } }) => {
@@ -37,10 +19,9 @@ exerciseState.handleAddFav= event =>{
 
     return (
         <>
-        <ExerciseContext.Provider value = {exerciseState}>
+
             <UnauthorizedRedirect authorized={authorizedState} />
             <ExerciseCard/>
-        </ExerciseContext.Provider>
         </>
     )
 

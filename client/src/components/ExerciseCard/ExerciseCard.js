@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,6 +8,11 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper'
 import ExerciseAPI from '../../utils/ExerciseAPI'
+import ExerciseContext from '../../utils/ExerciseContext'
+import WorkoutAPI from '../../utils/WorkoutAPI'
+
+const {getExercises} = ExerciseAPI
+const {createWorkout} = WorkoutAPI
 
 const useStyles = makeStyles({
     root: {
@@ -29,6 +34,23 @@ const useStyles = makeStyles({
 
 const ExerciseCard = () => {
   const classes = useStyles();
+  
+    const [exerciseState, setExerciseState] = useState({
+        exerciseName: '',
+        mainMuscles: '',
+        secondaryMuscles: '',
+        exerciseDespcription: '',
+        exerciseEquipment: '',
+        addFav: [],
+    })
+    
+exerciseState.handleAddFav= event =>{
+    event.preventDefault()
+    createWorkout({})
+}
+
+useEffect(() => {})
+
     return (
       <Container>
         <Paper>
