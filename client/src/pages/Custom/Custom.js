@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Typography } from '@material-ui/core'
-import AsyncAutoComplete from '../../components/AsyncAutoComplete'
 import CustomForm from '../../components/CustomForm'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
 import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
 import ExerciseAPI from '../../utils/ExerciseAPI'
@@ -29,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 
 const Custom = () => {
   const classes = useStyles()
-  const [spacing, setSpacing] = useState(2)
   const [authorizedState, setAuthorizedState] = useState(true)
   const [customState, setCustomState] = useState({
     workoutTitle: '',

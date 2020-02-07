@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     },
   });
 const ExerciseCard = () => {
-const classes = useStyles();
+  const classes = useStyles();
     return (
       <Container>
         <Paper>
