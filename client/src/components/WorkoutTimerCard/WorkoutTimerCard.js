@@ -40,7 +40,7 @@ const WorkoutTimerCard = () => {
     } else {
       setColorState(azure)
     }
-  }, [timeLeft, currentStage])
+  }, [timeLeft, onExercise])
 
   return (
     <Container>

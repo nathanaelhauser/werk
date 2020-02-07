@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
@@ -52,8 +52,10 @@ const App = props => {
         onExercise: true,
         currentExercise: workoutState.currentExercise + 1
       })
+      restart(60000)
     }
   }})
+
   const [workoutState, setWorkoutState] = useState({
     workout: {},
     workoutStarted: false,
@@ -65,12 +67,16 @@ const App = props => {
   workoutState.setWorkout = workout => setWorkoutState({ ...workoutState, workout })
 
   workoutState.startWorkout = () => {
-    
+    setWorkoutState({ ...workoutState, currentExercise: 0, onExercise: true, workoutStarted: true })
   }
 
   workoutState.pauseWorkout = () => {
     pause()
   }
+
+  useEffect(() => {
+    setWorkoutState({ ...workoutState, timeLeft: seconds })
+  }, [seconds])
 
   const [drawerState, setDrawerState] = useState({
     isOpen: false
