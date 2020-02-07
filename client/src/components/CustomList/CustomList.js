@@ -7,6 +7,9 @@ import RemoveIcon from '@material-ui/icons/Delete';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
+import Switch from '@material-ui/core/Switch';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 const useStyles = makeStyles(theme => ({
@@ -25,6 +28,11 @@ titleTypography: {"fontFamily": "\"Bangers\"",
     }));
 
 const CustomList = () => {
+  const [checked, setChecked] = React.useState(false);
+
+  const toggleChecked = () => {
+    setChecked(prev => !prev);
+  };
   const classes = useStyles()
   const { exercises, handleCustomRemoveExercise, workoutTitle, handleCustomAddWorkout } = useContext(CustomContext)
 
@@ -41,6 +49,12 @@ const CustomList = () => {
         </p>
         )) 
          : null
+    }
+    {
+      exercises.length ? <FormControlLabel
+      control={<Switch checked={checked} onChange={toggleChecked} />}
+      label="Normal"
+    /> : null
     }
     {
       exercises.length ? <Button varian="contained" className={classes.typography} onClick={handleCustomAddWorkout}> Create Workout </Button> : null
