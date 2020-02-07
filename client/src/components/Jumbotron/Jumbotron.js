@@ -16,7 +16,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import RegForm from '../RegForm'
 import LoginForm from '../LoginForm'
 import logo from './JumbotronImages/logo.png'
-import subtitle from './JumbotronImages/thegroup.png'
+import subtitle from './JumbotronImages/subtitle.png'
 
 const useStyles = makeStyles({
   root: {
