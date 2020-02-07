@@ -40,7 +40,7 @@ const MyProfileCard = () => {
       UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
         .then(({ data: user }) => setUserState({ ...user }))
         .catch(e => console.error(e))
-    })
+    }, [])
   
     return (
 
