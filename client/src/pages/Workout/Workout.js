@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { useTimer } from 'react-timer-hook'
 import { makeStyles } from '@material-ui/core/styles'
 import WorkoutContext from '../../utils/WorkoutContext'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
+import StartWorkout from '../../components/StartWorkout'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
@@ -18,10 +20,11 @@ const useStyles = makeStyles({
   }
 })
 
-const Workout = () => {
+const Workout = props => {
   const classes = useStyles()
   const [authorizedState, setAuthorizedState] = useState(true)
-  const { exercises, workout, id } = { exercises: [], workout: 'Awesome Workout', id: 10 }
+  const { seconds, restart } = useTimer()
+  const { exercises, workout, id } = { exercises: ['blah', 'next', 'you suck'], workout: 'Awesome Workout', id: 10 }
 
   useEffect(() => {
     UserAuthAPI.authorizeUser()
@@ -31,10 +34,16 @@ const Workout = () => {
       .catch(e => console.error(e))
   }, [])
 
+  const startTimer = () => {
+    restart(Date.now()+60000)
+  }
+
   return (
     <Container>
       <UnauthorizedRedirect authorized={authorizedState} />
-      <h1>{workout}</h1>
+      <StartWorkout />
+      <h1>{`${seconds}`}</h1>
+      <button onClick={startTimer}>Start</button>
     </Container>
   )
 }
