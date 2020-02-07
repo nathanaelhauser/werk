@@ -27,7 +27,7 @@ const WorkoutTimerCard = () => {
     <Container>
       <Grid container direction="row" alignItems="center" justify="center">
         <Grid item sm={12} md={6} className={classes.grid}>
-          <Paper className={classes.paper} style={{ backgroundColor:  }}>
+          <Paper className={classes.paper} style={{ backgroundColor: '#000000' }}>
 
           </Paper>
         </Grid>
