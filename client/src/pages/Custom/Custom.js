@@ -34,6 +34,7 @@ const Custom = () => {
   const [customState, setCustomState] = useState({
     workoutTitle: '',
     exercise: '',
+    area: '',
     exercises: []
   })
 
@@ -47,7 +48,7 @@ const Custom = () => {
       .then(({ data: exercise }) => {
         let exercises = JSON.parse(JSON.stringify(customState.exercises))
         exercises.push(exercise)
-        setCustomState({ ...customState, exercises })
+        setCustomState({ ...customState, exercises})
       })
       .catch(e => console.error(e))
   }
@@ -67,9 +68,9 @@ const Custom = () => {
   }
 
   customState.handleCustomAddWorkout = (event) => {
-    createWorkout({name: customState.workoutTitle, exercises: customState.exercises})
+    createWorkout({name: customState.workoutTitle, exercises: customState.exercises, area:customState.area})
     .then(({data}) => {
-      setWorkoutState({...workoutState, workout: {name: data.name, area: "full body",author: '', exercises: data.exercises}})
+      setWorkoutState({...workoutState, workout: {name: data.name, area: data.area, exercises: data.exercises}})
       console.log(workoutState.workout)
     })
     .catch(e => console.error(e))

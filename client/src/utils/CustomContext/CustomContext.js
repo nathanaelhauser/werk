@@ -4,6 +4,7 @@ const CustomContext = createContext({
   workoutTitle: '',
     exercise: '',
     exercises: [],
+    area: '',
     handleCustomInputChange: () => {},
     handleCustomAddExercise: () => {},
     handleCustomRemoveExercise: () => {},
