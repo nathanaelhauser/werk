@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
+import { useTimer } from 'react-timer-hook'
 // import tags for pages
 import About from './pages/About'
 import Landing from './pages/Landing'
@@ -35,12 +36,41 @@ const theme = createMuiTheme({
     "fontSize": 36
   }
 
-});
+})
 
 const App = props => {
-  const [ workoutState, setWorkoutState] = useState({
-    workout: {}
+  const { seconds, restart, pause } = useTimer({ onExpire: () => {
+    if (workoutState.currentExercise === workoutState.workout.exercises.length - 1) {
+      return
+    }
+    if (workoutState.onExercise) {
+      setWorkoutState({ ...workoutState, onExercise: false })
+      restart(15000)
+    } else {
+      setWorkoutState({ 
+        ...workoutState, 
+        onExercise: true,
+        currentExercise: workoutState.currentExercise + 1
+      })
+    }
+  }})
+  const [workoutState, setWorkoutState] = useState({
+    workout: {},
+    workoutStarted: false,
+    timeLeft: 0,
+    onExercise: true,
+    currentExercise: 0
   })
+
+  workoutState.setWorkout = workout => setWorkoutState({ ...workoutState, workout })
+
+  workoutState.startWorkout = () => {
+    
+  }
+
+  workoutState.pauseWorkout = () => {
+    pause()
+  }
 
   const [drawerState, setDrawerState] = useState({
     isOpen: false
@@ -56,43 +86,43 @@ const App = props => {
   return (
     <ThemeProvider theme={theme}>
       <WorkoutContext.Provider value={workoutState}>
-      <DrawerContext.Provider value={drawerState}>
-        <Router>
-          <div>
-            <Nav />
-            <NavDrawer />
-            <Switch>
-              <Route exact path="/">
-                {/* page tags */}
-                <Landing />
-              </Route>
-              <Route path="/home">
-                {/* page tags */}
-                <Home />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-              <Route path="/quickstart">
-                <Quickstart />
-              </Route>
-              <Route path="/custom">
-                <Custom />
-              </Route>
-              <Route path="/profile">
-                <Profile />
-              </Route>
-              <Route path="/workout">
-                <Workout />
-              </Route>
-              <Route path="/exercises">
-                <Exercises />
-              </Route>
+        <DrawerContext.Provider value={drawerState}>
+          <Router>
+            <div>
+              <Nav />
+              <NavDrawer />
+              <Switch>
+                <Route exact path="/">
+                  {/* page tags */}
+                  <Landing />
+                </Route>
+                <Route path="/home">
+                  {/* page tags */}
+                  <Home />
+                </Route>
+                <Route path="/about">
+                  <About />
+                </Route>
+                <Route path="/quickstart">
+                  <Quickstart />
+                </Route>
+                <Route path="/custom">
+                  <Custom />
+                </Route>
+                <Route path="/profile">
+                  <Profile />
+                </Route>
+                <Route path="/workout">
+                  <Workout />
+                </Route>
+                <Route path="/exercises">
+                  <Exercises />
+                </Route>
 
-            </Switch>
-          </div>
-        </Router>
-      </DrawerContext.Provider>
+              </Switch>
+            </div>
+          </Router>
+        </DrawerContext.Provider>
       </WorkoutContext.Provider >
     </ThemeProvider>
 

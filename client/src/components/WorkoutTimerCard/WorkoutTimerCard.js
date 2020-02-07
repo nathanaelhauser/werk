@@ -28,10 +28,10 @@ const useStyles = makeStyles({
 const WorkoutTimerCard = () => {
   const classes = useStyles()
   const [ colorState, setColorState ] = useState('')
-  const { timeLeft, currentStage } = useContext(WorkoutContext)
+  const { timeLeft, onExercise } = useContext(WorkoutContext)
 
   useEffect(() => {
-    if (currentStage === 'exercise') {
+    if (onExercise) {
       if (timeLeft > 10) {
         setColorState(green)
       } else {
