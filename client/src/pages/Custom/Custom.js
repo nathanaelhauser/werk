@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { Redirect } from 'react-router-dom'
 import CustomForm from '../../components/CustomForm'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -10,8 +11,9 @@ import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import UserAPI from '../../utils/UserAPI'
 import WorkoutContext from '../../utils/WorkoutContext'
+import UserContext from '../../utils/UserContext'
 const { getUser } = UserAPI
-const { createWorkout } = WorkoutAPI
+const { createWorkout, getWorkout } = WorkoutAPI
 const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,13 +33,24 @@ const Custom = () => {
   const classes = useStyles()
   const [workoutState, setWorkoutState] = useState({ workout: {} })
   const { setWorkout } = useContext(WorkoutContext)
+  const { _id: author } = useContext(UserContext)
   const [authorizedState, setAuthorizedState] = useState(true)
+  const [goWorkout, setGoWorkout] = useState(false)
+
+  const renderRedirectWorkout = () => {
+    if (goWorkout) {
+      return <Redirect to="/workout" />
+    }
+  }
+
   const [customState, setCustomState] = useState({
     workoutTitle: '',
     exercise: {},
     area: '',
     exercises: []
   })
+
+  customState.setArea = area => setCustomState({ ...customState, area })
 
   customState.handleCustomInputChange = (event, exercise) => {
     setCustomState({ ...customState, exercise })
@@ -58,23 +71,34 @@ const Custom = () => {
     console.log(customState.workoutTitle)
   }
   customState.handleCustomRemoveExercise = (id) => {
-    deleteExercise(id)
-      .then(() => {
-        let exercises = JSON.parse(JSON.stringify(customState.exercises))
-        let exercisesFiltered = exercises.filter(exercise => exercise._id !== id)
-        setCustomState({ ...customState, exercises: exercisesFiltered })
+    let exercises = JSON.parse(JSON.stringify(customState.exercises))
+    let exercisesFiltered = exercises.filter(exercise => exercise._id !== id)
+    setCustomState({ ...customState, exercises: exercisesFiltered })
+  }
+
+  customState.handleCustomAddWorkout = (event) => {
+    if (!customState.workoutTitle || !customState.exercises || !customState.area || !author) {
+      return
+    }
+    const workout = { 
+      name: customState.workoutTitle, 
+      exercises: customState.exercises,
+      area: customState.area,
+      author
+    }
+    createWorkout({ 
+      name: customState.workoutTitle, 
+      exercises: customState.exercises.map(exercise => exercise._id), 
+      area: customState.area,
+      author
+    })
+      .then(({ data: { _id } }) => {
+        setWorkout({ ...workout, _id })
+        setGoWorkout(true)
       })
       .catch(e => console.error(e))
   }
 
-  customState.handleCustomAddWorkout = (event) => {
-    createWorkout({ name: customState.workoutTitle, exercises: customState.exercises, area: customState.area })
-      .then(({ data }) => {
-        setWorkout({ name: data.name, area: data.area, exercises: data.exercises })
-        console.log(workoutState.workout)
-      })
-      .catch(e => console.error(e))
-  }
   useEffect(() => {
     UserAuthAPI.authorizeUser()
       .then(({ data: { isAuthorized } }) => {
@@ -87,6 +111,7 @@ const Custom = () => {
     <WorkoutContext.Provider value={workoutState}>
       <CustomContext.Provider value={customState}>
         <UnauthorizedRedirect authorized={authorizedState} />
+        {renderRedirectWorkout()}
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12} sm={6}>
             <CustomForm />

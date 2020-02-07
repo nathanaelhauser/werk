@@ -20,6 +20,8 @@ import Custom from './pages/Custom'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import WorkoutContext from './utils/WorkoutContext'
+import UserContext from './utils/UserContext'
+import UserAPI from './utils/UserAPI'
 
 const theme = createMuiTheme({
   palette: {
@@ -39,22 +41,29 @@ const theme = createMuiTheme({
 })
 
 const App = props => {
-  const { seconds, restart, pause } = useTimer({ onExpire: () => {
-    if (workoutState.currentExercise === workoutState.workout.exercises.length - 1) {
-      return
+
+  /////////////////////////
+  // Workout State
+  /////////////////////////
+
+  const { seconds, restart, pause } = useTimer({
+    onExpire: () => {
+      if (workoutState.currentExercise === workoutState.workout.exercises.length - 1) {
+        return
+      }
+      if (workoutState.onExercise) {
+        setWorkoutState({ ...workoutState, onExercise: false })
+        restart(15000)
+      } else {
+        setWorkoutState({
+          ...workoutState,
+          onExercise: true,
+          currentExercise: workoutState.currentExercise + 1
+        })
+        restart(60000)
+      }
     }
-    if (workoutState.onExercise) {
-      setWorkoutState({ ...workoutState, onExercise: false })
-      restart(15000)
-    } else {
-      setWorkoutState({ 
-        ...workoutState, 
-        onExercise: true,
-        currentExercise: workoutState.currentExercise + 1
-      })
-      restart(60000)
-    }
-  }})
+  })
 
   const [workoutState, setWorkoutState] = useState({
     workout: {},
@@ -78,6 +87,30 @@ const App = props => {
     setWorkoutState({ ...workoutState, timeLeft: seconds })
   }, [seconds])
 
+  /////////////////////////
+  // User State
+  /////////////////////////
+
+  const [userState, setUserState] = useState({
+    _id: 0,
+    name: '',
+    username: '',
+    age: 0,
+    weight: 0
+  })
+
+  useEffect(() => {
+    if (sessionStorage.getItem('werkToken')) {
+      UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
+        .then(({ data: user }) => setUserState({ ...user }))
+        .catch(e => console.error(e))
+    }
+  }, [sessionStorage.getItem('werkToken')])
+
+  /////////////////////////
+  // Drawer State
+  /////////////////////////
+
   const [drawerState, setDrawerState] = useState({
     isOpen: false
   })
@@ -89,47 +122,53 @@ const App = props => {
     setDrawerState({ ...drawerState, isOpen: open })
   }
 
+  /////////////////////////
+  // Main App
+  /////////////////////////
+
   return (
     <ThemeProvider theme={theme}>
-      <WorkoutContext.Provider value={workoutState}>
-        <DrawerContext.Provider value={drawerState}>
-          <Router>
-            <div>
-              <Nav />
-              <NavDrawer />
-              <Switch>
-                <Route exact path="/">
-                  {/* page tags */}
-                  <Landing />
-                </Route>
-                <Route path="/home">
-                  {/* page tags */}
-                  <Home />
-                </Route>
-                <Route path="/about">
-                  <About />
-                </Route>
-                <Route path="/quickstart">
-                  <Quickstart />
-                </Route>
-                <Route path="/custom">
-                  <Custom />
-                </Route>
-                <Route path="/profile">
-                  <Profile />
-                </Route>
-                <Route path="/workout">
-                  <Workout />
-                </Route>
-                <Route path="/exercises">
-                  <Exercises />
-                </Route>
+      <UserContext.Provider value={userState}>
+        <WorkoutContext.Provider value={workoutState}>
+          <DrawerContext.Provider value={drawerState}>
+            <Router>
+              <div>
+                <Nav />
+                <NavDrawer />
+                <Switch>
+                  <Route exact path="/">
+                    {/* page tags */}
+                    <Landing />
+                  </Route>
+                  <Route path="/home">
+                    {/* page tags */}
+                    <Home />
+                  </Route>
+                  <Route path="/about">
+                    <About />
+                  </Route>
+                  <Route path="/quickstart">
+                    <Quickstart />
+                  </Route>
+                  <Route path="/custom">
+                    <Custom />
+                  </Route>
+                  <Route path="/profile">
+                    <Profile />
+                  </Route>
+                  <Route path="/workout">
+                    <Workout />
+                  </Route>
+                  <Route path="/exercises">
+                    <Exercises />
+                  </Route>
 
-              </Switch>
-            </div>
-          </Router>
-        </DrawerContext.Provider>
-      </WorkoutContext.Provider >
+                </Switch>
+              </div>
+            </Router>
+          </DrawerContext.Provider>
+        </WorkoutContext.Provider>
+      </UserContext.Provider>
     </ThemeProvider>
 
   )
