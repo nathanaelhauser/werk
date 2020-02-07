@@ -23,12 +23,12 @@ titleTypography: {"fontFamily": "\"Bangers\"",
 
 const CustomList = () => {
   const classes = useStyles()
-  const { exercises, handleCustomRemoveExercise, workoutTitle } = useContext(CustomContext)
+  const { exercises, handleCustomRemoveExercise, workoutTitle, handleCustomAddWorkout } = useContext(CustomContext)
 
   return(
     <div className={classes.root}>
       {
-        <p className={classes.titleTypography}>{workoutTitle}</p>
+        <p className={classes.titleTypography} value={workoutTitle}>{workoutTitle}</p>
       }
     {
       exercises.length ? exercises.map(exercise => (
@@ -40,7 +40,7 @@ const CustomList = () => {
          : null
     }
     {
-      exercises.length ? <Button varian="contained" className={classes.typography}> Create Workout </Button> : null
+      exercises.length ? <Button varian="contained" className={classes.typography} onClick={handleCustomAddWorkout}> Create Workout </Button> : null
     }
     </div>
   )

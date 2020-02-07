@@ -5,9 +5,13 @@ import Grid from '@material-ui/core/Grid'
 import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
 import ExerciseAPI from '../../utils/ExerciseAPI'
+import WorkoutAPI from '../../utils/WorkoutAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
-
+import UserAPI from '../../utils/UserAPI'
+import WorkoutContext from '../../utils/WorkoutContext'
+const { getUser } = UserAPI
+const {createWorkout } = WorkoutAPI
 const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 const Custom = () => {
   const classes = useStyles()
+  const [workoutState, setWorkoutState] =useState({ workout: {}})
   const [authorizedState, setAuthorizedState] = useState(true)
   const [customState, setCustomState] = useState({
     workoutTitle: '',
@@ -61,6 +66,14 @@ const Custom = () => {
       .catch(e => console.error(e))
   }
 
+  customState.handleCustomAddWorkout = (event) => {
+    createWorkout({name: customState.workoutTitle, exercises: customState.exercises})
+    .then(({data}) => {
+      setWorkoutState({...workoutState, workout: {name: data.name, area: "full body",author: '', exercises: data.exercises}})
+      console.log(workoutState.workout)
+    })
+    .catch(e => console.error(e))
+  }
   useEffect(() => {
     UserAuthAPI.authorizeUser()
       .then(({ data: { isAuthorized } }) => {
@@ -70,6 +83,7 @@ const Custom = () => {
   }, [])
 
   return (
+    <WorkoutContext.Provider value={workoutState}>
     <CustomContext.Provider value={customState}>
       <UnauthorizedRedirect authorized={authorizedState} />
       <Grid container className={classes.root} spacing={2}>
@@ -81,6 +95,8 @@ const Custom = () => {
         </Grid>
       </Grid>
     </CustomContext.Provider>
+    </WorkoutContext.Provider>
+    
   )
 }
 

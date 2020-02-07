@@ -18,6 +18,7 @@ import DrawerContext from './utils/DrawerContext'
 import Custom from './pages/Custom'
 import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
+import WorkoutContext from './utils/WorkoutContext'
 
 const theme = createMuiTheme({
   palette: {
@@ -37,6 +38,9 @@ const theme = createMuiTheme({
 })
 
 const App = props => {
+  const [ workoutState, setWorkoutState] = useState({
+    workout: {}
+  })
 
   const [drawerState, setDrawerState] = useState({
     isOpen: false
@@ -51,6 +55,7 @@ const App = props => {
 
   return (
     <ThemeProvider theme={theme}>
+      <WorkoutContext.Provider value={workoutState}>
       <DrawerContext.Provider value={drawerState}>
         <Router>
           <div>
@@ -88,6 +93,7 @@ const App = props => {
           </div>
         </Router>
       </DrawerContext.Provider>
+      </WorkoutContext.Provider >
     </ThemeProvider>
 
   )
