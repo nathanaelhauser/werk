@@ -20,7 +20,6 @@ module.exports = app => {
 
   // GET ONE USER WITH TOKEN
   app.get('/myuser', passport.authenticate('jwt'), (req, res) => {
-    console.log(req.user)
     res.json(req.user)
   })
 
