@@ -1,12 +1,10 @@
 import React, {createContext} from 'react'
 
 const WorkoutContext = createContext ({
-    Workout: '',
-    Workouts: [],
-    handleInputChange: () => {},
-    handleAddWorkOut: () => {},
-    handleToggle: () => {},
-    handleRemoveWo: () =>{}
+    workout: {},
+    workoutStarted: false,
+    setWorkout: () => {},
+    startWorkout: () => {}
 })
 
 export default WorkoutContext
