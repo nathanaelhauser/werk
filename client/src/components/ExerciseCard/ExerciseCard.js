@@ -49,7 +49,11 @@ exerciseState.handleAddFav= event =>{
     createWorkout({})
 }
 
-useEffect(() => {})
+useEffect(() => {
+  ExerciseAPI.getExercises('exercise')
+  .then(({data: exercise}) => setExerciseState({...exercise}))
+  .catch(e => console.error(e))
+})
 
     return (
       <Container>
