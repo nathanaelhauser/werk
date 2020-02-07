@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
-import DeleteIcon from '@material-ui/icons/Delete';
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
+import ListItemText from '@material-ui/core/ListItemText'
+import IconButton from '@material-ui/core/IconButton'
+import Grid from '@material-ui/core/Grid'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   demo: {
     backgroundColor: theme.palette.background.paper,
   },
-}));
+}))
 
 function generate(element) {
   return [0, 1, 2].map(value =>
@@ -46,9 +46,9 @@ function generate(element) {
 }
 
 const CustomCard = () => {
-  const classes = useStyles();
-  const [dense, setDense] = useState(false);
-  const [secondary, setSecondary] = useState(false);
+  const classes = useStyles()
+  const [dense, setDense] = useState(false)
+  const [secondary, setSecondary] = useState(false)
 
   return (
     <Container>
@@ -81,6 +81,6 @@ const CustomCard = () => {
         </CardActions>
       </Card>
     </Container>
-  );
+  )
 }
 export default CustomCard

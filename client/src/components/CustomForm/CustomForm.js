@@ -4,9 +4,9 @@ import TextField from '@material-ui/core/TextField'
 import { makeStyles } from '@material-ui/core/styles'
 import AsyncAutoComplete from '../AsyncAutoComplete'
 import Button from '@material-ui/core/Button'
-import Switch from '@material-ui/core/Switch';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   
     },
   },
-}));
+}))
 
 const useButtonStyles = makeStyles(theme => ({
   root: {
@@ -26,23 +26,23 @@ const useButtonStyles = makeStyles(theme => ({
     
     },
   },
-}));
+}))
 
 const CustomForm = () => {
   
-  const [checked, setChecked] = React.useState(false);
-  const [lbchecked, lbsetChecked] = React.useState(false);
+  const [checked, setChecked] = React.useState(false)
+  const [lbchecked, lbsetChecked] = React.useState(false)
 
   const toggleChecked = () => {
-    setChecked(prev => !prev);
-  };
+    setChecked(prev => !prev)
+  }
 
   const toggleLBChecked = () => {
-    lbsetChecked(prev => !prev);
-  };
+    lbsetChecked(prev => !prev)
+  }
 
 
-  const classes = useStyles();
+  const classes = useStyles()
   const buttonClasses = useButtonStyles()
   const { handleCustomAddExercise, workoutTitle, handleCustomTitleChange} = useContext(CustomContext)
 
@@ -64,9 +64,7 @@ const CustomForm = () => {
       </Button>
 
     </form>
-  );
+  )
 }
-
-
 
 export default CustomForm

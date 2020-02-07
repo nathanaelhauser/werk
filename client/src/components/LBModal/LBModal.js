@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -25,7 +25,8 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Bangers',
     borderRadius: '25px'
   },
-}));
+}))
+
 const useCardStyles = makeStyles({
   card: {
     maxWidth: 370,
@@ -34,20 +35,20 @@ const useCardStyles = makeStyles({
     height: "100%",
     width: "100%"
   },
-});
+})
 
 const LBModal = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const cardClasses = useCardStyles()
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const handleOpen = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <div>
@@ -92,7 +93,7 @@ const LBModal = () => {
         </Fade>
       </Modal>
     </div>
-  );
+  )
 }
 
 export default LBModal

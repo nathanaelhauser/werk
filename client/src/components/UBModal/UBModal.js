@@ -36,20 +36,20 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Bangers',
     borderRadius: '25px'
   },
-}));
+}))
 
 const UBModal = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const cardClasses = useCardStyles()
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false)
 
   const handleOpen = () => {
     setOpen(true);
-  };
+  }
 
   const handleClose = () => {
     setOpen(false);
-  };
+  }
 
   return (
     <div>
@@ -94,6 +94,7 @@ const UBModal = () => {
         </Fade>
       </Modal>
     </div>
-  );
+  )
 }
+
 export default UBModal

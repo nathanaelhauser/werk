@@ -40,5 +40,3 @@ const ModalList = () => {
 }
 
 export default ModalList
-
-// randomWorkouts.workouts.map(workout => <WorkoutListItem workout={workout} />)

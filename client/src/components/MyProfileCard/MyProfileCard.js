@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
-  });
+  })
 
 const MyProfileCard = () => {
 
@@ -70,7 +70,7 @@ const MyProfileCard = () => {
         </CardContent>
       </Card>
       </Container>
-    );
+    )
 
 }
 
