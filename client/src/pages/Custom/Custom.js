@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import CustomForm from '../../components/CustomForm'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
@@ -11,7 +11,7 @@ import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import UserAPI from '../../utils/UserAPI'
 import WorkoutContext from '../../utils/WorkoutContext'
 const { getUser } = UserAPI
-const {createWorkout } = WorkoutAPI
+const { createWorkout } = WorkoutAPI
 const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,11 +29,12 @@ const useStyles = makeStyles(theme => ({
 
 const Custom = () => {
   const classes = useStyles()
-  const [workoutState, setWorkoutState] =useState({ workout: {}})
+  const [workoutState, setWorkoutState] = useState({ workout: {} })
+  const { setWorkout } = useContext(WorkoutContext)
   const [authorizedState, setAuthorizedState] = useState(true)
   const [customState, setCustomState] = useState({
     workoutTitle: '',
-    exercise: '',
+    exercise: {},
     area: '',
     exercises: []
   })
@@ -44,13 +45,12 @@ const Custom = () => {
 
   customState.handleCustomAddExercise = event => {
     event.preventDefault()
-    addExercise({ name: customState.exercise })
-      .then(({ data: exercise }) => {
-        let exercises = JSON.parse(JSON.stringify(customState.exercises))
-        exercises.push(exercise)
-        setCustomState({ ...customState, exercises})
-      })
-      .catch(e => console.error(e))
+    if (!customState.exercise) {
+      return
+    }
+    let exercises = JSON.parse(JSON.stringify(customState.exercises))
+    exercises.push(customState.exercise)
+    setCustomState({ ...customState, exercises })
   }
 
   customState.handleCustomTitleChange = (event) => {
@@ -68,12 +68,12 @@ const Custom = () => {
   }
 
   customState.handleCustomAddWorkout = (event) => {
-    createWorkout({name: customState.workoutTitle, exercises: customState.exercises, area:customState.area})
-    .then(({data}) => {
-      setWorkoutState({...workoutState, workout: {name: data.name, area: data.area, exercises: data.exercises}})
-      console.log(workoutState.workout)
-    })
-    .catch(e => console.error(e))
+    createWorkout({ name: customState.workoutTitle, exercises: customState.exercises, area: customState.area })
+      .then(({ data }) => {
+        setWorkout({ name: data.name, area: data.area, exercises: data.exercises })
+        console.log(workoutState.workout)
+      })
+      .catch(e => console.error(e))
   }
   useEffect(() => {
     UserAuthAPI.authorizeUser()
@@ -85,19 +85,19 @@ const Custom = () => {
 
   return (
     <WorkoutContext.Provider value={workoutState}>
-    <CustomContext.Provider value={customState}>
-      <UnauthorizedRedirect authorized={authorizedState} />
-      <Grid container className={classes.root} spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <CustomForm />
+      <CustomContext.Provider value={customState}>
+        <UnauthorizedRedirect authorized={authorizedState} />
+        <Grid container className={classes.root} spacing={2}>
+          <Grid item xs={12} sm={6}>
+            <CustomForm />
+          </Grid>
+          <Grid item xs={6} sm={6} >
+            <CustomList />
+          </Grid>
         </Grid>
-        <Grid item xs={6} sm={6} >
-          <CustomList />
-        </Grid>
-      </Grid>
-    </CustomContext.Provider>
+      </CustomContext.Provider>
     </WorkoutContext.Provider>
-    
+
   )
 }
 

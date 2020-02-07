@@ -11,6 +11,12 @@ const AsyncAutoComplete = () => {
   const [options, setOptions] = useState([])
   const loading = open && options.length === 0
   const { handleCustomInputChange } = useContext(CustomContext)
+
+  const handleInputChange = (event, exercise) => {
+    const chosenExercise = options.filter(option => option.name === exercise)[0]
+    handleCustomInputChange(event, chosenExercise)
+  }
+
   useEffect(() => {
     let active = true
 
@@ -51,7 +57,7 @@ const AsyncAutoComplete = () => {
       }}
       getOptionSelected={(option, value) => option.name === value.name}
       getOptionLabel={option => option.name}
-      onInputChange={handleCustomInputChange}
+      onInputChange={handleInputChange}
       options={options}
       loading={loading}
       renderInput={params => (
