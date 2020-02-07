@@ -54,7 +54,7 @@ const CustomList = () => {
     /> : null
     }
     {
-      exercises.length ? <Button varian="contained" className={classes.typography} onClick={handleCustomAddWorkout}> Create Workout </Button> : null
+      exercises.length ? <Button variant="contained" className={classes.typography} onClick={handleCustomAddWorkout}> Create Workout </Button> : null
     }
     </div>
   )
