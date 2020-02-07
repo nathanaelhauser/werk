@@ -8,7 +8,9 @@ import ExerciseAPI from '../../utils/ExerciseAPI'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import UserAPI from '../../utils/UserAPI'
 
+const { getUser } = UserAPI
 const {createWorkout } = WorkoutAPI
 const { deleteExercise, addExercise } = ExerciseAPI
 const useStyles = makeStyles(theme => ({
@@ -66,7 +68,18 @@ const Custom = () => {
   customState.handleCustomAddWorkout = (event) => {
     createWorkout({text: customState.workoutTitle})
     .then(({data}) => {
-      let tempWorkout = []
+      
+      console.log(data)
+
+      // let tempWorkout = []
+      // let exercises = JSON.parse(JSON.stringify(customState.exercises))
+      // tempWorkout.push({
+      //   name: customState.workoutTitle,
+      //   area: '',
+      //   author: getUser(id),
+      //   exercises: customState.exercises
+      // })
+
       
     })
     .catch(e => console.error(e))
