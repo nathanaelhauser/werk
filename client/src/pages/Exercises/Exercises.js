@@ -17,12 +17,15 @@ const Exercises = () => {
         secondaryMuscles: '',
         exerciseDespcription: '',
         exerciseEquipment: '',
+        addFav: [],
     })
     
 exerciseState.handleAddFav= event =>{
     event.preventDefault()
     createWorkout({})
 }
+
+exerciseState.getExercises=() =>
 
     useEffect(() => {
         UserAuthAPI.authorizeUser()
@@ -37,7 +40,7 @@ exerciseState.handleAddFav= event =>{
         <ExerciseContext.Provider value = {exerciseState}>
             <UnauthorizedRedirect authorized={authorizedState} />
             <ExerciseCard/>
-            </ExerciseContext.Provider>
+        </ExerciseContext.Provider>
         </>
     )
 

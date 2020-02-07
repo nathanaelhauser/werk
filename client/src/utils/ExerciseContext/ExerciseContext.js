@@ -7,8 +7,9 @@ const ExerciseContext = createContext({
     secondaryMuscles: '',
     exerciseDespcription: '',
     exerciseEquipment: '',
-     handleAddFav: () => {},
-     removeFromFav: () => {}
+    addFav: [],
+    handleAddFav: () => {},
+    removeFromFav: () => {}
 
 
 })
