@@ -58,13 +58,9 @@ const Custom = () => {
     console.log(customState.workoutTitle)
   }
   customState.handleCustomRemoveExercise = (id) => {
-    deleteExercise(id)
-      .then(() => {
-        let exercises = JSON.parse(JSON.stringify(customState.exercises))
-        let exercisesFiltered = exercises.filter(exercise => exercise._id !== id)
-        setCustomState({ ...customState, exercises: exercisesFiltered })
-      })
-      .catch(e => console.error(e))
+    let exercises = JSON.parse(JSON.stringify(customState.exercises))
+    let exercisesFiltered = exercises.filter(exercise => exercise._id !== id)
+    setCustomState({ ...customState, exercises: exercisesFiltered })
   }
 
   customState.handleCustomAddWorkout = (event) => {
