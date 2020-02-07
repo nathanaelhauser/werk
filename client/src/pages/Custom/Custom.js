@@ -9,7 +9,7 @@ import WorkoutAPI from '../../utils/WorkoutAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import UserAPI from '../../utils/UserAPI'
-
+import WorkoutContext from '../../utils/WorkoutContext'
 const { getUser } = UserAPI
 const {createWorkout } = WorkoutAPI
 const { deleteExercise, addExercise } = ExerciseAPI
@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
 
 const Custom = () => {
   const classes = useStyles()
+  const [workoutState, setWorkoutState] =useState({ workout: {}})
   const [authorizedState, setAuthorizedState] = useState(true)
   const [customState, setCustomState] = useState({
     workoutTitle: '',
@@ -66,21 +67,10 @@ const Custom = () => {
   }
 
   customState.handleCustomAddWorkout = (event) => {
-    createWorkout({text: customState.workoutTitle})
+    createWorkout({name: customState.workoutTitle, exercises: customState.exercises})
     .then(({data}) => {
-      
-      console.log(data)
-
-      // let tempWorkout = []
-      // let exercises = JSON.parse(JSON.stringify(customState.exercises))
-      // tempWorkout.push({
-      //   name: customState.workoutTitle,
-      //   area: '',
-      //   author: getUser(id),
-      //   exercises: customState.exercises
-      // })
-
-      
+      setWorkoutState({...workoutState, workout: {name: data.name, area: "full body",author: '', exercises: data.exercises}})
+      console.log(workoutState.workout)
     })
     .catch(e => console.error(e))
   }
@@ -93,6 +83,7 @@ const Custom = () => {
   }, [])
 
   return (
+    <WorkoutContext.Provider value={workoutState}>
     <CustomContext.Provider value={customState}>
       <UnauthorizedRedirect authorized={authorizedState} />
       <Grid container className={classes.root} spacing={2}>
@@ -104,6 +95,8 @@ const Custom = () => {
         </Grid>
       </Grid>
     </CustomContext.Provider>
+    </WorkoutContext.Provider>
+    
   )
 }
 export default Custom

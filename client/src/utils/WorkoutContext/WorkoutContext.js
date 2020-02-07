@@ -1,10 +1,11 @@
 import React, {createContext} from 'react'
 
-const WorkoutContext = createContext ({
+const WorkoutContext = createContext({
     workout: {},
     workoutStarted: false,
     setWorkout: () => {},
-    startWorkout: () => {}
+    startWorkout: () => {},
+    toggleDrawer: () => { }
 })
 
 export default WorkoutContext
