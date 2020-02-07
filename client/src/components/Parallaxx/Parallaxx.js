@@ -3,7 +3,7 @@ import { Parallax } from 'react-parallax'
 import Jumbotron from '../Jumbotron'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core'
 
 const theme = createMuiTheme({
     palette: {
@@ -18,7 +18,7 @@ const theme = createMuiTheme({
       "fontFamily": "\"Bangers\"",
       "fontSize": 36
     }
-  });
+  })
 
 const Parallaxx = _ => {
     return (
@@ -96,5 +96,6 @@ const Parallaxx = _ => {
     </div>
     </ThemeProvider>
     )
-};
+}
+
 export default Parallaxx

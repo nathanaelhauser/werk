@@ -13,5 +13,4 @@ const UnauthorizedRedirect = props => {
   )
 }
 
-
 export default UnauthorizedRedirect

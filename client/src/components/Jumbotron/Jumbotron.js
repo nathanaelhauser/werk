@@ -7,12 +7,12 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
+import Dialog from '@material-ui/core/Dialog'
+import MuiDialogTitle from '@material-ui/core/DialogTitle'
+import MuiDialogContent from '@material-ui/core/DialogContent'
+import MuiDialogActions from '@material-ui/core/DialogActions'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
 import RegForm from '../RegForm'
 import LoginForm from '../LoginForm'
 import logo from './JumbotronImages/logo.png'
@@ -35,10 +35,10 @@ const styles = theme => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-});
+})
 
 const DialogTitle = withStyles(styles)(props => {
-  const { children, classes, onClose, ...other } = props;
+  const { children, classes, onClose, ...other } = props
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
@@ -48,21 +48,21 @@ const DialogTitle = withStyles(styles)(props => {
         </IconButton>
       ) : null}
     </MuiDialogTitle>
-  );
-});
+  )
+})
 
 const DialogContent = withStyles(theme => ({
   root: {
     padding: theme.spacing(2),
   },
-}))(MuiDialogContent);
+}))(MuiDialogContent)
 
 const DialogActions = withStyles(theme => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
   },
-}))(MuiDialogActions);
+}))(MuiDialogActions)
 
 const Jumbotron = () => {
   const classes = useStyles()
@@ -131,7 +131,7 @@ const Jumbotron = () => {
           {/* <Typography variant="subtitle1">© the-group 2020</Typography> */}
           <img src={subtitle} alt="subtitle"/>
         </Grid>
-        <br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/>
         <Grid item>
           {/* button */}
           <Button onClick={handleClickOpen('login')}color="secondary" variant="contained">Login</Button>

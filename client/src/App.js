@@ -16,8 +16,8 @@ import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
 import Custom from './pages/Custom'
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/core/styles'
 import WorkoutContext from './utils/WorkoutContext'
 
 const theme = createMuiTheme({
@@ -35,7 +35,7 @@ const theme = createMuiTheme({
     "fontSize": 36
   }
 
-});
+})
 
 const App = props => {
   const [ workoutState, setWorkoutState] = useState({
@@ -48,7 +48,7 @@ const App = props => {
 
   drawerState.toggleDrawer = open => event => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+      return
     }
     setDrawerState({ ...drawerState, isOpen: open })
   }

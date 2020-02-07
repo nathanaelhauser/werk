@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import QuickstartContext from '../../utils/QuickstartContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
@@ -102,7 +102,7 @@ const Quickstart = () => {
 
       </Grid>
     </QuickstartContext.Provider>
-  );
+  )
 }
 
 export default Quickstart
