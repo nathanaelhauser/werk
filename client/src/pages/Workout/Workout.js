@@ -2,11 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import WorkoutContext from '../../utils/WorkoutContext'
 import Container from '@material-ui/core/Container'
-import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+
 
 const useStyles = makeStyles({
   root: {
