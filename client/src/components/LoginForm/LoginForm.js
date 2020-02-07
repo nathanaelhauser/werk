@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Container from '@material-ui/core/Container';
-import FormControl from '@material-ui/core/FormControl';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import React, { useContext } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Container from '@material-ui/core/Container'
+import FormControl from '@material-ui/core/FormControl'
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 import LandingContext from '../../utils/LandingContext'
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,15 +26,15 @@ const useStyles = makeStyles(theme => ({
     transform: 'scale(0.8)',
   },
   title: {
-    fontSize: 14,
+    fontSize: 10,
   },
   pos: {
     marginBottom: 12,
   }
-}));
+}))
 
 const LoginForm = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const { username, password, handleInputChange } = useContext(LandingContext)
   return (
     <Container maxWidth="sm">
@@ -75,8 +74,9 @@ const LoginForm = () => {
         </CardContent>
       </Card>
     </Container>
-  );
+  )
 }
+
 export default LoginForm
 
 
