@@ -25,7 +25,7 @@ exerciseState.handleAddFav= event =>{
     createWorkout({})
 }
 
-exerciseState.getExercises=() =>
+//exerciseState.getExercises=() =>
 
     useEffect(() => {
         UserAuthAPI.authorizeUser()
