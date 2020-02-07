@@ -1,10 +1,9 @@
 import React from 'react'
 import Container from '@material-ui/core/Container'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
     card: {
@@ -21,11 +20,11 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
-  });
+  })
 
 const RecentWO = () => {
 
-    const classes = useStyles();
+    const classes = useStyles()
   
     return (
     <Container>
@@ -44,7 +43,8 @@ const RecentWO = () => {
         </CardContent>
       </Card>
       </Container>
-    );
+    )
 
 }
-  export default RecentWO
+
+export default RecentWO

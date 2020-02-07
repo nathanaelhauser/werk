@@ -5,8 +5,8 @@ const LandingContext = createContext({
   username: '',
   password: '',
   confirmPassword: '',
-  age: 0,
-  weight: 0,
+  age: '',
+  weight: '',
   handleInputChange: () => {}
 })
 

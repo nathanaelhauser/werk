@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   
     },
   },
-}));
+}))
 
 const useButtonStyles = makeStyles(theme => ({
   root: {
@@ -21,10 +21,10 @@ const useButtonStyles = makeStyles(theme => ({
     
     },
   },
-}));
+}))
 
 const CustomForm = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const buttonClasses = useButtonStyles()
   const { handleCustomAddExercise, workoutTitle, handleCustomTitleChange} = useContext(CustomContext)
 
@@ -37,9 +37,7 @@ const CustomForm = () => {
       </Button>
 
     </form>
-  );
+  )
 }
-
-
 
 export default CustomForm

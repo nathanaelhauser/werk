@@ -1,7 +1,7 @@
-import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Container from '@material-ui/core/Container'
+import { makeStyles } from '@material-ui/core/styles'
 import Jumbotron from '../Jumbotron'
 
 const useStyles = makeStyles(theme => ({
@@ -10,10 +10,10 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(1)
       }
     },
-  }));
+  }))
 
 const LaxContainer = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <React.Fragment>
       <CssBaseline />
@@ -26,7 +26,7 @@ const LaxContainer = () => {
         </div>
       </Container>
     </React.Fragment>
-  );
+  )
 }
 
 export default LaxContainer
