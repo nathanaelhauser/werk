@@ -15,6 +15,8 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import RegForm from '../RegForm'
 import LoginForm from '../LoginForm'
+import logo from './JumbotronImages/logo.png'
+import subtitle from './JumbotronImages/subtitle.png'
 
 const useStyles = makeStyles({
   root: {
@@ -122,14 +124,17 @@ const Jumbotron = () => {
         alignItems='center'
       >
         <Grid item>
-          <Typography variant="h3">WERK</Typography>
+          {/* <Typography variant="h3">WERK</Typography> */}
+          <img src={logo} alt="werk logo"/>
         </Grid>
         <Grid item>
-          <Typography variant="subtitle1">© the-group 2020</Typography>
+          {/* <Typography variant="subtitle1">© the-group 2020</Typography> */}
+          <img src={subtitle} alt="subtitle"/>
         </Grid>
-        <br /><br /><br /><br/><br/><br/><br/><br/>
+        <br/><br/><br/>
         <Grid item>
-          <Button onClick={handleClickOpen('login')}color="secondary">Login</Button>
+          {/* button */}
+          <Button onClick={handleClickOpen('login')}color="secondary" variant="contained">Login</Button>
           <Dialog onClose={handleClose('login')} aria-labelledby="customized-dialog-title" open={openLogin}>
             <DialogTitle id="customized-dialog-title" onClose={handleClose('login')}>
               Welcome back bitch!
@@ -139,7 +144,7 @@ const Jumbotron = () => {
             </DialogContent>
             <DialogActions>
               <Button 
-                autoFocus 
+                autofocus
                 onClick={handleLogin} 
                 color="primary" 
                 variant="contained"
@@ -150,7 +155,8 @@ const Jumbotron = () => {
           </Dialog>
         </Grid>
         <Grid item>
-          <Button onClick={handleClickOpen('register')} color="secondary">Register</Button>
+          {/* button */}
+          <Button onClick={handleClickOpen('register')} color="secondary" variant="contained">Register</Button>
           <Dialog onClose={handleClose('register')} aria-labelledby="customized-dialog-title" open={openRegister}>
             <DialogTitle id="customized-dialog-title" onClose={handleClose('register')}>
               Register urself!

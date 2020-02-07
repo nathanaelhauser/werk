@@ -1,3 +1,5 @@
+const passport = require('passport')
+const jwt = require('jsonwebtoken')
 const { Users } = require('../Models')
 
 module.exports = app => {
@@ -14,6 +16,11 @@ module.exports = app => {
     User.find({ _id: req.params.id })
       .then(user => res.json(user))
       .catch(e => console.error(e))
+  })
+
+  // GET ONE USER WITH TOKEN
+  app.get('/myuser', passport.authenticate('jwt'), (req, res) => {
+    res.json(req.user)
   })
 
   // POST ONE USER 
