@@ -57,10 +57,13 @@ useEffect(() => {})
       <Card className={classes.root} variant="outlined">
         <CardContent>
           <Typography className={classes.pos} color="textSecondary">
-            Name of Exercise
+           <p> Name of Exercise: {exerciseState.exerciseName}</p>
           </Typography>
           <Typography variant="body2" component="h2">
-            well meaning and kindly.
+           <p>Equipment: {exerciseState.exerciseEquipment}</p>
+           <p>Main Muscles: {exerciseState.mainMuscles}</p>
+           <p>Secondary Muscles: {exerciseState.secondaryMuscles}</p>
+           <p>Description: {exerciseState.exerciseDespcription}</p>
       
           </Typography>
         </CardContent>
