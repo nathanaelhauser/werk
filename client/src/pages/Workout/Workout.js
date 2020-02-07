@@ -9,7 +9,11 @@ import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 const Workout = props => {
   const [authorizedState, setAuthorizedState] = useState(true)
   // const { seconds, restart } = useTimer()
-  const { workout, workoutStarted } = useContext(WorkoutContext)
+  // const { workout, workoutStarted } = useContext(WorkoutContext)
+  const { workout, workoutStarted } = { 
+    workout: { name: 'Yeah Boy' },
+    workoutStarted: false
+  }
 
   useEffect(() => {
     UserAuthAPI.authorizeUser()

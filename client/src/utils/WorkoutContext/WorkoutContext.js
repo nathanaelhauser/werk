@@ -6,7 +6,8 @@ const WorkoutContext = createContext ({
     timeLeft: 0,
     currentStage: 'exercise',
     setWorkout: () => {},
-    startWorkout: () => {}
+    startWorkout: () => {},
+    pauseWorkout: () => {}
 })
 
 export default WorkoutContext
