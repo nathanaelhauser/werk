@@ -39,7 +39,7 @@ const Parallaxx = _ => {
             <div style={{ height: '800px' }} />
         </Parallax>
  
-        {/* -----dynamic blur-----*/}
+        {/* -----dynamic blur----- */}
         <Parallax
             // blur={{ min: -15, max: 15 }}
             blur={15}
