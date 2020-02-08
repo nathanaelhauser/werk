@@ -50,7 +50,7 @@ const CustomList = () => {
     {
       exercises.length ? <FormControlLabel
       control={<Switch checked={checked} onChange={toggleChecked} />}
-      label="Normal"
+      label={checked ? 'Lower Body' : "Upper Body"}
     /> : null
     }
     {
