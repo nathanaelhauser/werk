@@ -1,6 +1,7 @@
 // 
 import React, { useState, useEffect, useContext } from 'react'
 import UserAPI from '../../utils/UserAPI'
+import UserAuthAPI from '../../utils/UserAuthAPI'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -83,6 +84,7 @@ const MyProfileCard = () => {
       age: '',
       weight: ''
   })
+  const { name, age, weight } = useContext(LandingContext)
 
   useEffect(() => {
     UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
@@ -102,6 +104,13 @@ const MyProfileCard = () => {
       }
     }
   
+    const handleEdit = async event => {
+      console.log('info edited')
+      const response = await UserAuthAPI.updateUser({ name, age, weight })
+      const { data:{ token }} = await response
+      sessionStorage.setItem('werkToken', token)
+    }
+
   return (
     <Container>
       <Card className={classes.card} variant="outlined">
@@ -135,8 +144,8 @@ const MyProfileCard = () => {
               <Button 
                 autoFocus 
                 // needs to handleEdit
-                // onClick={handleRegister} 
-                color="primary"
+                onClick={handleEdit} 
+                color='secondary'
                 variant="contained"
               >
                 SAVE
