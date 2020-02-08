@@ -1,19 +1,18 @@
-import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Container from '@material-ui/core/Container';
-import FormControl from '@material-ui/core/FormControl';
-import Typography from '@material-ui/core/Typography';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import React, { useContext } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+import Container from '@material-ui/core/Container'
+import FormControl from '@material-ui/core/FormControl'
+import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
 import LandingContext from '../../utils/LandingContext'
-
 
 const useStyles = makeStyles(theme => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: 200,
+      width: 200
     },
   },
   card: {
@@ -32,11 +31,12 @@ const useStyles = makeStyles(theme => ({
   pos: {
     marginBottom: 12,
   }
-}));
+}))
 
 const RegForm = () => {
-  const classes = useStyles();
-  const { name, username, password, confirmPassword, handleInputChange } = useContext(LandingContext)
+  const classes = useStyles()
+  const { name, username, password, confirmPassword, age, weight, handleInputChange } = useContext(LandingContext)
+
   return (
     <Container maxWidth="sm">
       <Card className={classes.card} variant="outlined">
@@ -51,15 +51,15 @@ const RegForm = () => {
               <FormControl>
                 <div className={classes.root}>
                   <TextField
-                    label="Username"
+                    label="username"
                     id="margin-none"
                     name="username"
                     value={username}
                     onChange={handleInputChange}
-                    className={classes.textField}
+                    className={classes.textField} 
                   />
                   <TextField
-                    label="Name"
+                    label="name"
                     id="margin-none"
                     name="name"
                     value={name}
@@ -77,33 +77,31 @@ const RegForm = () => {
                   />
                   <TextField
                     type="password"
-                    label="Comfirm Password"
+                    label="confirm pass"
                     id="margin-none"
                     name="confirmPassword"
                     value={confirmPassword}
                     onChange={handleInputChange}
                     className={classes.textField}
                   />
-
-                  {/* <TextField
-                    type="number"
-                    id="margin-none"
-                    label="Starting Weight"
-                    name="weight"
-                    value={weight}
-                    onChanage={handleInputChange}
-                    aria-describedby="standard-weight-helper-text"
-                    inputProps={{ 'aria-label': 'weight', }}
-                  />
                   <TextField
                     type="number"
+                    label="age"
                     id="margin-none"
-                    label="Age"
                     name="age"
                     value={age}
                     onChange={handleInputChange}
                     className={classes.textField}
-                  /> */}
+                  />
+                  <TextField
+                    type="number"
+                    label="weight"
+                    id="margin-none"
+                    name="weight"
+                    value={weight}
+                    onChange={handleInputChange}
+                    className={classes.textField}
+                  />
                 </div>
               </FormControl>
             </Container>
@@ -112,8 +110,7 @@ const RegForm = () => {
         </CardContent>
       </Card>
     </Container>
-  );
+  )
 }
+
 export default RegForm
-
-

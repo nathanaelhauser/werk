@@ -3,17 +3,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import WorkoutContext from '../../utils/WorkoutContext'
 import Container from '@material-ui/core/Container'
 import StartWorkoutCard from '../../components/StartWorkoutCard'
+import WorkoutTimerCard from '../../components/WorkoutTimerCard'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const Workout = props => {
   const [authorizedState, setAuthorizedState] = useState(true)
   // const { seconds, restart } = useTimer()
-  // const { workout, workoutStarted } = useContext(WorkoutContext)
-  const { workout, workoutStarted } = { 
-    workout: { name: 'Yeah Boy' },
-    workoutStarted: false
-  }
+  const { workout, workoutStarted } = useContext(WorkoutContext)
 
   useEffect(() => {
     UserAuthAPI.authorizeUser()
@@ -33,7 +30,7 @@ const Workout = props => {
       <h1>{workout.name}</h1>
       {
         workoutStarted
-        ? ''
+        ? <WorkoutTimerCard />
         : <StartWorkoutCard />
       }
     </Container>

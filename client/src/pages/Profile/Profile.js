@@ -1,12 +1,11 @@
-// ----------------------
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
 import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
 import SignOutButton from '../../components/SignOutButton'
@@ -15,7 +14,7 @@ import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other } = props
 
     return (
     <Typography
@@ -35,13 +34,13 @@ TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
   value: PropTypes.any.isRequired,
-};
+}
 
 function a11yProps(index) {
   return {
     id: `scrollable-auto-tab-${index}`,
     'aria-controls': `scrollable-auto-tabpanel-${index}`,
-  };
+  }
 }
 
 const useStyles = makeStyles(theme => ({
@@ -51,16 +50,16 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.paper,
     alignItems: 'center'
   },
-}));
+}))
 
 const Profile = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   const [value, setValue] = React.useState(0)
   const [authorizedState, setAuthorizedState] = useState(true)
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+    setValue(newValue)
+  }
 
   useEffect(() => {
     UserAuthAPI.authorizeUser()
@@ -95,8 +94,7 @@ const Profile = () => {
         <CustomCard />
       </TabPanel>
     </div>
-  );
+  )
 }
-
 
 export default Profile

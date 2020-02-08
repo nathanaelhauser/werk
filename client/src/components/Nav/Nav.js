@@ -16,7 +16,6 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#424242',
-
     },
     secondary: {
       main: "#f44336"
@@ -141,7 +140,6 @@ const NavGuts = props => {
 
     </>
   )
-
 
 }
 

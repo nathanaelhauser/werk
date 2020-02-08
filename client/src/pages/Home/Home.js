@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import UserAuthAPI from '../../utils/UserAuthAPI';
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const useStyles = makeStyles({
@@ -32,6 +32,7 @@ const useGridStyles = makeStyles(theme => ({
 }))
 
 const Home = () => {
+
   const classes = useStyles()
   const gridClasses = useGridStyles()
   const [goCustom, setGoCustom] = useState(false)
@@ -97,4 +98,5 @@ const Home = () => {
     </div>
   )
 }
+
 export default Home

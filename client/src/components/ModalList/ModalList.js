@@ -28,7 +28,6 @@ const ModalList = () => {
     setRandomWorkouts({ ...randomWorkouts, workouts: getWorkouts()})
   }, [])
 
-  console.log(workouts)
   return (
     <List>
       {randomWorkouts.workouts
@@ -40,5 +39,3 @@ const ModalList = () => {
 }
 
 export default ModalList
-
-// randomWorkouts.workouts.map(workout => <WorkoutListItem workout={workout} />)
