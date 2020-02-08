@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
+import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,10 +16,20 @@ const useStyles = makeStyles(theme => ({
 
 const SignOutButton = () => {
     const classes = useStyles()
+    const [goLanding, setGoLanding] = useState(false)
+    const [authorizedState, setAuthorizedState] = useState(true)
+
+    const renderRedirectLanding = () => {
+      if (goLanding) {
+        return <Redirect to="/" />
+      }
+    }
 
     return (
         <div className={classes.root}>
-        <Button variant="contained" color='red'>
+        <UnauthorizedRedirect authorized={authorizedState} />
+        {renderRedirectLanding()}
+        <Button variant="contained" color='red' onClick={() => setGoLanding(true)} >
           SIGN OUT
         </Button>
         </div>            

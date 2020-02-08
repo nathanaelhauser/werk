@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
@@ -12,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
+import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const theme = createMuiTheme({
   palette: {
@@ -65,6 +67,8 @@ const NavGuts = props => {
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
+  const [goLanding, setGoLanding] = useState(false)
+  const [authorizedState, setAuthorizedState] = useState(true)
 
 
   const handleMenu = event => {
@@ -73,6 +77,12 @@ const NavGuts = props => {
 
   const handleClose = () => {
     setAnchorEl(false)
+  }
+
+  const renderRedirectLanding = () => {
+    if (goLanding) {
+      return <Redirect to="/" />
+    }
   }
 
   const { toggleDrawer } = useContext(DrawerContext)
@@ -125,7 +135,9 @@ const NavGuts = props => {
                       <Link to="/profile" className={classes.link}>
                         <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
-                      <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                      <UnauthorizedRedirect authorized={authorizedState} />
+                      {renderRedirectLanding()}
+                      <MenuItem onClick={() => setGoLanding(true)}>Sign Out</MenuItem>
                       
                     </Menu>
                   </div>
