@@ -17,14 +17,13 @@ const useStyles = makeStyles({
 
 const StartWorkout = () => {
   const classes = useStyles()
-  // const { startWorkout } = useContext(WorkoutContext)
-  const { startWorkout } = { startWorkout: () => { } }
+  const { setWorkoutStarted } = useContext(WorkoutContext)
 
   return (
     <Container>
       <Grid container direction="row" alignItems="center" justify="center">
         <Grid item sm={12} md={6} className={classes.grid}>
-          <Button variant="contained" color="primary" onClick={startWorkout}>Start</Button>
+          <Button variant="contained" color="primary" onClick={() => setWorkoutStarted(true)}>Start</Button>
         </Grid>
       </Grid>
     </Container>
