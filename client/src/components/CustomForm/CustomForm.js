@@ -55,23 +55,18 @@ const CustomForm = () => {
       <TextField id="outlined-basic" label="Name your workout" variant="outlined" value={workoutTitle} onChange={handleCustomTitleChange} />
       <AsyncAutoComplete />
       <Grid component="label" container alignItems="center" spacing={1}>
-        <Grid item>Upper Body</Grid>
         <Grid item>
-          <Switch
+          {/* <Switch
             checked={checked}
             onChange={toggleChecked}
-          />
-        </Grid>
-        <Grid item>Lower Body</Grid>
-      </Grid>
-      {/* <FormControlLabel
+          /> */}
+          <FormControlLabel
         control={<Switch checked={checked} onChange={toggleChecked} />}
-        label= "Upper Body"       
+        label= {checked ? "Lower Body" : "Upper Body"}      
       />
-      <FormControlLabel
-        control={<Switch checked={lbchecked} onChange={toggleLBChecked} />}
-        label= "Lower Body"       
-      /> */}
+        </Grid>
+      </Grid>
+      
       <br></br>
       <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomAddExercise}>
         Add Exercise
