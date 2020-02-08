@@ -74,20 +74,20 @@ const useStyles = makeStyles({
 
 const MyProfileCard = () => {
 
-    const classes = useStyles()
+  const classes = useStyles()
 
-    const [openEdit, setOpenEdit] = useState(false)
-    const [userState, setUserState] = useState({
+  const [openEdit, setOpenEdit] = useState(false)
+  const [userState, setUserState] = useState({
       username: '',
       name: '',
       age: '',
       weight: ''
-    })
+  })
 
-    useEffect(() => {
-      UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
-        .then(({ data: user }) => setUserState({ ...user }))
-        .catch(e => console.error(e))
+  useEffect(() => {
+    UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
+      .then(({ data: user }) => setUserState({ ...user }))
+      .catch(e => console.error(e))
     }, [])
 
     const handleClickOpen = type => event => {
@@ -102,7 +102,7 @@ const MyProfileCard = () => {
       } 
     }
   
-    return (
+  return (
 
     <Container>
       <Card className={classes.card} variant="outlined">
@@ -146,11 +146,25 @@ const MyProfileCard = () => {
           </Dialog>
       </CardActions>
     </Card>
+            <CardContent>
+              <Typography variant="body2" component="p">
+                {/* user's name will populate */}
+                <p>Name: {userState.name}</p> 
+                {/* age will populate as N/A */}
+                <p>Age: {userState.age} </p>
+                {/* weight will populate as N/A */}
+                <p>Weight: {userState.weight}</p>
+              </Typography>
+            </CardContent>
+            <CardActions>
+              {/* user can add age and weight here */}
+              <Button size="small">Edit Information</Button>
+            </CardActions>
+          </Card>
         </CardContent>
       </Card>
-      </Container>
-    )
-
+    </Container>
+  )
 }
 
 
