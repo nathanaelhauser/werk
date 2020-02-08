@@ -5,6 +5,7 @@ import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import ExerciseContext from '../../utils/ExerciseContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
+import CardTimer from '../../components/CardTimer'
 
 const Exercises = () => {
     const [authorizedState, setAuthorizedState] = useState(true)
@@ -22,6 +23,7 @@ const Exercises = () => {
 
             <UnauthorizedRedirect authorized={authorizedState} />
             <ExerciseCard/>
+            <CardTimer/>
         </>
     )
 
