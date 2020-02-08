@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect,useState, useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -34,6 +34,7 @@ const useStyles = makeStyles({
 
 const ExerciseCard = () => {
   const classes = useStyles();
+  const{exerciseName, mainMuscles,secondaryMuscles, exerciseDespcription, exerciseEquipment, handleAddFav} = useContext(ExerciseContext)
   
     const [exerciseState, setExerciseState] = useState({
         exerciseName: '',
@@ -41,7 +42,7 @@ const ExerciseCard = () => {
         secondaryMuscles: '',
         exerciseDespcription: '',
         exerciseEquipment: '',
-        addFav: [],
+        handleAddFav: [],
     })
     
 exerciseState.handleAddFav= event =>{
@@ -72,7 +73,7 @@ useEffect(() => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Add to Custom Workouts</Button>
+          <Button size="small" onClick= {handleAddFav}>Add to Custom Workouts</Button>
         </CardActions>
       </Card>
       </Paper>
