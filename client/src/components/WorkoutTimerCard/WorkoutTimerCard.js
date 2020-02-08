@@ -9,7 +9,7 @@ import UserContext from '../../utils/UserContext'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
-import CardActions from '@material-ui/core/CardActions'
+import Link from '@material-ui/core/Link'
 
 const white = '#FFFFFF'
 const green = '#2DC937'
@@ -111,9 +111,9 @@ const WorkoutTimerCard = () => {
             </h1>
             <p style={{ color: white }}>{seconds}</p>
             </CardContent>
-            <CardActions>
-            <Button size ="xs" colors= "">Back</Button>
-             </CardActions>
+             <Link to= "/custom">
+            <Button  size ="xs" colors= "">Back</Button>
+            </Link>
             </Card>
           </Paper>
         </Grid>
