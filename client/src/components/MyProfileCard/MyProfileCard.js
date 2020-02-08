@@ -17,6 +17,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import Container from '@material-ui/core/Container'
 import LandingContext from '../../utils/LandingContext'
 import EditForm from '../EditForm'
+// added for handleEdit
+import UserContext from '../../utils/UserContext'
 
 const useStyles = makeStyles({
     card: {
@@ -84,7 +86,10 @@ const MyProfileCard = () => {
       age: '',
       weight: ''
   })
-  const { name, age, weight } = useContext(LandingContext)
+  const { name, age, weight, handleInputChange } = useContext(LandingContext)
+
+  // added for handleEdit
+  const { _id: userLoggedIn } = useContext(UserContext)
 
   useEffect(() => {
     UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
@@ -104,9 +109,11 @@ const MyProfileCard = () => {
       }
     }
   
+    // can't get handleEdit to work***
+    // ALSO need to get handleInput to work
     const handleEdit = async event => {
       console.log('info edited')
-      const response = await UserAuthAPI.updateUser({ name, age, weight })
+      const response = await UserAuthAPI.updateUser(userLoggedIn, { name, age, weight })
       const { data:{ token }} = await response
       sessionStorage.setItem('werkToken', token)
     }
@@ -144,7 +151,7 @@ const MyProfileCard = () => {
               <Button 
                 autoFocus 
                 // needs to handleEdit
-                onClick={handleEdit} 
+                // onClick={handleEdit} 
                 color='secondary'
                 variant="contained"
               >
