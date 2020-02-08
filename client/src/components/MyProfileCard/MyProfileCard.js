@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+// 
+import React, { useState, useEffect, useContext } from 'react'
 import UserAPI from '../../utils/UserAPI'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -6,13 +7,14 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
 import Dialog from '@material-ui/core/Dialog'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogActions from '@material-ui/core/DialogActions'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
+import Container from '@material-ui/core/Container'
+import LandingContext from '../../utils/LandingContext'
 import EditForm from '../EditForm'
 
 const useStyles = makeStyles({
@@ -58,7 +60,7 @@ const useStyles = makeStyles({
       </MuiDialogTitle>
     )
   })
-
+  
   const DialogContent = withStyles(theme => ({
     root: {
       padding: theme.spacing(2),
@@ -73,9 +75,7 @@ const useStyles = makeStyles({
   }))(MuiDialogActions)
 
 const MyProfileCard = () => {
-
   const classes = useStyles()
-
   const [openEdit, setOpenEdit] = useState(false)
   const [userState, setUserState] = useState({
       username: '',
@@ -93,17 +93,16 @@ const MyProfileCard = () => {
     const handleClickOpen = type => event => {
       if (type === 'edit') {
         setOpenEdit(true)
-      } 
+      }
     }
   
     const handleClose = type => event => {
       if (type === 'edit') {
         setOpenEdit(false)
-      } 
+      }
     }
   
   return (
-
     <Container>
       <Card className={classes.card} variant="outlined">
         <CardContent>
@@ -112,40 +111,6 @@ const MyProfileCard = () => {
             {userState.username}
           </Typography>
           <Card className={classes.card} variant="outlined">
-      <CardContent>
-        <Typography variant="body2" component="p">
-          {/* user's name will populate */}
-         <p>Name: {userState.name}</p> 
-         {/* age will populate as N/A */}
-         <p>Age: {userState.age} </p>
-         {/* weight will populate as N/A */}
-         <p>Weight: {userState.weight}</p>
-        </Typography>
-      </CardContent>
-      <CardActions>
-        {/* user can add age and weight here */}
-        <Button size="small" onClick={handleClickOpen('edit')} color="secondary" variant="contained">Edit Information</Button>
-        <Dialog onClose={handleClose('edit')} aria-labelledby="customized-dialog-title" open={openEdit}>
-            <DialogTitle id="customized-dialog-title" onClose={handleClose('edit')}>
-              EDIT INFO
-            </DialogTitle>
-            <DialogContent dividers>
-              <EditForm />
-            </DialogContent>
-            <DialogActions>
-              <Button 
-                autoFocus 
-                // this needs to handle what happens after saving edited info
-                // onClick={handleEdit} 
-                color="primary"
-                variant="contained"
-              >
-                SAVE
-              </Button>
-            </DialogActions>
-          </Dialog>
-      </CardActions>
-    </Card>
             <CardContent>
               <Typography variant="body2" component="p">
                 {/* user's name will populate */}
@@ -158,7 +123,26 @@ const MyProfileCard = () => {
             </CardContent>
             <CardActions>
               {/* user can add age and weight here */}
-              <Button size="small">Edit Information</Button>
+              <Button size="small" onClick={handleClickOpen('edit')} color="secondary" variant="contained">Edit Information</Button>
+              <Dialog onClose={handleClose('edit')} aria-labelledby="customized-dialog-title" open={openEdit}>
+            <DialogTitle id="customized-dialog-title" onClose={handleClose('edit')}>
+              EDIT INFO
+            </DialogTitle>
+            <DialogContent dividers>
+              <EditForm />
+            </DialogContent>
+            <DialogActions>
+              <Button 
+                autoFocus 
+                // needs to handleEdit
+                // onClick={handleRegister} 
+                color="primary"
+                variant="contained"
+              >
+                SAVE
+              </Button>
+            </DialogActions>
+          </Dialog>
             </CardActions>
           </Card>
         </CardContent>
@@ -166,6 +150,4 @@ const MyProfileCard = () => {
     </Container>
   )
 }
-
-
 export default MyProfileCard
