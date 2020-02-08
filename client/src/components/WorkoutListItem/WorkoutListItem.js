@@ -5,7 +5,6 @@ import ListItemText from '@material-ui/core/ListItemText'
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import IconButton from '@material-ui/core/IconButton'
 import LibraryAddIcon from '@material-ui/icons/LibraryAdd'
-import QuickStartContext from '../../utils/QuickstartContext'
 import WorkoutContext from '../../utils/WorkoutContext'
 
 const WorkoutListItem = props => {
