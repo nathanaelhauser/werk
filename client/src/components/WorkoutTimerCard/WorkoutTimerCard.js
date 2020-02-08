@@ -19,8 +19,8 @@ const azure = '#0080FF'
 
 const useStyles = makeStyles({
   grid: {
-    height: '50vh',
-    display: 'flex',
+    height: '100%',
+    display: 'fluid',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'

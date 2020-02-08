@@ -20,10 +20,8 @@ const Exercises = () => {
 
     return (
         <>
-
             <UnauthorizedRedirect authorized={authorizedState} />
             <ExerciseCard/>
-            <CardTimer/>
         </>
     )
 
