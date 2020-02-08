@@ -6,6 +6,10 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import WorkoutContext from '../../utils/WorkoutContext'
 import UserContext from '../../utils/UserContext'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import CardActions from '@material-ui/core/CardActions'
 
 const white = '#FFFFFF'
 const green = '#2DC937'
@@ -22,6 +26,10 @@ const useStyles = makeStyles({
     alignItems: 'center'
   },
   paper: {
+    height: '100%',
+    width: '100%'
+  },
+  card: {
     height: '100%',
     width: '100%'
   }
@@ -89,8 +97,11 @@ const WorkoutTimerCard = () => {
         <Grid item sm={12} md={6} className={classes.grid}>
           <Paper 
             className={classes.paper} 
-            style={{ backgroundColor: colorState }}
+            //style={{ backgroundColor: colorState }}
           >
+          <Card style={{ backgroundColor: colorState }} >
+            
+            <CardContent>
             <h1 style={{ color: white }}>
               {
                 exerciseState.onExercise
@@ -99,6 +110,11 @@ const WorkoutTimerCard = () => {
               }
             </h1>
             <p style={{ color: white }}>{seconds}</p>
+            </CardContent>
+            <CardActions>
+            <Button size ="xs" colors= "">Back</Button>
+             </CardActions>
+            </Card>
           </Paper>
         </Grid>
       </Grid>
