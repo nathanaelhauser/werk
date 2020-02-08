@@ -7,7 +7,9 @@ import FormControl from '@material-ui/core/FormControl'
 import Typography from '@material-ui/core/Typography'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import LandingContext from '../../utils/LandingContext'
+// import LandingContext from '../../utils/LandingContext'
+// import UserContext from '../../utils/UserContext'
+import ProfileContext from '../../utils/ProfileContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 
 const EditForm = () => {
   const classes = useStyles()
-  const { name, age, weight, handleInputChange } = useContext(LandingContext)
+  const { name, age, weight, handleInputChange } = useContext(ProfileContext)
 
   const [userState, setUserState] = useState({
     username: '',

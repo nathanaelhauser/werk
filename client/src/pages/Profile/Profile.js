@@ -12,7 +12,7 @@ import CustomCard from '../../components/CustomCard'
 import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
-import WorkoutAPI from '../../utils/WorkoutAPI'
+import ProfileContext from '../../utils/ProfileContext'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -57,6 +57,15 @@ const Profile = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
   const [authorizedState, setAuthorizedState] = useState(true)
+  const [ profileState, setProfileState ] = useState({
+    name: '',
+    age: 0,
+    weight: 0
+  })
+
+  profileState.handleInputChange = event => {
+    setProfileState({ ...profileState, [event.target.name]: event.target.value })
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -71,6 +80,7 @@ const Profile = () => {
   }, [])
 
   return (
+    <ProfileContext.Provider value={profileState}>
     <div className={classes.root}>
       <UnauthorizedRedirect authorized={authorizedState} />
       <AppBar position="static" color="default">
@@ -95,6 +105,7 @@ const Profile = () => {
         <CustomCard />
       </TabPanel>
     </div>
+    </ProfileContext.Provider>
   )
 }
 
