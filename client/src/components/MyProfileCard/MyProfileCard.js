@@ -1,6 +1,7 @@
 // 
 import React, { useState, useEffect, useContext } from 'react'
 import UserAPI from '../../utils/UserAPI'
+import UserAuthAPI from '../../utils/UserAuthAPI'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
@@ -16,6 +17,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import Container from '@material-ui/core/Container'
 import LandingContext from '../../utils/LandingContext'
 import EditForm from '../EditForm'
+// added for handleEdit
+import UserContext from '../../utils/UserContext'
 
 const useStyles = makeStyles({
     card: {
@@ -83,6 +86,10 @@ const MyProfileCard = () => {
       age: '',
       weight: ''
   })
+  const { name, age, weight, handleInputChange } = useContext(LandingContext)
+
+  // added for handleEdit
+  const { _id: userLoggedIn } = useContext(UserContext)
 
   useEffect(() => {
     UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
@@ -102,6 +109,15 @@ const MyProfileCard = () => {
       }
     }
   
+    // can't get handleEdit to work***
+    // ALSO need to get handleInput to work
+    const handleEdit = async event => {
+      console.log('info edited')
+      const response = await UserAuthAPI.updateUser(userLoggedIn, { name, age, weight })
+      const { data:{ token }} = await response
+      sessionStorage.setItem('werkToken', token)
+    }
+
   return (
     <Container>
       <Card className={classes.card} variant="outlined">
@@ -135,8 +151,8 @@ const MyProfileCard = () => {
               <Button 
                 autoFocus 
                 // needs to handleEdit
-                // onClick={handleRegister} 
-                color="primary"
+                // onClick={handleEdit} 
+                color='secondary'
                 variant="contained"
               >
                 SAVE
