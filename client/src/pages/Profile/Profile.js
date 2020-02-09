@@ -12,6 +12,8 @@ import CustomCard from '../../components/CustomCard'
 import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import WorkoutContext from '../../utils/WorkoutContext'
+import WorkoutAPI from '../../utils/WorkoutAPI'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
