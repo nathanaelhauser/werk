@@ -4,10 +4,13 @@ import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 import WorkoutContext from '../../utils/WorkoutContext'
 import UserContext from '../../utils/UserContext'
 
 const white = '#FFFFFF'
+const black = '#000000'
 const green = '#2DC937'
 const yellow = '#E7B416'
 const red = '#CC3232'
@@ -23,7 +26,19 @@ const useStyles = makeStyles({
   },
   paper: {
     height: '100%',
-    width: '100%'
+    width: '100%',
+    textAlign: 'center'
+  },
+  title: {
+    color: white,
+    textDecorationLine: 'underline'
+  },
+  text: {
+    color: white
+  },
+  button: {
+    color: black,
+    backgroundColor: white
   }
 })
 
@@ -31,45 +46,54 @@ const WorkoutTimerCard = () => {
   const classes = useStyles()
   const { workout } = useContext(WorkoutContext)
   const { _id: userID } = useContext(UserContext)
-  const [ colorState, setColorState ] = useState('')
+  const [colorState, setColorState] = useState('')
   const [exerciseState, setExerciseState] = useState({
     exerciseIndex: 0,
     onExercise: true,
-    startedWorkout: false
+    startedWorkout: false,
+    paused: false
   })
-  const { seconds, restart, resume, pause } = useTimer({ onExpire: () => {
-    // Last exercise has ended so end workout
-    if (exerciseState.exerciseIndex === workout.exercises.length - 1) {
-      /** 
-       * NEED MORE CODE HERE, NEED TO DECIDE WHAT HAPPENS WHEN WORKOUT HAS ENDED
-       * Workout Ended
-       * MAKE SURE TO CREATE EVENT using workout._id and userID
-       * */ 
-      return
+  const { seconds, restart, resume, pause } = useTimer({
+    onExpire: () => {
+      // Last exercise has ended so end workout
+      if (exerciseState.exerciseIndex === workout.exercises.length - 1) {
+        /** 
+         * NEED MORE CODE HERE, NEED TO DECIDE WHAT HAPPENS WHEN WORKOUT HAS ENDED
+         * Workout Ended
+         * MAKE SURE TO CREATE EVENT using workout._id and userID
+         * */
+        return
+      }
+      // If user just finished exercise, then start rest
+      if (exerciseState.onExercise) {
+        setExerciseState({ 
+          ...exerciseState, 
+          onExercise: false,
+          paused: false })
+        restart(Date.now() + 6000)
+      } else {
+        // Else user just finished rest, increment exercise and start exercise
+        setExerciseState({
+          ...exerciseState,
+          onExercise: true,
+          exerciseIndex: exerciseState.exerciseIndex + 1,
+          paused: false
+        })
+        restart(Date.now() + 16000)
+      }
     }
-    // If user just finished exercise, then start rest
-    if (exerciseState.onExercise) {
-      setExerciseState({ ...exerciseState, onExercise: false })
-      restart(Date.now() + 6000)
-    } else {
-      // Else user just finished rest, increment exercise and start exercise
-      setExerciseState({ 
-        ...exerciseState, 
-        onExercise: true, 
-        exerciseIndex: exerciseState.exerciseIndex + 1
-      })
-      restart(Date.now() + 16000)
-    }
-  }})
+  })
 
   useEffect(() => {
     // Haven't started the workout yet
     if (!exerciseState.startedWorkout) {
       setExerciseState({ ...exerciseState, startedWorkout: true })
       restart(Date.now() + 15000)
-    }
-    // If user on exercise, set color according to seconds left
-    if (exerciseState.onExercise) {
+    } else if (exerciseState.paused) {
+      // If timer pauser, set background color to black
+      setColorState(black)
+    } else if (exerciseState.onExercise) {
+      // If user on exercise, set background color according to seconds left
       if (seconds > 10) {
         setColorState(green)
       } else if (seconds > 5) {
@@ -78,27 +102,48 @@ const WorkoutTimerCard = () => {
         setColorState(red)
       }
     } else {
-      // Else user on rest, set color to azure
+      // If user on rest, set background color to azure
       setColorState(azure)
     }
-  }, [seconds, exerciseState.onExercise])
+  }, [seconds, exerciseState.onExercise, exerciseState.paused])
+
+  const handlePause = () => {
+    if (exerciseState.paused) {
+      setExerciseState({ ...exerciseState, paused: false })
+      resume()
+    }
+    else {
+      setExerciseState({ ...exerciseState, paused: true })
+      pause()
+    }
+  }
 
   return (
     <Container>
       <Grid container direction="row" alignItems="center" justify="center">
-        <Grid item sm={12} md={6} className={classes.grid}>
-          <Paper 
-            className={classes.paper} 
+        <Grid item xs={12} sm={12} md={8} lg={6} className={classes.grid}>
+          <Paper
+            className={classes.paper}
             style={{ backgroundColor: colorState }}
           >
-            <h1 style={{ color: white }}>
+            <Typography variant="h4" className={classes.title}>
               {
                 exerciseState.onExercise
-                ? workout.exercises[exerciseState.exerciseIndex].name
-                : 'Rest'
+                  ? workout.exercises[exerciseState.exerciseIndex].name
+                  : 'Rest'
               }
-            </h1>
-            <p style={{ color: white }}>{seconds}</p>
+            </Typography>
+            <br/>
+            <Typography variant="h5" className={classes.text}>
+              {seconds}
+            </Typography>
+            <Button variant="contained" className={classes.button} onClick={handlePause}>
+              {
+                exerciseState.paused
+                  ? 'Resume'
+                  : 'Pause'
+              }
+            </Button>
           </Paper>
         </Grid>
       </Grid>
