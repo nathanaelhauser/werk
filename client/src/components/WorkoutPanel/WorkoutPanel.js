@@ -65,9 +65,9 @@ const WorkoutPanel = props => {
           <Typography>
             {props.area === 'upper' ? 'Upper Body' : 'Lower Body'}
           </Typography>
-          <Typography>
-            {`Exercises: ${props.exercises.map(exercise => exercise.name).join(', ')}`}
-          </Typography>
+          {
+            props.exercises.map(exercise => <Typography>{exercise.name}</Typography>)
+          }
         </Grid>
       </ExpansionPanelDetails>
     </ExpansionPanel>
