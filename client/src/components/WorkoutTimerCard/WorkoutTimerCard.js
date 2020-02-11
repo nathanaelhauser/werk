@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { useTimer } from 'react-timer-hook'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
@@ -8,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import WorkoutContext from '../../utils/WorkoutContext'
 import UserContext from '../../utils/UserContext'
+import EventAPI from '../../utils/EventAPI'
 
 const white = '#FFFFFF'
 const black = '#000000'
@@ -45,8 +47,9 @@ const useStyles = makeStyles({
 const WorkoutTimerCard = () => {
   const classes = useStyles()
   const { workout } = useContext(WorkoutContext)
-  const { _id: userID } = useContext(UserContext)
+  const { _id: user } = useContext(UserContext)
   const [colorState, setColorState] = useState('')
+  const [goRecent, setGoRecent] = useState(false)
   const [exerciseState, setExerciseState] = useState({
     exerciseIndex: 0,
     onExercise: true,
@@ -57,11 +60,9 @@ const WorkoutTimerCard = () => {
     onExpire: () => {
       // Last exercise has ended so end workout
       if (exerciseState.exerciseIndex === workout.exercises.length - 1) {
-        /** 
-         * NEED MORE CODE HERE, NEED TO DECIDE WHAT HAPPENS WHEN WORKOUT HAS ENDED
-         * Workout Ended
-         * MAKE SURE TO CREATE EVENT using workout._id and userID
-         * */
+        EventAPI.createEvent({ user, workout: workout._id })
+          .then(() => setGoRecent(true))
+          .catch(e => console.error(e))
         return
       }
       // If user just finished exercise, then start rest
@@ -83,6 +84,12 @@ const WorkoutTimerCard = () => {
       }
     }
   })
+
+  const renderRedirectRecent = () => {
+    if (goRecent) {
+      return <Redirect to="/recent" />
+    }
+  }
 
   useEffect(() => {
     // Haven't started the workout yet
@@ -120,6 +127,7 @@ const WorkoutTimerCard = () => {
 
   return (
     <Container>
+      {renderRedirectRecent()}
       <Grid container direction="row" alignItems="center" justify="center">
         <Grid item xs={12} sm={12} md={8} lg={6} className={classes.grid}>
           <Paper
