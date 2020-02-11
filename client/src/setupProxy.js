@@ -9,8 +9,8 @@ module.exports = function(app) {
         '/userAuth', 
         '/login',
         '/authorize',
-        '/myuser'
-        
+        '/myuser',
+        '/events' 
         
       ], { target: "http://localhost:3001", changeOrigin: true }
     )

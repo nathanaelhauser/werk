@@ -12,6 +12,7 @@ import Quickstart from './pages/Quickstart'
 import Profile from './pages/Profile'
 import Workout from './pages/Workout'
 import Exercises from './pages/Exercises'
+import Recent from './pages/Recent'
 import Nav from './components/Nav'
 import NavDrawer from './components/NavDrawer'
 import DrawerContext from './utils/DrawerContext'
@@ -128,6 +129,9 @@ const App = props => {
                   </Route>
                   <Route path="/exercises">
                     <Exercises />
+                  </Route>
+                  <Route path="/recent">
+                    <Recent />
                   </Route>
 
                 </Switch>
