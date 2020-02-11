@@ -59,8 +59,8 @@ const Profile = () => {
   const [authorizedState, setAuthorizedState] = useState(true)
   const [ profileState, setProfileState ] = useState({
     name: '',
-    age: 0,
-    weight: 0
+    age: '',
+    weight: ''
   })
 
   profileState.handleInputChange = event => {

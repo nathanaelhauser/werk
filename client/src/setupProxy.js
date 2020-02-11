@@ -10,8 +10,8 @@ module.exports = function(app) {
         '/login',
         '/authorize',
         '/myuser',
-        '/events' 
-        
+        '/events',
+        '/users'
       ], { target: "http://localhost:3001", changeOrigin: true }
     )
   )

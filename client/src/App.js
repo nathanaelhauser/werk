@@ -67,6 +67,10 @@ const App = props => {
     weight: 0
   })
 
+  userState.updateUserContext = user => {
+    setUserState({ ...userState, ...user })
+  }
+
   useEffect(() => {
     if (sessionStorage.getItem('werkToken')) {
       UserAPI.getMyUser(sessionStorage.getItem('werkToken'))
