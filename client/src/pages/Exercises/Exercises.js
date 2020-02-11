@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ExerciseCard from '../../components/ExerciseCard'
+import ExerciseList from '../../components/ExerciseList'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import ExerciseAPI from '../../utils/ExerciseAPI'
@@ -21,7 +22,10 @@ const Exercises = () => {
     return (
         <>
             <UnauthorizedRedirect authorized={authorizedState} />
-            <ExerciseCard/>
+            
+            <ExerciseCard>
+            <ExerciseList/>
+            </ExerciseCard>
         </>
     )
 
