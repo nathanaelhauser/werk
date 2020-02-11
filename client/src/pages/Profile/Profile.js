@@ -12,12 +12,9 @@ import CustomCard from '../../components/CustomCard'
 import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
-<<<<<<< HEAD
 import WorkoutContext from '../../utils/WorkoutContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
-=======
 import ProfileContext from '../../utils/ProfileContext'
->>>>>>> 020c74580722bffedbc24862194a973489e02053
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
