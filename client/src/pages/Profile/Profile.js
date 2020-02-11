@@ -12,7 +12,11 @@ import CustomCard from '../../components/CustomCard'
 import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import WorkoutContext from '../../utils/WorkoutContext'
+import WorkoutAPI from '../../utils/WorkoutAPI'
 import ProfileContext from '../../utils/ProfileContext'
+
+const { getAllWorkouts, deleteWorkout } = WorkoutAPI
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -79,7 +83,24 @@ const Profile = () => {
       .catch(e => console.error(e))
   }, [])
 
+  const [ workoutState, setWorkoutState ] = useState({
+    workouts: []
+  })
+
+  workoutState.handleDeleteWorkout = (id) => {
+    let workouts = JSON.parse(JSON.stringify(workoutState.workouts))
+    let workoutsFiltered = workouts.filter(workout => workout._id !== id)
+    setWorkoutState({...workoutState, workouts: workoutsFiltered})
+  }
+
+  useEffect(() => {
+    getAllWorkouts()
+    .then(({data: workouts}) => setWorkoutState({...workoutState, workouts}))
+    .catch(e => console.error(e))
+  }, [])
+
   return (
+    <WorkoutContext.Provider value={workoutState}>
     <ProfileContext.Provider value={profileState}>
     <div className={classes.root}>
       <UnauthorizedRedirect authorized={authorizedState} />
@@ -106,6 +127,7 @@ const Profile = () => {
       </TabPanel>
     </div>
     </ProfileContext.Provider>
+    </WorkoutContext.Provider>
   )
 }
 

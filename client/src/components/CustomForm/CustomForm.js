@@ -32,14 +32,9 @@ const useButtonStyles = makeStyles(theme => ({
 const CustomForm = () => {
 
   const [checked, setChecked] = useState(false)
-  const [lbchecked, lbsetChecked] = useState(false)
 
   const toggleChecked = () => {
     setChecked(prev => !prev)
-  }
-
-  const toggleLBChecked = () => {
-    lbsetChecked(prev => !prev)
   }
 
   const classes = useStyles()
