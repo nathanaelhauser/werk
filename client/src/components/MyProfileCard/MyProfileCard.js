@@ -106,13 +106,13 @@ const MyProfileCard = () => {
   const handleUpdate = event => {
     let user = {}
     if (inputName) {
-      user = { ...user, inputName }
+      user = { ...user, name: inputName }
     }
     if (inputAge) {
-      user = { ...user, inputAge }
+      user = { ...user, age: inputAge }
     }
     if (inputWeight) {
-      user = { ...user, inputWeight }
+      user = { ...user, weigh: inputWeight }
     }
     UserAPI.updateUser(sessionStorage.getItem('werkToken'), user)
       .then(() => updateUserContext(user))
@@ -151,7 +151,6 @@ const MyProfileCard = () => {
                 <DialogActions>
                   <Button
                     autoFocus
-                    // needs to handleEdit
                     onClick={handleUpdate}
                     color='secondary'
                     variant="contained"
