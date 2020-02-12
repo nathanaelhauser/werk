@@ -9,6 +9,7 @@ import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
 import Fade from '@material-ui/core/Fade'
 import ModalList from '../ModalList'
+import lb from './qsPictures/lb.jpg'
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles(theme => ({
 const useCardStyles = makeStyles({
   card: {
     maxWidth: 370,
+    background: "#f44336"
   },
   media: {
     height: "100%",
@@ -58,15 +60,12 @@ const LBModal = () => {
          className={cardClasses.media}
          component="img"
          alt="upperbody"
-         image={require('./qsPictures/lowerBody.jpg')}
+         image={lb}
          title="Lower body"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography gutterBottom variant="h5" component="h2" align="center">
           Lower Body
-        </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          Squat til you can't squat no more, then squat some more
         </Typography>
       </CardContent>
     </CardActionArea>
