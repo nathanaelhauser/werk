@@ -31,7 +31,8 @@ const useStyles = makeStyles({
   },
   paper: {
     height: '100%',
-    width: '100%'
+    width: '100%',
+    textAlign: 'center'
   },
   card: {
     height: '100%',
