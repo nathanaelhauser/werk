@@ -11,6 +11,13 @@ const UserAPI = {
       'Authorization': `Bearer ${token}`
     }
   }),
+  getFriends: (token) => axios({
+    method: 'GET',
+    url: '/friends',
+    header: {
+      'Authorization': `Bearer ${token}`
+    }
+  }),
   createUser: (user) => axios.post('/users', user),
   updateUser: (token, values) => axios({
     method: 'PUT',

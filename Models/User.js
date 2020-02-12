@@ -1,13 +1,21 @@
 module.exports = (model, Schema) =>{
     const User = new Schema ({
         name: String,
-        username: String,
+        username: {
+            type: String,
+            unique: true
+        },
         email: String,
         age: Number,
         weight: Number,
-        workouts: [{ type: Schema.Types.ObjectId, ref: 'Workout' }]
+        isLoggedIn: {
+            type: Boolean,
+            default: true
+        },
+        workouts: [{ type: Schema.Types.ObjectId, ref: 'Workout' }],
+        friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
     })
 
-User.plugin(require('passport-local-mongoose'))
+    User.plugin(require('passport-local-mongoose'))
     return model ('User', User)
 }

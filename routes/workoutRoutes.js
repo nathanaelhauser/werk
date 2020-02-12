@@ -1,10 +1,20 @@
 const { Workout, Exercise } = require('../Models')
+const passport = require('passport')
 
 module.exports = app => {
 
   // GET ALL WORKOUTS 
   app.get('/workouts', (req, res) => {
     Workout.find()
+      .populate('exercises')
+      .then(workouts => res.json(workouts))
+      .catch(e => console.error(e))
+  })
+
+  // GET USER CUSTOM WORKOUTS
+  app.get('/userworkouts', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { _id } = req.user
+    Workout.find({ author: _id })
       .populate('exercises')
       .then(workouts => res.json(workouts))
       .catch(e => console.error(e))
