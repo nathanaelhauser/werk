@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import UserAuthAPI from '../../utils/UserAuthAPI'
+import UserAPI from '../../utils/UserAPI'
 import LandingContext from '../../utils/LandingContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
@@ -87,19 +88,19 @@ const Jumbotron = () => {
     }
   }
 
-  const handleLogin = async event => {
-    console.log('Trying to login!')
-    const response = await UserAuthAPI.loginUser({ username, password })
-    const { data:{ token }} = await response
-    sessionStorage.setItem('werkToken', token)
-    setToHome(true)
+  const handleLogin = event => {
+    UserAuthAPI.loginUser({ username, password })
+      .then(({ data: { token } }) => {
+        sessionStorage.setItem('werktoken', token)
+        setToHome(true)
+      })
+      .catch(e => console.error(e))
   }
 
   const handleRegister = async event => {
     if (password !== confirmPassword) {
       return
     }
-    console.log('Trying to register!')
     const response = await UserAuthAPI.registerUser({ name, username, password, age, weight })
     const { status } = await response
     if (status === 200) {

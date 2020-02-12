@@ -15,15 +15,14 @@ module.exports = app => {
     app.post('/login', (req, res) => {
         User.authenticate()(req.body.username, req.body.password, (e, user) => {
             if (e) { console.log(e) }
-            res.json(user ? {
-                token: jwt.sign({ id: user._id }, process.env.SECRET)
-            } : user)
+            if (user) {
+                User.updateOne({ _id: user._id }, { isLoggedIn: true })
+                    .then(() => res.json({ token: jwt.sign({ id: user._id }, process.env.SECRET) }))
+                    .catch(e => console.log(e))
+            } else {
+                res.json(user)
+            }
         })
-    })
-
-    app.get('/logout/:id', (req, res) => {
-        req.logout();
-        res.redirect('/');
     })
 
     app.get('/authorize', (req, res, next) => {
