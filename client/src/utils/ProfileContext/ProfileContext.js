@@ -4,7 +4,8 @@ const ProfileContext = createContext({
   name: '',
   age: '',
   weight: '',
-  handleInputChange: () => {}
+  handleInputChange: () => {},
+  clearInputs: () => {}
 })
 
 export default ProfileContext

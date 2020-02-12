@@ -86,7 +86,7 @@ const MyProfileCard = () => {
     age: '',
     weight: ''
   })
-  const { name: inputName, age: inputAge, weight: inputWeight } = useContext(ProfileContext)
+  const { name: inputName, age: inputAge, weight: inputWeight, clearInputs } = useContext(ProfileContext)
   const { updateUserContext } = useContext(UserContext)
   
   useEffect(() => {
@@ -125,7 +125,9 @@ const MyProfileCard = () => {
     UserAPI.updateUser(sessionStorage.getItem('werkToken'), user)
       .then(() => {
         updateUserContext(userState)
-
+        setUserState({ ...userState, ...user })
+        setOpenEdit(false)
+        clearInputs()
       })
       .catch(e => console.error(e))
   }
