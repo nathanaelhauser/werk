@@ -51,7 +51,7 @@ const CustomCard = () => {
   const classes = useStyles()
   const [dense, setDense] = useState(false)
   const [secondary, setSecondary] = useState(false)
-  const { workouts, handleDeleteWorkout} = useContext(WorkoutContext)
+  const { workouts, handleDeleteWorkout, handleStartWorkout} = useContext(WorkoutContext)
 
   return (
     <Container>
@@ -65,12 +65,13 @@ const CustomCard = () => {
           {
             workouts.length ? workouts.map(workout => (
               <p>
+                {console.log(workout)}
               <Grid container>
               <Grid item xs={6}>
-             <span>{workout.name}</span> 
+             {workout.name}
              </Grid>
              <Grid item xs={3}>
-             <Button variant="contained" color="primary">
+             <Button variant="contained" color="primary" onClick={handleStartWorkout}>
                 Start
             </Button>
             </Grid>
