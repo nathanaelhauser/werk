@@ -106,7 +106,7 @@ const Profile = () => {
   return (
     <WorkoutContext.Provider value={workoutState}>
     <ProfileContext.Provider value={profileState}>
-    <div className={classes.root}>
+    <div className={classes.root} align="center">
       <UnauthorizedRedirect authorized={authorizedState} />
       <AppBar position="static" color="default">
         <Tabs

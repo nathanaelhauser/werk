@@ -25,6 +25,7 @@ const Recent = () => {
 
   return (
     <Container>
+      <br/>
       <div>
         {
           recentState.events

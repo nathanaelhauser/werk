@@ -54,14 +54,14 @@ const CustomCard = () => {
   const { workouts, handleDeleteWorkout} = useContext(WorkoutContext)
 
   return (
-    <Container>
+    <Container align="center">
       <Card className={classes.card} variant="outlined">
         <CardContent>
           <Grid item xs={12} md={6}>
             {/* <Typography variant="h6" className={classes.title}>
             WORKOUTS
           </Typography> */}
-            Workouts
+            - Workouts -
           {
             workouts.length ? workouts.map(workout => (
               <p>

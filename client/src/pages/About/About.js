@@ -78,7 +78,7 @@ const About = () => {
                 <a href="https://github.com/mesmerizingYeti" className={classes.link}>
                     <DevCard
                         image="https://ca.slack-edge.com/TKAFG5QD9-ULXR8AFUZ-c9a095d1d510-512"
-                        name="LORD NATHAN SAMA"
+                        name="Nathan"
                         role="Git Master"
                         favorite="Anything Glute"
                     />

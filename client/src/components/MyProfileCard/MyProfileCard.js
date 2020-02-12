@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserAPI from '../../utils/UserAPI'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -54,7 +55,7 @@ const DialogTitle = withStyles(styles)(props => {
   const { children, classes, onClose, ...other } = props
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h6">{children}</Typography>
+      <Typography variant="h6">{children} </Typography>
       {onClose ? (
         <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
           <CloseIcon />
@@ -133,7 +134,7 @@ const MyProfileCard = () => {
   }
 
   return (
-    <Container>
+    <Container align="center">
       <Card className={classes.card} variant="outlined">
         <CardContent>
           {/* user's username will populate */}
@@ -151,9 +152,13 @@ const MyProfileCard = () => {
                 <p>Weight: {userState.weight}</p>
               </Typography>
             </CardContent>
-            <CardActions>
+            <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center">
+             <CardActions>
               {/* user can add age and weight here */}
-              <Button size="small" onClick={handleClickOpen('edit')} color="secondary" variant="contained">Edit Information</Button>
+              <Button size="small" onClick={handleClickOpen('edit')} color="secondary" variant="contained" >Edit Information</Button>
               <Dialog onClose={handleClose('edit')} aria-labelledby="customized-dialog-title" open={openEdit}>
                 <DialogTitle id="customized-dialog-title" onClose={handleClose('edit')}>
                   EDIT INFO
@@ -173,6 +178,8 @@ const MyProfileCard = () => {
                 </DialogActions>
               </Dialog>
             </CardActions>
+            </Grid>
+
           </Card>
         </CardContent>
       </Card>
