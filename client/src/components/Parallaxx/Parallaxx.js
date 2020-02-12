@@ -22,13 +22,13 @@ const theme = createMuiTheme({
 
 const Parallaxx = _ => {
     return (
-        <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
     <div>
         {/* -----basic config-----*/}
         <Parallax
-            blur={15}
-            bgImage={require('./ParallaxImages/p3.jpg')}
-            bgImageAlt="the cat"
+            blur={0}
+            bgImage={require('./ParallaxImages/barbell.jpg')}
+            bgImageAlt="barbell"
             strength={600}
         >
             <div>
@@ -40,7 +40,7 @@ const Parallaxx = _ => {
         </Parallax>
  
         {/* -----dynamic blur----- */}
-        <Parallax
+        {/* <Parallax
             // blur={{ min: -15, max: 15 }}
             blur={15}
             bgImage={require('./ParallaxImages/p3.jpg')}
@@ -51,9 +51,9 @@ const Parallaxx = _ => {
                 <h1></h1>
             </div>
             <div style={{ height: '800px' }} />
-        </Parallax>
+        </Parallax> */}
 
-        <Parallax
+        {/* <Parallax
             // blur={{ min: -15, max: 15 }}
             blur={15}
             bgImage={require('./ParallaxImages/p3.jpg')}
@@ -64,7 +64,7 @@ const Parallaxx = _ => {
                 <Typography variant="h6"></Typography>
             </div>
             <div style={{ height: '800px' }} />
-        </Parallax>
+        </Parallax> */}
  
         {/* -----custom background element-----
         <Parallax strength={300}>
@@ -75,7 +75,7 @@ const Parallaxx = _ => {
         </Parallax> */}
  
         {/* -----renderProp: "renderLayer"-----*/}
-        <Parallax
+        {/* <Parallax
             bgImage={'./ParallaxImages/nathan.jpg'}
             strength={400}
             renderLayer={percentage => (
@@ -92,7 +92,7 @@ const Parallaxx = _ => {
             )}
         >
             <p></p>
-        </Parallax>
+        </Parallax> */}
     </div>
     </ThemeProvider>
     )
