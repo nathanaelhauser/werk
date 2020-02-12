@@ -4,10 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import RemoveIcon from '@material-ui/icons/Delete'
 import Button from '@material-ui/core/Button'
-import Switch from '@material-ui/core/Switch'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Grid from '@material-ui/core/Grid'
 
 const useGridStyles = makeStyles(theme => ({
   root: {
