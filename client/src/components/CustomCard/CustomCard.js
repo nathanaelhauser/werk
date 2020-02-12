@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
@@ -10,7 +10,9 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import Grid from '@material-ui/core/Grid'
-import DeleteIcon from '@material-ui/icons/Delete'
+import WorkoutContext from '../../utils/WorkoutContext'
+import RemoveIcon from '@material-ui/icons/Delete'
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -49,6 +51,7 @@ const CustomCard = () => {
   const classes = useStyles()
   const [dense, setDense] = useState(false)
   const [secondary, setSecondary] = useState(false)
+  const { workouts, handleDeleteWorkout} = useContext(WorkoutContext)
 
   return (
     <Container>
@@ -58,23 +61,15 @@ const CustomCard = () => {
             {/* <Typography variant="h6" className={classes.title}>
             WORKOUTS
           </Typography> */}
-            <div className={classes.demo}>
-              <List dense={dense}>
-                {generate(
-                  <ListItem>
-                    <ListItemText
-                      primary="Workout"
-                      secondary={secondary ? 'Secondary text' : null}
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton edge="end" aria-label="delete">
-                        <DeleteIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>,
-                )}
-              </List>
-            </div>
+            Workouts
+          {
+            workouts.length ? workouts.map(workout => (
+              <p>
+             <span>{workout.name}</span> 
+             <IconButton size="small" aria-label="delete" onClick={() => handleDeleteWorkout(workout._id)}><RemoveIcon fontSize="small"/></IconButton>
+             </p>
+            )) : null
+          }
           </Grid>
         </CardContent>
         <CardActions>

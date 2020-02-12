@@ -7,12 +7,15 @@ module.exports = app => {
   app.get('/events', passport.authenticate('jwt', { session: false }), (req, res) => {
     const { _id } = req.user
     Event.find({ user: _id })
-      .populate('workout')
+      .populate({
+        path: 'workout',
+        populate: { path: 'exercises' }
+      })
       .then(events => res.json(events))
       .catch(e => console.error(e))
   })
 
-  // GET ONE EVENT FOR USER
+  // GET ONE EVENT
   app.get('/events/:id', (req, res) => {
     Event.find({ _id: req.params.id })
       .populate('user')
