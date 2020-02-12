@@ -54,13 +54,7 @@ const CustomList = () => {
         </p>
         )) 
          : null
-    }
-    {
-      exercises.length ? <FormControlLabel
-      control={<Switch checked={checked} onChange={toggleChecked} />}
-      label={checked ? 'Lower Body' : "Upper Body"}
-    /> : null
-    }
+    },
     {
       exercises.length ? <Button variant="contained" className={classes.typography} onClick={handleCustomAddWorkout}> Create Workout </Button> : null
     }
