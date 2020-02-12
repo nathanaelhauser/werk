@@ -12,6 +12,7 @@ module.exports = function(app) {
         '/myuser',
         '/events',
         '/users',
+        '/friends',
         '/userworkouts'
       ], { target: "http://localhost:3001", changeOrigin: true }
     )

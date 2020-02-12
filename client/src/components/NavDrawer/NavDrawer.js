@@ -11,6 +11,7 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun'
 import ChildFriendlyIcon from '@material-ui/icons/ChildFriendly'
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import InfoIcon from '@material-ui/icons/Info'
 import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
@@ -145,7 +146,7 @@ const NavDrawerGuts = props => {
           <ListItem button key={'Recent'}>
             <Grid container spacing={3}>
               <Grid item xs={4}>
-                <ChildFriendlyIcon />
+                <AccessTimeIcon />
               </Grid>
               <Grid item xs={8} className={classes.gridItem}>
                 <Typography
