@@ -6,7 +6,9 @@ import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import ExerciseContext from '../../utils/ExerciseContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
-import CardTimer from '../../components/CardTimer'
+import { get } from 'mongoose'
+
+const {getExercises} =ExerciseAPI
 
 const Exercises = () => {
     const [authorizedState, setAuthorizedState] = useState(true)
@@ -18,17 +20,20 @@ const Exercises = () => {
             })
             .catch(e => console.error(e))
     }, [])
+const [exceriseState,setExerciseState] =useState()
+    useEffect(() =>{
+    getExercises()
+    .then()
+    })
 
     return (
         <>
             <UnauthorizedRedirect authorized={authorizedState} />
-            
             <ExerciseCard>
             <ExerciseList/>
             </ExerciseCard>
         </>
-    )
-
+)
 }
 
 export default Exercises
