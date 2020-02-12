@@ -6,7 +6,8 @@ const WorkoutContext = createContext({
     workoutStarted: false,
     setWorkout: () => {},
     setWorkoutStarted: () => {},
-    handleDeleteWorkout: () => {}
+    handleDeleteWorkout: () => {},
+    handleStartWorkout: () => {}
 })
 
 export default WorkoutContext
