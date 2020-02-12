@@ -71,6 +71,10 @@ const Profile = () => {
     setProfileState({ ...profileState, [event.target.name]: event.target.value })
   }
 
+  profileState.clearInputs = () => {
+    setProfileState({ ...profileState, name: '', age: '', weight: '' })
+  }
+
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
