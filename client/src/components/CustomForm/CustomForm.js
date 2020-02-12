@@ -49,8 +49,11 @@ const CustomForm = () => {
     <form className={classes.root} noValidate autoComplete="off">
       <TextField id="outlined-basic" label="Name your workout" variant="outlined" value={workoutTitle} onChange={handleCustomTitleChange} />
       <AsyncAutoComplete />
-      <Grid component="label" container alignItems="center" spacing={1}>
-        <Grid item>
+      <Grid component="label" container alignItems="center" spacing={1}direction="column" justify="center" >
+        <Grid item container
+            direction="column"
+            justify="center"
+            alignItems="center">
           {/* <Switch
             checked={checked}
             onChange={toggleChecked}
@@ -63,9 +66,15 @@ const CustomForm = () => {
       </Grid>
       
       <br></br>
-      <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomAddExercise}>
+      <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center">
+        <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomAddExercise}>
         Add Exercise
       </Button>
+      </Grid>
+      
 
     </form>
   )
