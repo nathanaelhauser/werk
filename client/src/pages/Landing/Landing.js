@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Parallaxx from '../../components/Parallaxx'
 import LandingContext from '../../utils/LandingContext'
 import LandingCard from '../../components/LandingCard'
-import barbellAndBelt from './LandingImages/barbellAndBelt.jpg'
+import lift from './LandingImages/lift.jpg'
 import squat from './LandingImages/squat.jpg'
 import team from './LandingImages/team.jpg'
 import Grid from '@material-ui/core/Grid'
@@ -34,7 +34,7 @@ const Landing = () => {
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} align="center">
                     <LandingCard
-                        image={barbellAndBelt}
+                        image={lift}
                         benefit="Build Custom Workouts"
                     />
                 </Grid>
