@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -131,10 +131,10 @@ const NavGuts = props => {
                       open={open}
                       onClose={handleClose}
                     >
-                      <Link to= "/profile">
+                      <Link to= "/profile" className={classes.link}>
                         <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
-                      <Link to = "/">
+                      <Link to = "/" className={classes.link}>
                         <MenuItem onClick={handleClose}>Sign Out</MenuItem>
                       </Link>
                     </Menu>
