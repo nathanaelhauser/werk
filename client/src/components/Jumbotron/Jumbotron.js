@@ -16,7 +16,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import RegForm from '../RegForm'
 import LoginForm from '../LoginForm'
 import logo from './JumbotronImages/logo.png'
-import subtitle from './JumbotronImages/subtitle.png'
+import werkSubtitle from './JumbotronImages/werkSubtitle.png'
+import werkLogo from './JumbotronImages/werkLogo.png'
 
 const useStyles = makeStyles({
   root: {
@@ -125,11 +126,11 @@ const Jumbotron = () => {
       >
         <Grid item>
           {/* <Typography variant="h3">WERK</Typography> */}
-          <img src={logo} alt="werk logo"/>
+          <img src={werkLogo} alt="werk logo"/>
         </Grid>
         <Grid item>
           {/* <Typography variant="subtitle1">© the-group 2020</Typography> */}
-          <img src={subtitle} alt="subtitle"/>
+          <img src={werkSubtitle} alt="subtitle"/>
         </Grid>
         <br/><br/><br/><br/><br/><br/>
         <Grid item>

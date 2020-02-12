@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import Parallaxx from '../../components/Parallaxx'
 import LandingContext from '../../utils/LandingContext'
+import LandingCard from '../../components/LandingCard'
+import barbellAndBelt from './LandingImages/barbellAndBelt.jpg'
+import squat from './LandingImages/squat.jpg'
+import team from './LandingImages/team.jpg'
+import Grid from '@material-ui/core/Grid'
+import { Typography } from '@material-ui/core'
 
 const Landing = () => {
     const [ landingState, setLandingState ] = useState({
@@ -19,6 +25,34 @@ const Landing = () => {
     return (
         <LandingContext.Provider value={landingState}>
             <Parallaxx />
+            <br/>
+            <Grid container spacing={4} align="center">
+                <Grid item xs={12}>
+                    <Typography>
+                        WERK helps you reach your fitness goals
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4} align="center">
+                    <LandingCard
+                        image={barbellAndBelt}
+                        benefit="Build Custom Workouts"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4} align="center">
+                    <LandingCard
+                        image={squat}
+                        benefit="Access To Our Workouts"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4} align="center">
+                    <LandingCard
+                        image={team}
+                        benefit="Join A Fitness Community"
+                    />
+                </Grid>
+            </Grid>
+            
+
         </LandingContext.Provider>
     )
 }
