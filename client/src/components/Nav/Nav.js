@@ -1,5 +1,6 @@
-import React, { useContext, useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import React, { useContext, useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -11,6 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
+import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const theme = createMuiTheme({
   palette: {
@@ -64,6 +66,8 @@ const NavGuts = props => {
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
+  const [goLanding, setGoLanding] = useState(false)
+  const [authorizedState, setAuthorizedState] = useState(true)
 
 
   const handleMenu = event => {
@@ -72,6 +76,12 @@ const NavGuts = props => {
 
   const handleClose = () => {
     setAnchorEl(false)
+  }
+
+  const renderRedirectLanding = () => {
+    if (goLanding) {
+      return <Redirect to="/" />
+    }
   }
 
   const { toggleDrawer } = useContext(DrawerContext)
@@ -122,10 +132,10 @@ const NavGuts = props => {
                       onClose={handleClose}
                     >
                       <Link to= "/profile">
-                      <MenuItem onClick={handleClose}>My Profile</MenuItem>
+                        <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
                       <Link to = "/">
-                      <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                        <MenuItem onClick={handleClose}>Sign Out</MenuItem>
                       </Link>
                     </Menu>
                     

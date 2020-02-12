@@ -9,7 +9,6 @@ import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const Workout = props => {
   const [authorizedState, setAuthorizedState] = useState(true)
-  // const { seconds, restart } = useTimer()
   const { workout, workoutStarted } = useContext(WorkoutContext)
 
   useEffect(() => {
@@ -19,10 +18,6 @@ const Workout = props => {
       })
       .catch(e => console.error(e))
   }, [])
-
-  // const startTimer = () => {
-  //   restart(Date.now()+60000)
-  // }
 
   return (
     <Container>

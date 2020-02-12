@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
@@ -11,7 +12,11 @@ import CustomCard from '../../components/CustomCard'
 import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import WorkoutContext from '../../utils/WorkoutContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
+import ProfileContext from '../../utils/ProfileContext'
+
+const { getAllWorkouts, deleteWorkout } = WorkoutAPI
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -56,6 +61,15 @@ const Profile = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
   const [authorizedState, setAuthorizedState] = useState(true)
+  const [ profileState, setProfileState ] = useState({
+    name: '',
+    age: '',
+    weight: ''
+  })
+
+  profileState.handleInputChange = event => {
+    setProfileState({ ...profileState, [event.target.name]: event.target.value })
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -69,7 +83,25 @@ const Profile = () => {
       .catch(e => console.error(e))
   }, [])
 
+  const [ workoutState, setWorkoutState ] = useState({
+    workouts: []
+  })
+
+  workoutState.handleDeleteWorkout = (id) => {
+    let workouts = JSON.parse(JSON.stringify(workoutState.workouts))
+    let workoutsFiltered = workouts.filter(workout => workout._id !== id)
+    setWorkoutState({...workoutState, workouts: workoutsFiltered})
+  }
+
+  useEffect(() => {
+    getAllWorkouts()
+    .then(({data: workouts}) => setWorkoutState({...workoutState, workouts}))
+    .catch(e => console.error(e))
+  }, [])
+
   return (
+    <WorkoutContext.Provider value={workoutState}>
+    <ProfileContext.Provider value={profileState}>
     <div className={classes.root}>
       <UnauthorizedRedirect authorized={authorizedState} />
       <AppBar position="static" color="default">
@@ -94,6 +126,8 @@ const Profile = () => {
         <CustomCard />
       </TabPanel>
     </div>
+    </ProfileContext.Provider>
+    </WorkoutContext.Provider>
   )
 }
 

@@ -5,7 +5,8 @@ const UserContext = createContext({
   name: '',
   username: '',
   age: 0,
-  weight: 0
+  weight: 0,
+  updateUserContext: () => {}
 })
 
 export default UserContext

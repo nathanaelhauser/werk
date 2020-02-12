@@ -12,7 +12,14 @@ const UserAPI = {
     }
   }),
   createUser: (user) => axios.post('/users', user),
-  updateUser: (id, values) => axios.put(`/users/${id}`, values),
+  updateUser: (token, values) => axios({
+    method: 'PUT',
+    url: '/users',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    },
+    body: values
+  }),
   deleteUser: (id) => axios.delete(`/users/${id}`),
   authUser: (token) => axios({
     method: 'get',
