@@ -34,13 +34,13 @@ const ExerciseList = () => {
     <div className={classes.root}>
       {
        <p>
-<li className={classes.titleTypography} value={exerciseName}>
+<li className={classes.titleTypography} value={ExceriseContext}>
   <span>
-    {exerciseName}
-    {mainMuscles}
-    {secondaryMuscles}
-    {exerciseDespcription}
-    {exerciseEquipment}
+   Exercise Name: {exerciseName}
+   Main Muscles: {mainMuscles}
+   Secondary Muscle:{secondaryMuscles}
+   Despcription:{exerciseDespcription}
+   Equipment: {exerciseEquipment}
   </span>
   </li>
      </p>

@@ -11,7 +11,8 @@ import ExerciseContext from '../../utils/ExerciseContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-
+ 
+const {getExercises} =ExerciseAPI
 
 
 const useStyles = makeStyles({
@@ -34,9 +35,16 @@ const useStyles = makeStyles({
 
 const ExerciseCard = props => {
   const classes = useStyles();
-  const {} = useContext(ExerciseContext)
-  const [exercises, setExercise] = useState([])
+  const [exerciseState, setExerciseState] = useState(ExerciseContext)
  
+  useEffect(() =>{
+    getExercises(sessionStorage.getItem('werkToken'))
+    .then(({ data: exercise}) =>{
+      const {exerciseName, mainMuscles, secondaryMuscles, exerciseDespcription, exerciseEquipment} = exercise
+      setExerciseState({exerciseName, mainMuscles, secondaryMuscles, exerciseDespcription, exerciseEquipment})
+    })
+    .catch(e=> console.error(e))
+    })
     return (
       <Container>
         <Paper>
@@ -44,6 +52,12 @@ const ExerciseCard = props => {
         <CardContent>
          <ListItem>
            <ListItemText primary = {props.exercise}>
+             
+             <p> Exercise: {exerciseState.exerciseName}</p>
+             <p> Main Muscles: {exerciseState.mainMuscles}</p>
+             <p> Secondary Muscle: {exerciseState.secondaryMuscles}</p>
+             <p>Despription: {exerciseState.exerciseDespcription}</p>
+             <p> Equipment: {exerciseState.exerciseEquipment}</p>
 
            </ListItemText>
          </ListItem>
