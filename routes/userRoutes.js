@@ -31,10 +31,11 @@ module.exports = app => {
   })
 
   // UPDATE ONE USER
-  app.put('/users/:id', (req, res) => {
-    User.updateOne({ _id: req.params.id }, req.body )
-      .then(() => res.sendStatus(200))
-      .catch(e => console.error(e))
+  app.put('/users', passport.authenticate('jwt'), (req, res) => {
+    console.log(req.user)
+    // User.updateOne({ _id: req.params.id }, req.body )
+    //   .then(() => res.sendStatus(200))
+    //   .catch(e => console.error(e))
   })
 
   // DELETE ONE USER

@@ -89,6 +89,7 @@ const MyProfileCard = () => {
   
   useEffect(() => {
     setUserState({ username, name, age, weight })
+    console.log(userState)
   }, [username, name, age, weight])
 
   const handleClickOpen = type => event => {

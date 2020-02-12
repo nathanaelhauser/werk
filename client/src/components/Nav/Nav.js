@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
@@ -12,7 +12,6 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
-import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
 const theme = createMuiTheme({
   palette: {
@@ -67,7 +66,6 @@ const NavGuts = props => {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const [goLanding, setGoLanding] = useState(false)
-  const [authorizedState, setAuthorizedState] = useState(true)
 
 
   const handleMenu = event => {
@@ -76,6 +74,12 @@ const NavGuts = props => {
 
   const handleClose = () => {
     setAnchorEl(false)
+  }
+
+  const handleSignOut = () => {
+    setAnchorEl(false)
+    sessionStorage.removeItem('werkToken')
+    setGoLanding(true)
   }
 
   const renderRedirectLanding = () => {
@@ -134,9 +138,8 @@ const NavGuts = props => {
                       <Link to= "/profile" className={classes.link}>
                         <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
-                      <Link to = "/" className={classes.link}>
-                        <MenuItem onClick={handleClose}>Sign Out</MenuItem>
-                      </Link>
+                      <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
+                      {renderRedirectLanding()}
                     </Menu>
                     
                   </div>

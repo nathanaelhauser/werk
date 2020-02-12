@@ -74,10 +74,11 @@ const WorkoutTimerCard = () => {
       }
       // If user just finished exercise, then start rest
       if (exerciseState.onExercise) {
-        setExerciseState({ 
-          ...exerciseState, 
+        setExerciseState({
+          ...exerciseState,
           onExercise: false,
-          paused: false })
+          paused: false
+        })
         restart(Date.now() + 6000)
       } else {
         // Else user just finished rest, increment exercise and start exercise
@@ -137,35 +138,28 @@ const WorkoutTimerCard = () => {
       {renderRedirectRecent()}
       <Grid container direction="row" alignItems="center" justify="center">
         <Grid item xs={12} sm={12} md={8} lg={6} className={classes.grid}>
-          <Paper 
-            className={classes.paper} 
-            //style={{ backgroundColor: colorState }}
+          <Paper
+            className={classes.paper}
+            style={{ backgroundColor: colorState }}
           >
-          <Card style={{ backgroundColor: colorState }} >
-            <CardContent>
-              <Typography variant="h4" className={classes.title}>
-                {
-                  exerciseState.onExercise
-                    ? workout.exercises[exerciseState.exerciseIndex].name
-                    : 'Rest'
-                }
-              </Typography>
-              <br/>
-              <Typography variant="h5" className={classes.text}>
-                {seconds}
-              </Typography>
-              <Button variant="contained" className={classes.button} onClick={handlePause}>
-                {
-                  exerciseState.paused
-                    ? 'Resume'
-                    : 'Pause'
-                }
-               </Button>
-              </CardContent>
-              <Link to= "/custom">
-                <Button  size ="xs" colors= "">Back</Button>
-              </Link>
-            </Card>
+            <Typography variant="h4" className={classes.title}>
+              {
+                exerciseState.onExercise
+                  ? workout.exercises[exerciseState.exerciseIndex].name
+                  : 'Rest'
+              }
+            </Typography>
+            <br />
+            <Typography variant="h5" className={classes.text}>
+              {seconds}
+            </Typography>
+            <Button variant="contained" className={classes.button} onClick={handlePause}>
+              {
+                exerciseState.paused
+                  ? 'Resume'
+                  : 'Pause'
+              }
+            </Button>
           </Paper>
         </Grid>
       </Grid>
