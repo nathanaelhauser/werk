@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import UserAuthAPI from '../../utils/UserAuthAPI'
-import UserAPI from '../../utils/UserAPI'
 import LandingContext from '../../utils/LandingContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
@@ -91,7 +90,7 @@ const Jumbotron = () => {
   const handleLogin = event => {
     UserAuthAPI.loginUser({ username, password })
       .then(({ data: { token } }) => {
-        sessionStorage.setItem('werktoken', token)
+        sessionStorage.setItem('werkToken', token)
         setToHome(true)
       })
       .catch(e => console.error(e))

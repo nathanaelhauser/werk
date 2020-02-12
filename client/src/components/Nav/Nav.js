@@ -12,6 +12,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
+import UserAPI from '../../utils/UserAPI'
+
+const { updateUser } = UserAPI
 
 const theme = createMuiTheme({
   palette: {
@@ -77,9 +80,13 @@ const NavGuts = props => {
   }
 
   const handleSignOut = () => {
-    setAnchorEl(false)
-    sessionStorage.removeItem('werkToken')
-    setGoLanding(true)
+    updateUser(sessionStorage.getItem('werkToken'), { isLoggedIn: false })
+      .then(() => {
+        setAnchorEl(false)
+        sessionStorage.removeItem('werkToken')
+        setGoLanding(true)
+      })
+      .catch(e => console.error(e))
   }
 
   const renderRedirectLanding = () => {
