@@ -9,6 +9,10 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import WorkoutContext from '../../utils/WorkoutContext'
 import UserContext from '../../utils/UserContext'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Link from '@material-ui/core/Link'
 import EventAPI from '../../utils/EventAPI'
 
 const white = '#FFFFFF'
@@ -27,6 +31,10 @@ const useStyles = makeStyles({
     alignItems: 'center'
   },
   paper: {
+    height: '100%',
+    width: '100%'
+  },
+  card: {
     height: '100%',
     width: '100%',
     textAlign: 'center'
@@ -130,28 +138,35 @@ const WorkoutTimerCard = () => {
       {renderRedirectRecent()}
       <Grid container direction="row" alignItems="center" justify="center">
         <Grid item xs={12} sm={12} md={8} lg={6} className={classes.grid}>
-          <Paper
-            className={classes.paper}
-            style={{ backgroundColor: colorState }}
+          <Paper 
+            className={classes.paper} 
+            //style={{ backgroundColor: colorState }}
           >
-            <Typography variant="h4" className={classes.title}>
-              {
-                exerciseState.onExercise
-                  ? workout.exercises[exerciseState.exerciseIndex].name
-                  : 'Rest'
-              }
-            </Typography>
-            <br/>
-            <Typography variant="h5" className={classes.text}>
-              {seconds}
-            </Typography>
-            <Button variant="contained" className={classes.button} onClick={handlePause}>
-              {
-                exerciseState.paused
-                  ? 'Resume'
-                  : 'Pause'
-              }
-            </Button>
+          <Card style={{ backgroundColor: colorState }} >
+            <CardContent>
+              <Typography variant="h4" className={classes.title}>
+                {
+                  exerciseState.onExercise
+                    ? workout.exercises[exerciseState.exerciseIndex].name
+                    : 'Rest'
+                }
+              </Typography>
+              <br/>
+              <Typography variant="h5" className={classes.text}>
+                {seconds}
+              </Typography>
+              <Button variant="contained" className={classes.button} onClick={handlePause}>
+                {
+                  exerciseState.paused
+                    ? 'Resume'
+                    : 'Pause'
+                }
+               </Button>
+              </CardContent>
+              <Link to= "/custom">
+                <Button  size ="xs" colors= "">Back</Button>
+              </Link>
+            </Card>
           </Paper>
         </Grid>
       </Grid>

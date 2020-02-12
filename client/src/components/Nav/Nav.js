@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -132,14 +131,14 @@ const NavGuts = props => {
                       open={open}
                       onClose={handleClose}
                     >
-                      <Link to="/profile" className={classes.link}>
+                      <Link to= "/profile">
                         <MenuItem onClick={handleClose}>My Profile</MenuItem>
                       </Link>
-                      <UnauthorizedRedirect authorized={authorizedState} />
-                      {renderRedirectLanding()}
-                      <MenuItem onClick={() => setGoLanding(true)}>Sign Out</MenuItem>
-                      
+                      <Link to = "/">
+                        <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+                      </Link>
                     </Menu>
+                    
                   </div>
                 )}
               </Toolbar>
