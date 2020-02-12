@@ -1,5 +1,5 @@
-module.exports = () => {
+module.exports = (app) => {
 
-  require('./Socketio')
+  require('./Socketio')(app)
 
 }

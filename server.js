@@ -29,6 +29,6 @@ passport.use(new JWTStrategy({
 
 require('./routes')(app)
 
-require('./controllers')
+require('./controllers')(app)
 
 require('mongoose').connection.once('open', () => app.listen(PORT))
