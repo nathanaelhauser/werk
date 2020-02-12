@@ -13,6 +13,7 @@ module.exports = app => {
 
   // GET USER CUSTOM WORKOUTS
   app.get('/userworkouts', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log(req.user)
     const { _id } = req.user
     Workout.find({ author: _id })
       .populate('exercises')
