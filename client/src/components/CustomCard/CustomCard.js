@@ -57,7 +57,7 @@ const CustomCard = () => {
     <Container>
       <Card className={classes.card} variant="outlined">
         <CardContent>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={12}>
             {/* <Typography variant="h6" className={classes.title}>
             WORKOUTS
           </Typography> */}
@@ -65,8 +65,19 @@ const CustomCard = () => {
           {
             workouts.length ? workouts.map(workout => (
               <p>
+              <Grid container>
+              <Grid item xs={6}>
              <span>{workout.name}</span> 
-             <IconButton size="small" aria-label="delete" onClick={() => handleDeleteWorkout(workout._id)}><RemoveIcon fontSize="small"/></IconButton>
+             </Grid>
+             <Grid item xs={3}>
+             <Button variant="contained" color="primary">
+                Start
+            </Button>
+            </Grid>
+            <Grid item xs={3}>
+             <IconButton size="small" aria-label="delete" onClick={() => handleDeleteWorkout(workout._id)}><RemoveIcon fontSize="medium"/></IconButton>
+             </Grid>
+             </Grid>
              </p>
             )) : null
           }

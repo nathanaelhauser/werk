@@ -16,7 +16,7 @@ import WorkoutContext from '../../utils/WorkoutContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 import ProfileContext from '../../utils/ProfileContext'
 
-const { getAllWorkouts, deleteWorkout } = WorkoutAPI
+const { getAllWorkouts, deleteWorkout, getUserWorkouts } = WorkoutAPI
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -90,6 +90,8 @@ const Profile = () => {
   const [ workoutState, setWorkoutState ] = useState({
     workouts: []
   })
+
+  workoutState.handleStartWorkout = () => {}
 
   workoutState.handleDeleteWorkout = (id) => {
     let workouts = JSON.parse(JSON.stringify(workoutState.workouts))
