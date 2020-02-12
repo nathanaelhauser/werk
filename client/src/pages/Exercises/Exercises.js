@@ -21,6 +21,7 @@ const Exercises = () => {
         <>
 
             <UnauthorizedRedirect authorized={authorizedState} />
+            <br/>
             <ExerciseCard/>
         </>
     )

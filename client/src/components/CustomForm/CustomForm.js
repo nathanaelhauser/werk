@@ -53,7 +53,7 @@ const CustomForm = () => {
         <Grid item container
             direction="column"
             justify="center"
-            alignItems="center">
+            alignItems="left">
           {/* <Switch
             checked={checked}
             onChange={toggleChecked}
