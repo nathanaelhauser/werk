@@ -24,7 +24,6 @@ const LandingCard = props => {
   const classes = useStyles()
   return (
     <Card className={classes.card}>
-      <CardActionArea>
         <CardMedia
           className={classes.media}
           image={props.image}
@@ -42,7 +41,6 @@ const LandingCard = props => {
             {props.favorite}
           </Typography>
         </CardContent>
-      </CardActionArea>
     </Card>
   )
 }
