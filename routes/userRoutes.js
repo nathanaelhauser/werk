@@ -1,6 +1,6 @@
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
-const { Users } = require('../Models')
+const { User } = require('../Models')
 
 module.exports = app => {
 
@@ -32,10 +32,9 @@ module.exports = app => {
 
   // UPDATE ONE USER
   app.put('/users', passport.authenticate('jwt'), (req, res) => {
-    console.log(req.user)
-    // User.updateOne({ _id: req.params.id }, req.body )
-    //   .then(() => res.sendStatus(200))
-    //   .catch(e => console.error(e))
+    User.updateOne({ _id: req.user._id }, req.body )
+      .then(() => res.sendStatus(200))
+      .catch(e => console.error(e))
   })
 
   // DELETE ONE USER

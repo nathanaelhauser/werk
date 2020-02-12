@@ -18,6 +18,8 @@ import EditForm from '../EditForm'
 import ProfileContext from '../../utils/ProfileContext'
 import UserContext from '../../utils/UserContext'
 
+const { getMyUser } = UserAPI
+
 const useStyles = makeStyles({
   card: {
     minWidth: 275,
@@ -85,12 +87,16 @@ const MyProfileCard = () => {
     weight: ''
   })
   const { name: inputName, age: inputAge, weight: inputWeight } = useContext(ProfileContext)
-  const { username, name, age, weight, updateUserContext } = useContext(UserContext)
+  const { updateUserContext } = useContext(UserContext)
   
   useEffect(() => {
-    setUserState({ username, name, age, weight })
-    console.log(userState)
-  }, [username, name, age, weight])
+    getMyUser(sessionStorage.getItem('werkToken'))
+      .then(({ data: user }) => {
+        const { username, name, age, weight } = user
+        setUserState({ username, name, age, weight })
+      })
+      .catch(e => console.error(e))
+  }, [])
 
   const handleClickOpen = type => event => {
     if (type === 'edit') {
@@ -113,10 +119,14 @@ const MyProfileCard = () => {
       user = { ...user, age: inputAge }
     }
     if (inputWeight) {
-      user = { ...user, weigh: inputWeight }
+      user = { ...user, weight: inputWeight }
     }
+    console.log(user)
     UserAPI.updateUser(sessionStorage.getItem('werkToken'), user)
-      .then(() => updateUserContext(user))
+      .then(() => {
+        updateUserContext(userState)
+
+      })
       .catch(e => console.error(e))
   }
 

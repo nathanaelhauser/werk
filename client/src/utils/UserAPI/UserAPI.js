@@ -18,7 +18,7 @@ const UserAPI = {
     headers: {
       'Authorization': `Bearer ${token}`
     },
-    body: values
+    data: values
   }),
   deleteUser: (id) => axios.delete(`/users/${id}`),
   authUser: (token) => axios({
