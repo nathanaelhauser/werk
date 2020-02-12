@@ -10,7 +10,7 @@ import WorkoutContext from '../../utils/WorkoutContext'
 import UserContext from '../../utils/UserContext'
 import Button from '@material-ui/core/Button'
 import EventAPI from '../../utils/EventAPI'
-import Button from '@material-ui/core/Button'
+
 
 const white = '#FFFFFF'
 const black = '#000000'
