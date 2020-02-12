@@ -16,7 +16,8 @@ import CloseIcon from '@material-ui/icons/Close'
 import RegForm from '../RegForm'
 import LoginForm from '../LoginForm'
 import logo from './JumbotronImages/logo.png'
-import subtitle from './JumbotronImages/subtitle.png'
+import werkSubtitle from './JumbotronImages/werkSubtitle.png'
+import werkLogo from './JumbotronImages/werkLogo.png'
 
 const useStyles = makeStyles({
   root: {
@@ -87,19 +88,19 @@ const Jumbotron = () => {
     }
   }
 
-  const handleLogin = async event => {
-    console.log('Trying to login!')
-    const response = await UserAuthAPI.loginUser({ username, password })
-    const { data:{ token }} = await response
-    sessionStorage.setItem('werkToken', token)
-    setToHome(true)
+  const handleLogin = event => {
+    UserAuthAPI.loginUser({ username, password })
+      .then(({ data: { token } }) => {
+        sessionStorage.setItem('werkToken', token)
+        setToHome(true)
+      })
+      .catch(e => console.error(e))
   }
 
   const handleRegister = async event => {
     if (password !== confirmPassword) {
       return
     }
-    console.log('Trying to register!')
     const response = await UserAuthAPI.registerUser({ name, username, password, age, weight })
     const { status } = await response
     if (status === 200) {
@@ -125,11 +126,11 @@ const Jumbotron = () => {
       >
         <Grid item>
           {/* <Typography variant="h3">WERK</Typography> */}
-          <img src={logo} alt="werk logo"/>
+          <img src={werkLogo} alt="werk logo"/>
         </Grid>
         <Grid item>
           {/* <Typography variant="subtitle1">© the-group 2020</Typography> */}
-          <img src={subtitle} alt="subtitle"/>
+          <img src={werkSubtitle} alt="subtitle"/>
         </Grid>
         <br/><br/><br/><br/><br/><br/>
         <Grid item>

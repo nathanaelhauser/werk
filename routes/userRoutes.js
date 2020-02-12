@@ -18,6 +18,16 @@ module.exports = app => {
       .catch(e => console.error(e))
   })
 
+  app.get('/friends', passport.authenticate('jwt'), (req, res) => {
+    User.find({ _id: req.user._id })
+      .populate('friends')
+      .then(user => {
+        console.log(user)
+        res.sendStatus(200)
+      })
+      .catch(e => console.error(e))
+  })
+
   // GET ONE USER WITH TOKEN
   app.get('/myuser', passport.authenticate('jwt'), (req, res) => {
     res.json(req.user)
