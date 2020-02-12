@@ -5,9 +5,10 @@ module.exports = (model, Schema) =>{
         email: String,
         age: Number,
         weight: Number,
-        workouts: [{ type: Schema.Types.ObjectId, ref: 'Workout' }]
+        workouts: [{ type: Schema.Types.ObjectId, ref: 'Workout' }],
+        friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
     })
 
-User.plugin(require('passport-local-mongoose'))
+    User.plugin(require('passport-local-mongoose'))
     return model ('User', User)
 }
