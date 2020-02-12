@@ -1,21 +1,26 @@
-// 
-import React, { useState, useEffect, useContext } from 'react'
-import UserAPI from '../../utils/UserAPI'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import React,
+       { useContext,
+         useState,
+         useEffect } from 'react'
+import { makeStyles, 
+         withStyles } from '@material-ui/core/styles'
+import { Grid,
+         Container,
+         Card,
+         CardActions,
+         CardContent,
+         Button,
+         Typography,
+         IconButton } from '@material-ui/core'
+// modal
 import Dialog from '@material-ui/core/Dialog'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogActions from '@material-ui/core/DialogActions'
-import IconButton from '@material-ui/core/IconButton'
+// icons
 import CloseIcon from '@material-ui/icons/Close'
-import Container from '@material-ui/core/Container'
 import EditForm from '../EditForm'
+import UserAPI from '../../utils/UserAPI'
 import ProfileContext from '../../utils/ProfileContext'
 import UserContext from '../../utils/UserContext'
 

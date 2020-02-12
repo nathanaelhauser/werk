@@ -1,17 +1,17 @@
 import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import DrawerContext from '../../utils/DrawerContext'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import Typography from '@material-ui/core/Typography'
+import { SwipeableDrawer,
+         List,
+         ListItem,
+         ListItemIcon,
+         ListItemText,
+         Typography } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
 import PeopleIcon from '@material-ui/icons/People'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle'
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import DrawerContext from '../../utils/DrawerContext'
 
 const useStyles = makeStyles({
   list: {

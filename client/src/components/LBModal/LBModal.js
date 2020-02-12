@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React,
+       { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
-import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Typography from '@material-ui/core/Typography'
-import Modal from '@material-ui/core/Modal'
-import Backdrop from '@material-ui/core/Backdrop'
-import Fade from '@material-ui/core/Fade'
-import ModalList from '../ModalList'
+import { Card,
+         CardActionArea,
+         CardContent,
+         CardMedia,
+         Modal,
+         Backdrop,
+         Fade,
+         Typography } from '@material-ui/core'
+import ModalList from '../ModalList'  
 
 const useStyles = makeStyles(theme => ({
   modal: {

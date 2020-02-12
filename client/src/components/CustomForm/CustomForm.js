@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
-import CustomContext from '../../utils/CustomContext'
-import TextField from '@material-ui/core/TextField'
+import React,
+       { useContext,
+         useEffect,
+         useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { Button,
+         TextField,
+         Grid,
+         Switch,
+         FormControlLabel } from '@material-ui/core'
 import AsyncAutoComplete from '../AsyncAutoComplete'
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
-import Switch from '@material-ui/core/Switch'
-import FormGroup from '@material-ui/core/FormGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-
+import CustomContext from '../../utils/CustomContext'
 
 
 const useStyles = makeStyles(theme => ({

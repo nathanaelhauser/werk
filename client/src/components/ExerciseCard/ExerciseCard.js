@@ -1,12 +1,15 @@
-import React, {useEffect,useState, useContext} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper'
+import React, 
+       { useContext,
+         useState,
+         useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Card,
+         CardActions,
+         CardContent,
+         Button,
+         Container,
+         Paper,
+         Typography } from '@material-ui/core'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import ExerciseContext from '../../utils/ExerciseContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'

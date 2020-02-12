@@ -1,8 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react'
-import QuickstartContext from '../../utils/QuickstartContext'
-import WorkoutListItem from '../../components/WorkoutListItem'
+import React,
+       { useContext,
+         useState,
+         useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import List from '@material-ui/core/List'
+import { List } from '@material-ui/core'
+import WorkoutListItem from '../../components/WorkoutListItem'
+import QuickstartContext from '../../utils/QuickstartContext'
 
 const useStyles = makeStyles(theme => ({
   root: {
