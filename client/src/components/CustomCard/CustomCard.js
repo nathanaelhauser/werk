@@ -47,13 +47,13 @@ const CustomCard = () => {
   const classes = useStyles()
   const [dense, setDense] = useState(false)
   const [secondary, setSecondary] = useState(false)
-  const { workouts, handleDeleteWorkout} = useContext(WorkoutContext)
+  const { workouts, handleDeleteWorkout, handleStartWorkout} = useContext(WorkoutContext)
 
   return (
     <Container>
       <Card className={classes.card} variant="outlined">
         <CardContent>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={12}>
             {/* <Typography variant="h6" className={classes.title}>
             WORKOUTS
           </Typography> */}
@@ -61,8 +61,20 @@ const CustomCard = () => {
           {
             workouts.length ? workouts.map(workout => (
               <p>
-             <span>{workout.name}</span> 
-             <IconButton size="small" aria-label="delete" onClick={() => handleDeleteWorkout(workout._id)}><RemoveIcon fontSize="small"/></IconButton>
+                {console.log(workout)}
+              <Grid container>
+              <Grid item xs={6}>
+             {workout.name}
+             </Grid>
+             <Grid item xs={3}>
+             <Button variant="contained" color="primary" onClick={handleStartWorkout}>
+                Start
+            </Button>
+            </Grid>
+            <Grid item xs={3}>
+             <IconButton size="small" aria-label="delete" onClick={() => handleDeleteWorkout(workout._id)}><RemoveIcon fontSize="medium"/></IconButton>
+             </Grid>
+             </Grid>
              </p>
             )) : null
           }

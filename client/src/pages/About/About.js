@@ -74,7 +74,7 @@ const About = () => {
                     Meet The WERK Team
                 </Typography>
             </Grid>
-            <Grid item xs={12} sm={6} md={4} align="center">
+            <Grid item xs={12} sm={6} md={3} align="center">
                 <a href="https://github.com/mesmerizingYeti" className={classes.link}>
                     <DevCard
                         image="https://ca.slack-edge.com/TKAFG5QD9-ULXR8AFUZ-c9a095d1d510-512"
