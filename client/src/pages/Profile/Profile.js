@@ -118,11 +118,9 @@ const Profile = () => {
 
   useEffect(() => {
     let token = sessionStorage.getItem('werkToken')
-    console.log(token)
     getUserWorkouts(token)
     .then(({data: workouts}) => {
       setWorkoutState({...workoutState, workouts})
-      console.log(workouts)
     })
     .catch(e => console.error(e))
   }, [])

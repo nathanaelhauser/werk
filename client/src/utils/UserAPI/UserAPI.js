@@ -11,13 +11,6 @@ const UserAPI = {
       'Authorization': `Bearer ${token}`
     }
   }),
-  getFriends: () => axios({
-    method: 'GET',
-    url: '/friends',
-    header: {
-      'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
-    }
-  }),
   createUser: (user) => axios.post('/users', user),
   updateUser: (token, values) => axios({
     method: 'PUT',
@@ -35,6 +28,21 @@ const UserAPI = {
       'Authorization': `Bearer ${token}`
     }
   }),
+  getFriends: () => axios({
+    method: 'GET',
+    url: '/friends',
+    headers: {
+      'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
+    }
+  }),
+  addFriend: friend => axios({
+    method: 'PUT',
+    url: '/friends',
+    headers: {
+      'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
+    },
+    data: { friend }
+  })
   // authUserSignOut: (id, token) => axios.delete(`/users/${token}`),
 }
 
