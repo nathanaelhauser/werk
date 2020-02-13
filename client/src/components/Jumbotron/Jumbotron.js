@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import LandingContext from '../../utils/LandingContext'
+import LogoutContext from '../../utils/LogoutContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -70,7 +71,9 @@ const Jumbotron = () => {
   const [openRegister, setOpenRegister] = useState(false)
   const [openLogin, setOpenLogin] = useState(false)
   const [toHome, setToHome] = useState(false)
+
   const { name, username, password, confirmPassword, age, weight } = useContext(LandingContext)
+  const { setLoggingOut } = useContext(LogoutContext)
 
   const handleClickOpen = type => event => {
     if (type === 'register') {
@@ -109,11 +112,14 @@ const Jumbotron = () => {
   }
 
   const renderRedirect = () => {
-    console.log(toHome)
     if (toHome) {
       return <Redirect to="/home" />
     }
   }
+
+  useEffect(() => {
+    setLoggingOut(false)
+  }, [])
 
   return (
     <Container className={classes.root}>

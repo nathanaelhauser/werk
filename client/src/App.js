@@ -21,6 +21,7 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import WorkoutContext from './utils/WorkoutContext'
 import UserContext from './utils/UserContext'
+import LogoutContext from './utils/LogoutContext'
 import UserAPI from './utils/UserAPI'
 
 const theme = createMuiTheme({
@@ -95,6 +96,18 @@ const App = props => {
   }
 
   /////////////////////////
+  // Logout State
+  /////////////////////////
+
+  const [logoutState, setLogoutState] = useState({
+    loggingOut: false
+  })
+
+  logoutState.setLoggingOut = loggingOut => {
+    setLogoutState({ ...logoutState, loggingOut })
+  }
+
+  /////////////////////////
   // Main App
   /////////////////////////
 
@@ -103,44 +116,46 @@ const App = props => {
       <UserContext.Provider value={userState}>
         <WorkoutContext.Provider value={workoutState}>
           <DrawerContext.Provider value={drawerState}>
-            <Router>
-              <div>
-                <Nav />
-                <NavDrawer />
-                <Switch>
-                  <Route exact path="/">
-                    {/* page tags */}
-                    <Landing />
-                  </Route>
-                  <Route path="/home">
-                    {/* page tags */}
-                    <Home />
-                  </Route>
-                  <Route path="/about">
-                    <About />
-                  </Route>
-                  <Route path="/quickstart">
-                    <Quickstart />
-                  </Route>
-                  <Route path="/custom">
-                    <Custom />
-                  </Route>
-                  <Route path="/profile">
-                    <Profile />
-                  </Route>
-                  <Route path="/workout">
-                    <Workout />
-                  </Route>
-                  <Route path="/exercises">
-                    <Exercises />
-                  </Route>
-                  <Route path="/recent">
-                    <Recent />
-                  </Route>
+            <LogoutContext.Provider value={logoutState}>
+              <Router>
+                <div>
+                  <Nav />
+                  <NavDrawer />
+                  <Switch>
+                    <Route exact path="/">
+                      {/* page tags */}
+                      <Landing />
+                    </Route>
+                    <Route path="/home">
+                      {/* page tags */}
+                      <Home />
+                    </Route>
+                    <Route path="/about">
+                      <About />
+                    </Route>
+                    <Route path="/quickstart">
+                      <Quickstart />
+                    </Route>
+                    <Route path="/custom">
+                      <Custom />
+                    </Route>
+                    <Route path="/profile">
+                      <Profile />
+                    </Route>
+                    <Route path="/workout">
+                      <Workout />
+                    </Route>
+                    <Route path="/exercises">
+                      <Exercises />
+                    </Route>
+                    <Route path="/recent">
+                      <Recent />
+                    </Route>
 
-                </Switch>
-              </div>
-            </Router>
+                  </Switch>
+                </div>
+              </Router>
+            </LogoutContext.Provider>
           </DrawerContext.Provider>
         </WorkoutContext.Provider>
       </UserContext.Provider>
