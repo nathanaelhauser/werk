@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
+import io from 'socket.io-client'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
@@ -11,6 +12,7 @@ import FriendAPI from '../../utils/FriendAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 
+// const socket = io('http://localhost:80')
 const { getFriends } = FriendAPI
 
 const useStyles = makeStyles({
@@ -70,6 +72,10 @@ const Home = () => {
     getFriends()
       .then(({ data: friends }) => setFriends(friends))
       .catch(e => console.error(e))
+  }, [])
+
+  useEffect(() => {
+    
   }, [])
 
   return (
