@@ -109,6 +109,7 @@ const Jumbotron = () => {
   }
 
   const renderRedirect = () => {
+    console.log(toHome)
     if (toHome) {
       return <Redirect to="/home" />
     }
