@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Grid from '@material-ui/core/Grid'
 import WorkoutContext from '../../utils/WorkoutContext'
 import RemoveIcon from '@material-ui/icons/Delete'
+import Button from '@material-ui/core/Button'
 
 
 const useStyles = makeStyles(theme => ({
