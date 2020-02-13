@@ -2,7 +2,7 @@ const { User } = require('../Models')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
-const { SocketioControllers: { announceLogin } } = require('../controllers')
+const { SocketioControllers: { announceLogin, announceLogout } } = require('../controllers')
 
 module.exports = app => {
     app.post('/userAuth', (req, res) => {
@@ -25,6 +25,13 @@ module.exports = app => {
                 res.json(user)
             }
         })
+    })
+
+    app.get('/logout', passport.authenticate('jwt', { session: false }), (req, res) => {
+        announceLogout(user._id)
+        User.updateOne({ _id: req.user._id }, { isLoggedIn: false })
+            .then(() => res.sendStatus(200))
+            .catch(e => console.log(e))
     })
 
     app.get('/authorize', (req, res, next) => {
