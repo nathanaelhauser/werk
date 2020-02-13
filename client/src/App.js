@@ -23,6 +23,7 @@ import WorkoutContext from './utils/WorkoutContext'
 import UserContext from './utils/UserContext'
 import LogoutContext from './utils/LogoutContext'
 import UserAPI from './utils/UserAPI'
+import UserAuthAPI from './utils/UserAuthAPI'
 
 const theme = createMuiTheme({
   palette: {
@@ -40,6 +41,13 @@ const theme = createMuiTheme({
   }
 
 })
+
+const closingCode = () => {
+   UserAuthAPI.logoutUser()
+    .catch(e => console.error(e))
+   return null;
+}
+window.onbeforeunload = closingCode
 
 const App = props => {
 

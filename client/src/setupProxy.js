@@ -8,6 +8,7 @@ module.exports = function(app) {
         '/workouts', 
         '/userAuth', 
         '/login',
+        '/logout',
         '/authorize',
         '/myuser',
         '/events',

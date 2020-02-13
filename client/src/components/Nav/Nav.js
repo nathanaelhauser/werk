@@ -13,9 +13,9 @@ import Menu from '@material-ui/core/Menu'
 import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
 import LogoutContext from '../../utils/LogoutContext'
-import UserAPI from '../../utils/UserAPI'
+import UserAuthAPI from '../../utils/UserAuthAPI'
 
-const { updateUser } = UserAPI
+const { logoutUser } = UserAuthAPI
 
 const theme = createMuiTheme({
   palette: {
@@ -83,7 +83,7 @@ const NavGuts = props => {
   }
 
   const handleSignOut = () => {
-    updateUser(sessionStorage.getItem('werkToken'), { isLoggedIn: false })
+    logoutUser()
       .then(() => {
         setAnchorEl(false)
         sessionStorage.removeItem('werkToken')

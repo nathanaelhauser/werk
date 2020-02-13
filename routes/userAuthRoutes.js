@@ -28,7 +28,7 @@ module.exports = app => {
     })
 
     app.get('/logout', passport.authenticate('jwt', { session: false }), (req, res) => {
-        announceLogout(user._id)
+        announceLogout(req.user._id)
         User.updateOne({ _id: req.user._id }, { isLoggedIn: false })
             .then(() => res.sendStatus(200))
             .catch(e => console.log(e))
