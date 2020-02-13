@@ -27,23 +27,8 @@ const UserAPI = {
     headers: {
       'Authorization': `Bearer ${token}`
     }
-  }),
-  getFriends: () => axios({
-    method: 'GET',
-    url: '/friends',
-    headers: {
-      'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
-    }
-  }),
-  addFriend: friend => axios({
-    method: 'PUT',
-    url: '/friends',
-    headers: {
-      'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
-    },
-    data: { friend }
   })
-  // authUserSignOut: (id, token) => axios.delete(`/users/${token}`),
+  
 }
 
 export default UserAPI
