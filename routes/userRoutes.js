@@ -18,6 +18,7 @@ module.exports = app => {
       .catch(e => console.error(e))
   })
 
+  // GET USER FRIENDS
   app.get('/friends', passport.authenticate('jwt'), (req, res) => {
     User.find({ _id: req.user._id })
       .populate('friends')

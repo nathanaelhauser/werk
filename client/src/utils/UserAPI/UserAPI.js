@@ -11,11 +11,11 @@ const UserAPI = {
       'Authorization': `Bearer ${token}`
     }
   }),
-  getFriends: (token) => axios({
+  getFriends: () => axios({
     method: 'GET',
     url: '/friends',
     header: {
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
     }
   }),
   createUser: (user) => axios.post('/users', user),
@@ -35,7 +35,7 @@ const UserAPI = {
       'Authorization': `Bearer ${token}`
     }
   }),
-authUserSignOut: (id, token) => axios.delete(`/users/${token}`),
+  // authUserSignOut: (id, token) => axios.delete(`/users/${token}`),
 }
 
 export default UserAPI

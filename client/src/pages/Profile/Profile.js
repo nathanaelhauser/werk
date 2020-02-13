@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
+import FriendsCard from '../../components/FriendsCard'
 import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
@@ -145,6 +146,7 @@ const Profile = () => {
         >
           <Tab label="My Profile" {...a11yProps(0)} />
           <Tab label="My Workouts" {...a11yProps(1)} />
+          <Tab label="My Friends" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -154,6 +156,9 @@ const Profile = () => {
       <TabPanel value={value} index={1}>
         <CustomCard />
         {renderRedirectWorkout()}
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <FriendsCard />
       </TabPanel>
     </div>
     </ProfileContext.Provider>
