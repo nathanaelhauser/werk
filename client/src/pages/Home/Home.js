@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
-import io from 'socket.io-client'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+import FriendsContext from '../../utils/FriendsContext'
+import FriendAPI from '../../utils/FriendAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+
+const { getFriends } = FriendAPI
 
 const useStyles = makeStyles({
   card: {
@@ -33,12 +36,12 @@ const useGridStyles = makeStyles(theme => ({
 }))
 
 const Home = () => {
-
   const classes = useStyles()
   const gridClasses = useGridStyles()
   const [goCustom, setGoCustom] = useState(false)
   const [goQuickstart, setGoQuickstart] = useState(false)
   const [authorizedState, setAuthorizedState] = useState(true)
+  const { setFriends } = useContext(FriendsContext)
  
   const renderRedirectCustom = () => {
     if (goCustom) {
@@ -61,6 +64,12 @@ const Home = () => {
 
     // const socket = io('http://localhost:80')
     // socket.emit('user', { token: sessionStorage.getItem('werkToken') })
+  }, [])
+
+  useEffect(() => {
+    getFriends()
+      .then(({ data: friends }) => setFriends(friends))
+      .catch(e => console.error(e))
   }, [])
 
   return (

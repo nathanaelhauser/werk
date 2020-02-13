@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import FriendsListItem from '../FriendsListItem'
 import FriendsContext from '../../utils/FriendsContext'
-import FriendsAPI from '../../utils/FriendAPI'
 
 const inactive = "#757575"
 const active = "#94E864"
