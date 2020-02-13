@@ -18,13 +18,13 @@ const FriendAPI = {
     },
     data: { friend }
   }),
-  deleteFriend: friend => axios({
+  deleteFriend: friendID => axios({
     method: 'DELETE',
     url: '/friends',
     headers: {
       'Authorization': `Bearer ${sessionStorage.getItem('werkToken')}`
     },
-    data: { friend }
+    data: { friendID }
   })
 
 }

@@ -4,10 +4,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
-import ListItemText from '@material-ui/core/ListItemText'
 import IconButton from '@material-ui/core/IconButton'
 import Grid from '@material-ui/core/Grid'
 import WorkoutContext from '../../utils/WorkoutContext'
@@ -65,7 +61,6 @@ const CustomCard = () => {
           {
             workouts.length ? workouts.map(workout => (
               <p>
-                {console.log(workout)}
               <Grid container>
               <Grid item xs={6}>
              {workout.name}

@@ -4,7 +4,8 @@ const FriendsContext = createContext({
   friends: [],
   friend: '',
   handleInputChange: () => {},
-  handleSubmit: () => {}
+  handleSubmit: () => {},
+  handleDelete: () => {}
 })
 
 export default FriendsContext

@@ -5,11 +5,10 @@ module.exports = app => {
 
   // GET USER FRIENDS
   app.get('/friends', passport.authenticate('jwt'), (req, res) => {
-    User.find({ _id: req.user._id })
+    User.findOne({ _id: req.user._id })
       .populate('friends')
       .then(user => {
-        console.log(user)
-        res.sendStatus(200)
+        res.json(user.friends)
       })
       .catch(e => console.log(e))
   })
@@ -31,10 +30,10 @@ module.exports = app => {
 
   // DELETE USER FRIEND
   app.delete('/friends', passport.authenticate('jwt'), (req, res) => {
-    User.findOne({ username: req.body.friend })
+    User.findOne({ _id: req.body.friendID })
       .then(friend => {
         if (friend) {
-          User.updateOne({ _id: req.user._id }, { $pull: { friends: friend }})
+          User.updateOne({ _id: req.user._id }, { $pull: { friends: friend._id }})
             .then(() => res.sendStatus(200))
             .catch(e => console.log(e))
         }
