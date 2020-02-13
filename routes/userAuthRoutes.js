@@ -2,6 +2,7 @@ const { User } = require('../Models')
 const jwt = require('jsonwebtoken')
 const passport = require('passport')
 
+const { SocketioControllers: { announceLogin } } = require('../controllers')
 
 module.exports = app => {
     app.post('/userAuth', (req, res) => {
@@ -16,6 +17,7 @@ module.exports = app => {
         User.authenticate()(req.body.username, req.body.password, (e, user) => {
             if (e) { console.log(e) }
             if (user) {
+                announceLogin(user._id)
                 User.updateOne({ _id: user._id }, { isLoggedIn: true })
                     .then(() => res.json({ token: jwt.sign({ id: user._id }, process.env.SECRET) }))
                     .catch(e => console.log(e))

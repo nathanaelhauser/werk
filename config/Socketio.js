@@ -6,4 +6,3 @@ socket.on('connection', () => {
 })
 
 module.exports = socket
-
