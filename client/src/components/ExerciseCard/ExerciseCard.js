@@ -2,20 +2,15 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import ExerciseList from '../../components/ExerciseList'
 import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 250,
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
+
   title: {
     fontSize: 10,
   },

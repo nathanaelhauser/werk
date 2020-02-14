@@ -6,6 +6,21 @@ import CardHeader from '@material-ui/core/CardHeader'
 import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1)
+
+    },
+  },
+  typography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 30
+  },
+  titleTypography: {
+    "fontFamily": "\"Bangers\"",
+    "fontSize": 36
+  },
+
   inline: {
     display: 'inline'
   },
