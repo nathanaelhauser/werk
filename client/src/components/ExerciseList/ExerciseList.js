@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       margin: theme.spacing(1)
-
     },
   },
   typography: {
@@ -26,11 +25,12 @@ const ExerciseList = () => {
   const { exercises } = useContext(ExerciseContext)
 
   return (
-    <List className={classes.root}>
+    <div className={classes.root}>
       {
         exercises
           ? exercises.map(exercise =>  
             <ExerciseListItem
+            className= {classes.titleTypography}
               key={exercise._id}
               name={exercise.name}
               mainMuscles={exercise.mainMuscles}
@@ -40,7 +40,7 @@ const ExerciseList = () => {
             />)
           : null
       }
-    </List>
+    </div>
   )
 }
 

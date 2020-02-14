@@ -5,6 +5,13 @@ import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import Grid from '@material-ui/core/Grid'
 
+const useGridStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  
+}));
+
 const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
@@ -31,19 +38,19 @@ const useStyles = makeStyles(theme => ({
 
 const ExerciseListItem = props => {
   return (
+    <Grid>
     <Card>
-      <CardHeader>
-        {props.name}
-      </CardHeader>
-      <Grid>
       <CardContent>
+      
+        <p>{props.name}</p>
         <p>{props.description}</p>
         <p>{props.equipment}</p>
         <p>{props.mainMuscles}</p>
         <p>{props.secondaryMuscles}</p>
+     
       </CardContent>
-      </Grid>
     </Card>
+     </Grid>
   )
 }
 
