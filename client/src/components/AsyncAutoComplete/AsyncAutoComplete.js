@@ -6,6 +6,11 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import axios from 'axios'
 import CustomContext from '../../utils/CustomContext'
 
+const filterArea = {
+  upper: ['arms', 'abs', 'shoulders', 'chest', 'back'],
+  lower: ['calves', 'legs']
+}
+
 const AsyncAutoComplete = () => {
   const [open, setOpen] = useState(false)
   const [options, setOptions] = useState([])

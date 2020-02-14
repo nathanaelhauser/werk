@@ -37,8 +37,6 @@ const useStyles = makeStyles(theme => ({
 
 const CustomCard = () => {
   const classes = useStyles()
-  const [dense, setDense] = useState(false)
-  const [secondary, setSecondary] = useState(false)
   const { workouts, handleDeleteWorkout, handleStartWorkout} = useContext(WorkoutContext)
 
   return (
