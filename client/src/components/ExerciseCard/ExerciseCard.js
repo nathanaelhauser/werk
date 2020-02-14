@@ -35,7 +35,13 @@ const useStyles = makeStyles({
 
 const ExerciseCard = props => {
   const classes = useStyles();
-  const [exerciseState, setExerciseState] = useState(ExerciseContext)
+  const [exerciseState, setExerciseState] = useState({
+    exerciseName: '', 
+    mainMuscles: '', 
+    secondaryMuscles: '', 
+    exerciseDespcription: '', 
+    exerciseEquipment:''
+  })
  
   useEffect(() =>{
     getExercises(sessionStorage.getItem('werkToken'))
@@ -52,13 +58,13 @@ const ExerciseCard = props => {
         <CardContent>
          <ListItem>
            <ListItemText primary = {props.exercise}>
-             
+             <ul>
              <p> Exercise: {exerciseState.exerciseName}</p>
              <p> Main Muscles: {exerciseState.mainMuscles}</p>
              <p> Secondary Muscle: {exerciseState.secondaryMuscles}</p>
              <p>Despription: {exerciseState.exerciseDespcription}</p>
              <p> Equipment: {exerciseState.exerciseEquipment}</p>
-
+            </ul>
            </ListItemText>
          </ListItem>
         </CardContent>

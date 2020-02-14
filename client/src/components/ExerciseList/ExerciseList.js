@@ -33,7 +33,7 @@ const ExerciseList = () => {
   return(
     <div className={classes.root}>
       {
-       <p>
+       <ul>
 <li className={classes.titleTypography} value={ExceriseContext}>
   <span>
    Exercise Name: {exerciseName}
@@ -43,7 +43,7 @@ const ExerciseList = () => {
    Equipment: {exerciseEquipment}
   </span>
   </li>
-     </p>
+     </ul>
     }
 
     </div>
