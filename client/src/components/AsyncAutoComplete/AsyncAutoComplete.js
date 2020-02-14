@@ -36,7 +36,11 @@ const AsyncAutoComplete = () => {
       if (active) {
         setOptions(
           exercises
-            .filter(exercise => filterArea[area].includes(exercise.category))
+            .filter(exercise => {
+              const filtered = filterArea[area].includes(exercise.category)
+              console.log(filtered)
+              return filtered
+            })
             .map(({ name, _id }) => ({ name, _id }))
         )
       }
