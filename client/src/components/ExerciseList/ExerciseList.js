@@ -1,7 +1,11 @@
-import React,{useState, useStyle} from 'react'
+import React,{useState, useStyle, useEffect, useContext} from 'react'
 import ExceriseContext from '../../utils/ExerciseContext'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import { makeStyles } from '@material-ui/core/styles'
+import List from '@material-ui/core/List'
+import FriendsListItem from '../../components/FriendsListItem'
+
+const {getExercises} =ExerciseAPI
 
 const useGridStyles = makeStyles(theme => ({
   root: {
@@ -26,27 +30,33 @@ titleTypography: {"fontFamily": "\"Bangers\"",
     }))
 
 const ExerciseList = () => {
-  const{exerciseName, mainMuscles, secondaryMuscles, exerciseDespcription, exerciseEquipment} = useState(ExceriseContext)
-
   const classes = useStyle()
+  const {exerciseName, mainMuscles, secondaryMuscles, exerciseDespcription, exerciseEquipment}= useContext(ExceriseContext)
+
+  useEffect(() => {
+    getExercises()
+      .then(({ data: exercises }) => setExerciseState({ ...exerciseState, exercises }))
+  }, [])
 
   return(
-    <div className={classes.root}>
-      {
-       <ul>
-<li className={classes.titleTypography} value={ExceriseContext}>
-  <span>
-   Exercise Name: {exerciseName}
-   Main Muscles: {mainMuscles}
-   Secondary Muscle:{secondaryMuscles}
-   Despcription:{exerciseDespcription}
-   Equipment: {exerciseEquipment}
-  </span>
-  </li>
-     </ul>
-    }
-
-    </div>
+    <List className={classes.root}>
+  {
+  exercises
+  ? exercises.map(exercise => 
+    {{console.log(exercise._id)}
+  return <FriendsListItem 
+   Exercise Name= {exercise._id}
+   Main Muscles={mainMuscles}
+   Secondary Muscle={secondaryMuscles}
+   Despcription={exerciseDespcription}
+   Equipment= {exerciseEquipment}
+   />
+  })
+  : null
+ 
+}
+  </List> 
   )
-  }
+}
+  
 export default ExerciseList

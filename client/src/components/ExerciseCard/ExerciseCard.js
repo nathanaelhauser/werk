@@ -8,9 +8,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import ExerciseContext from '../../utils/ExerciseContext'
-import WorkoutAPI from '../../utils/WorkoutAPI'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemText from '@material-ui/core/ListItemText'
+import ExerciseList from '../../components/ExerciseList'
  
 const {getExercises} =ExerciseAPI
 
@@ -56,17 +54,7 @@ const ExerciseCard = props => {
         <Paper>
       <Card className={classes.root} variant="outlined">
         <CardContent>
-         <ListItem>
-           <ListItemText primary = {props.exercise}>
-             <ul>
-             <p> Exercise: {exerciseState.exerciseName}</p>
-             <p> Main Muscles: {exerciseState.mainMuscles}</p>
-             <p> Secondary Muscle: {exerciseState.secondaryMuscles}</p>
-             <p>Despription: {exerciseState.exerciseDespcription}</p>
-             <p> Equipment: {exerciseState.exerciseEquipment}</p>
-            </ul>
-           </ListItemText>
-         </ListItem>
+          <ExerciseList/>
         </CardContent>
         <CardActions>
           {/* <Button size="small" onClick= {handleAddFav}>Add to Custom Workouts</Button> */}
