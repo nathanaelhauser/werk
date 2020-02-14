@@ -1,21 +1,27 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, 
+       { useContext,
+         useState,
+         useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import UserAuthAPI from '../../utils/UserAuthAPI'
-import LandingContext from '../../utils/LandingContext'
-import LogoutContext from '../../utils/LogoutContext'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+import { Container,
+         Grid,
+         Button,
+         IconButton,
+         Typography } from '@material-ui/core'
+// modal
 import Dialog from '@material-ui/core/Dialog'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogActions from '@material-ui/core/DialogActions'
-import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import LandingContext from '../../utils/LandingContext'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import LogoutContext from '../../utils/LogoutContext'
 import RegForm from '../RegForm'
 import LoginForm from '../LoginForm'
+// photos
 import logo from './JumbotronImages/logo.png'
 import werkSubtitle from './JumbotronImages/werkSubtitle.png'
 import werkLogo from './JumbotronImages/werkLogo.png'

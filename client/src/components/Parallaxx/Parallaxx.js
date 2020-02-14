@@ -1,9 +1,9 @@
 import React from 'react'
 import { Parallax } from 'react-parallax'
-import Jumbotron from '../Jumbotron'
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider,
+         createMuiTheme } from '@material-ui/core/styles'
 import { Typography } from '@material-ui/core'
+import Jumbotron from '../Jumbotron'
 
 const theme = createMuiTheme({
     palette: {

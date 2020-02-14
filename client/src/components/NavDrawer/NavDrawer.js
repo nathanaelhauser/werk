@@ -1,11 +1,16 @@
-import React, { useContext } from 'react' 
-import { Link, withRouter } from 'react-router-dom'
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
+import React,
+       { useContext } from 'react'
+import { Link,
+         withRouter } from 'react-router-dom'
+import { makeStyles, 
+         ThemeProvider,
+         createMuiTheme } from '@material-ui/core/styles'
+import { SwipeableDrawer,
+         List,
+         ListItem,
+         Grid,
+         Typography } from '@material-ui/core'
+//  icons
 import HomeIcon from '@material-ui/icons/Home'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter'
@@ -13,7 +18,6 @@ import DirectionsRunIcon from '@material-ui/icons/DirectionsRun'
 import ChildFriendlyIcon from '@material-ui/icons/ChildFriendly'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import InfoIcon from '@material-ui/icons/Info'
-import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
 
 const theme = createMuiTheme({

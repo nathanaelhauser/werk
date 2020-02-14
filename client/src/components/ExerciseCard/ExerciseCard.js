@@ -1,10 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Paper from '@material-ui/core/Paper'
+import { Card,
+         CardContent,
+         Grid,
+         Paper } from '@material-ui/core'
 import ExerciseList from '../../components/ExerciseList'
-import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles({
   root: {

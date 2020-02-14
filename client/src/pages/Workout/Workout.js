@@ -6,6 +6,8 @@ import StartWorkoutCard from '../../components/StartWorkoutCard'
 import WorkoutTimerCard from '../../components/WorkoutTimerCard'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 
 const Workout = props => {
   const [authorizedState, setAuthorizedState] = useState(true)
@@ -21,13 +23,20 @@ const Workout = props => {
 
   return (
     <Container>
+      <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center">
       <UnauthorizedRedirect authorized={authorizedState} />
-      <h1>{workout.name}</h1>
+      {/* <h1>{workout.name}</h1> */}
+      <Typography>{workout.name}</Typography>
       {
         workoutStarted
         ? <WorkoutTimerCard />
         : <StartWorkoutCard />
-      }
+      }  
+      </Grid>
+      
     </Container>
   )
 }
