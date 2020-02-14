@@ -10,6 +10,7 @@ import WorkoutContext from '../../utils/WorkoutContext'
 import RemoveIcon from '@material-ui/icons/Delete'
 import Button from '@material-ui/core/Button'
 
+
 const useStyles = makeStyles(theme => ({
   card: {
     minWidth: 275,
@@ -56,7 +57,7 @@ const CustomCard = () => {
              {workout.name}
              </Grid>
              <Grid item xs={3}>
-             <Button variant="contained" color="primary" onClick={handleStartWorkout}>
+             <Button variant="contained" color="primary" onClick={() => handleStartWorkout(workout._id)}>
                 Start
             </Button>
             </Grid>
