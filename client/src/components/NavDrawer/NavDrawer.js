@@ -125,7 +125,7 @@ const NavDrawerGuts = props => {
           </ListItem>
         </Link>
         {/* exercises */}
-        <Link to="/exercises" className={classes.link}>
+        <Link to="/exercise" className={classes.link}>
           <ListItem button key={'Exercises'}>
             <Grid container spacing={3}>
               <Grid item xs={4}>

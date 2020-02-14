@@ -195,7 +195,7 @@ const App = props => {
                       <Route path="/workout">
                         <Workout />
                       </Route>
-                      <Route path="/exercises">
+                      <Route path="/exercise">
                         <Exercises />
                       </Route>
                       <Route path="/recent">

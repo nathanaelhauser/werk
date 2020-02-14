@@ -10,6 +10,7 @@ import WorkoutContext from '../../utils/WorkoutContext'
 import RemoveIcon from '@material-ui/icons/Delete'
 import Button from '@material-ui/core/Button'
 
+
 const useStyles = makeStyles(theme => ({
   card: {
     minWidth: 275,

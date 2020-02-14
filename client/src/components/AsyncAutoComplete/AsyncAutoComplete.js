@@ -78,6 +78,7 @@ const AsyncAutoComplete = () => {
         <TextField
           {...params}
           label="Search Exercises"
+          size= "small"
           fullWidth
           variant="outlined"
           InputProps={{

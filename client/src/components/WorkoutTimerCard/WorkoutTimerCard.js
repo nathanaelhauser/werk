@@ -11,6 +11,7 @@ import UserContext from '../../utils/UserContext'
 import Button from '@material-ui/core/Button'
 import EventAPI from '../../utils/EventAPI'
 
+
 const white = '#FFFFFF'
 const black = '#000000'
 const green = '#2DC937'
@@ -20,8 +21,8 @@ const azure = '#0080FF'
 
 const useStyles = makeStyles({
   grid: {
-    height: '50vh',
-    display: 'flex',
+    height: '100%',
+    display: 'fluid',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
