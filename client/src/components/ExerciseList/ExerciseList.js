@@ -12,11 +12,11 @@ const useStyles = makeStyles(theme => ({
   },
   typography: {
     "fontFamily": "\"Bangers\"",
-    "fontSize": 30
+    "fontSize": 25
   },
   titleTypography: {
     "fontFamily": "\"Bangers\"",
-    "fontSize": 36
+    "fontSize": 20
   }
 }))
 
@@ -25,7 +25,7 @@ const ExerciseList = () => {
   const { exercises } = useContext(ExerciseContext)
 
   return (
-    <div className={classes.root}>
+    <List className={classes.root}>
       {
         exercises
           ? exercises.map(exercise =>  
@@ -40,7 +40,7 @@ const ExerciseList = () => {
             />)
           : null
       }
-    </div>
+    </List>
   )
 }
 

@@ -11,9 +11,9 @@ const useStyles = makeStyles({
     minWidth: 250,
   },
   typography: {"fontFamily": "\"Bangers\"",
-    "fontSize": 30},
+    "fontSize": 20},
 titleTypography: {"fontFamily": "\"Bangers\"",
-    "fontSize": 36},
+    "fontSize": 20},
   pos: {
     marginBottom: 10,
   },

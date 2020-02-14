@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardHeader from '@material-ui/core/CardHeader'
 import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 
 const useGridStyles = makeStyles(theme => ({
   root: {
@@ -21,33 +22,28 @@ const useStyles = makeStyles(theme => ({
   },
   typography: {
     "fontFamily": "\"Bangers\"",
-    "fontSize": 30
+    "fontSize": 20
   },
   titleTypography: {
     "fontFamily": "\"Bangers\"",
-    "fontSize": 36
+    "fontSize": 20
   },
 
-  inline: {
-    display: 'inline'
-  },
-  icon: {
-    marginRight: '20px'
-  }
 }))
 
 const ExerciseListItem = props => {
+  const classes = useStyles()
   return (
     <Grid>
     <Card>
       <CardContent>
-      
-        <p>{props.name}</p>
-        <p>{props.description}</p>
-        <p>{props.equipment}</p>
-        <p>{props.mainMuscles}</p>
-        <p>{props.secondaryMuscles}</p>
-     
+      <Typography variant="body2" >
+      <p>  {props.name}</p>
+      <p> {props.description}</p>
+      <p> {props.equipment}</p> 
+      <p> {props.mainMuscles}</p> 
+      <p>  {props.secondaryMuscles}</p>
+     </Typography>
       </CardContent>
     </Card>
      </Grid>
