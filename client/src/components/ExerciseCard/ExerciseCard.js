@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent'
 import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import ExerciseList from '../../components/ExerciseList'
+import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles({
   root: {
@@ -27,7 +28,7 @@ const ExerciseCard = props => {
   const classes = useStyles()
 
   return (
-    <Container>
+    <Grid container spacing={3} direction="column">
       <Paper>
         <Card className={classes.root} variant="outlined">
           <CardContent>
@@ -35,7 +36,7 @@ const ExerciseCard = props => {
           </CardContent>
         </Card>
       </Paper>
-    </Container>
+      </Grid> 
   )
 }
 
