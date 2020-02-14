@@ -3,7 +3,8 @@ import ExceriseContext from '../../utils/ExerciseContext'
 import ExerciseAPI from '../../utils/ExerciseAPI'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
-import FriendsListItem from '../../components/FriendsListItem'
+import ExerciseCard from '../../components/FriendsListItem'
+import ExerciseContext from '../../utils/ExerciseContext'
 
 const {getExercises} =ExerciseAPI
 
@@ -30,12 +31,15 @@ titleTypography: {"fontFamily": "\"Bangers\"",
     }))
 
 const ExerciseList = () => {
-  const classes = useStyle()
-  const {exerciseName, mainMuscles, secondaryMuscles, exerciseDespcription, exerciseEquipment}= useContext(ExceriseContext)
+  const classes = useStyles()
+  const {exercises, mainMuscles, secondaryMuscles, exerciseDespcription, exerciseEquipment, setExercises}= useState(ExerciseContext)
+
+
 
   useEffect(() => {
+    
     getExercises()
-      .then(({ data: exercises }) => setExerciseState({ ...exerciseState, exercises }))
+      .then(({ data: exercises }) => setExercises(exercises))
   }, [])
 
   return(
@@ -44,12 +48,12 @@ const ExerciseList = () => {
   exercises
   ? exercises.map(exercise => 
     {{console.log(exercise._id)}
-  return <FriendsListItem 
-   Exercise Name= {exercise._id}
-   Main Muscles={mainMuscles}
-   Secondary Muscle={secondaryMuscles}
-   Despcription={exerciseDespcription}
-   Equipment= {exerciseEquipment}
+  return <ExerciseCard 
+   Exercise Name= {exercise.name}
+   Main Muscles={exercise.mainMuscles}
+   Secondary Muscle={exercise.secondaryMuscles}
+   Despcription={exercise.exerciseDespcription}
+   Equipment= {exercise.exerciseEquipment}
    />
   })
   : null
