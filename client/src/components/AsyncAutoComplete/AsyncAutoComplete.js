@@ -6,11 +6,16 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import axios from 'axios'
 import CustomContext from '../../utils/CustomContext'
 
+const filterArea = {
+  upper: ['arms', 'abs', 'shoulders', 'chest', 'back'],
+  lower: ['calves', 'legs']
+}
+
 const AsyncAutoComplete = () => {
   const [open, setOpen] = useState(false)
   const [options, setOptions] = useState([])
   const loading = open && options.length === 0
-  const { handleCustomInputChange } = useContext(CustomContext)
+  const { handleCustomInputChange, area } = useContext(CustomContext)
 
   const handleInputChange = (event, exercise) => {
     const chosenExercise = options.filter(option => option.name === exercise)[0]
@@ -29,7 +34,11 @@ const AsyncAutoComplete = () => {
       const { data: exercises } = await response
 
       if (active) {
-        setOptions(exercises.map(({ name, _id }) => ({ name, _id })))
+        setOptions(
+          exercises
+            .filter(exercise => filterArea[area].includes(exercise.category))
+            .map(({ name, _id }) => ({ name, _id }))
+        )
       }
     })()
 

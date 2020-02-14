@@ -12,9 +12,10 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import { createMuiTheme } from '@material-ui/core/styles'
 import DrawerContext from '../../utils/DrawerContext'
-import UserAPI from '../../utils/UserAPI'
+import LogoutContext from '../../utils/LogoutContext'
+import UserAuthAPI from '../../utils/UserAuthAPI'
 
-const { updateUser } = UserAPI
+const { logoutUser } = UserAuthAPI
 
 const theme = createMuiTheme({
   palette: {
@@ -68,8 +69,10 @@ const NavGuts = props => {
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
-  const [goLanding, setGoLanding] = useState(false)
+  // const [goLanding, setGoLanding] = useState(false)
 
+  const { toggleDrawer } = useContext(DrawerContext)
+  const { loggingOut, setLoggingOut } = useContext(LogoutContext)
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
@@ -80,22 +83,21 @@ const NavGuts = props => {
   }
 
   const handleSignOut = () => {
-    updateUser(sessionStorage.getItem('werkToken'), { isLoggedIn: false })
+    logoutUser()
       .then(() => {
         setAnchorEl(false)
         sessionStorage.removeItem('werkToken')
-        setGoLanding(true)
+        setLoggingOut(true)
       })
       .catch(e => console.error(e))
   }
 
   const renderRedirectLanding = () => {
-    if (goLanding) {
+    if (loggingOut) {
       return <Redirect to="/" />
     }
   }
 
-  const { toggleDrawer } = useContext(DrawerContext)
 
   return (
     <>

@@ -36,18 +36,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function generate(element) {
-  return [0, 1, 2].map(value =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
-
 const CustomCard = () => {
   const classes = useStyles()
-  const [dense, setDense] = useState(false)
-  const [secondary, setSecondary] = useState(false)
   const { workouts, handleDeleteWorkout, handleStartWorkout} = useContext(WorkoutContext)
 
   return (
@@ -62,7 +52,6 @@ const CustomCard = () => {
           {
             workouts.length ? workouts.map(workout => (
               <p>
-                {console.log(workout)}
               <Grid container>
               <Grid item xs={6}>
              {workout.name}

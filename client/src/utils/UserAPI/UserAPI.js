@@ -11,13 +11,6 @@ const UserAPI = {
       'Authorization': `Bearer ${token}`
     }
   }),
-  getFriends: (token) => axios({
-    method: 'GET',
-    url: '/friends',
-    header: {
-      'Authorization': `Bearer ${token}`
-    }
-  }),
   createUser: (user) => axios.post('/users', user),
   updateUser: (token, values) => axios({
     method: 'PUT',
@@ -34,8 +27,8 @@ const UserAPI = {
     headers: {
       'Authorization': `Bearer ${token}`
     }
-  }),
-authUserSignOut: (id, token) => axios.delete(`/users/${token}`),
+  })
+  
 }
 
 export default UserAPI
