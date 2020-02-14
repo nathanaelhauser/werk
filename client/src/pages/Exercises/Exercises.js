@@ -3,14 +3,16 @@ import ExerciseCard from '../../components/ExerciseCard'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import ExerciseContext from '../../utils/ExerciseContext'
+import ExerciseAPI from '../../utils/ExerciseAPI'
 
-
-
-
+const { getExercises } = ExerciseAPI
 
 const Exercises = () => {
     const [authorizedState, setAuthorizedState] = useState(true)
-  
+    const [ exerciseState, setExerciseState] = useState({ 
+        exercises: []
+    })
+
     useEffect(() => {
         UserAuthAPI.authorizeUser()
             .then(({ data: { isAuthorized } }) => {
@@ -19,15 +21,20 @@ const Exercises = () => {
             .catch(e => console.error(e))
     }, [])
 
+    useEffect(() => {
+        getExercises()
+            .then(({ data: exercises }) => setExerciseState({ ...exerciseState, exercises }))
+            .catch(e => console.error(e))
+    }, [])
+
     return (
         <>
-       <ExerciseContext.Provider value ={ExerciseContext}>
-        <UnauthorizedRedirect authorized={authorizedState} />
-        <ExerciseCard>
-        </ExerciseCard>
-        </ExerciseContext.Provider>
+            <ExerciseContext.Provider value={exerciseState}>
+                <UnauthorizedRedirect authorized={authorizedState} />
+                <ExerciseCard />
+            </ExerciseContext.Provider>
         </>
     )
 }
-    
+
 export default Exercises
