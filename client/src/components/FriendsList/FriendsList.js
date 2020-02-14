@@ -22,15 +22,12 @@ const FriendsList = () => {
     <List className={classes.root}>
       {
         friends
-        ? friends.map(friend => 
-          {{console.log(friend._id)}
-          return <FriendsListItem 
+        ? friends.map(friend => <FriendsListItem 
             key={friend._id}
             iconColor={friend.isLoggedIn ? active : inactive}
             username={friend.username}
             handleDelete={handleDelete(friend._id)}
-          />
-          })
+          />)
         : null
       }
     </List>
