@@ -145,7 +145,7 @@ const Jumbotron = () => {
           <Button onClick={handleClickOpen('login')}color="secondary" variant="contained">Login</Button>
           <Dialog onClose={handleClose('login')} aria-labelledby="customized-dialog-title" open={openLogin}>
             <DialogTitle id="customized-dialog-title" onClose={handleClose('login')}>
-              Welcome back bitch!
+              Welcome back!
             </DialogTitle>
             <DialogContent dividers>
               <LoginForm />
