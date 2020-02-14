@@ -32,7 +32,7 @@ const AsyncAutoComplete = () => {
     (async () => {
       const response = await axios.get('/exercises')
       const { data: exercises } = await response
-
+      console.log(exercises)
       if (active) {
         setOptions(
           exercises
