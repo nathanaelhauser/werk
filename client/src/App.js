@@ -21,7 +21,13 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider } from '@material-ui/core/styles'
 import WorkoutContext from './utils/WorkoutContext'
 import UserContext from './utils/UserContext'
+import LogoutContext from './utils/LogoutContext'
+import FriendsContext from './utils/FriendsContext'
+import FriendAPI from './utils/FriendAPI'
 import UserAPI from './utils/UserAPI'
+import UserAuthAPI from './utils/UserAuthAPI'
+
+const { addFriend, deleteFriend } = FriendAPI
 
 const theme = createMuiTheme({
   palette: {
@@ -39,6 +45,13 @@ const theme = createMuiTheme({
   }
 
 })
+
+const closingCode = () => {
+  UserAuthAPI.logoutUser()
+    .catch(e => console.error(e))
+  return null;
+}
+window.onbeforeunload = closingCode
 
 const App = props => {
 
@@ -80,6 +93,43 @@ const App = props => {
   }, [sessionStorage.getItem('werkToken')])
 
   /////////////////////////
+  // Friends State
+  /////////////////////////
+
+  const [friendsState, setFriendsState] = useState({
+    friends: [],
+    friend: ''
+  })
+
+  friendsState.handleInputChange = event =>
+    setFriendsState({ ...friendsState, [event.target.name]: event.target.value })
+
+  friendsState.handleSubmit = event => {
+    event.preventDefault()
+    addFriend(friendsState.friend)
+      .then(({ data: friend }) => {
+        let friends = [...friendsState.friends]
+        friends.push(friend)
+        setFriendsState({ ...friendsState, friends, friend: '' })
+      })
+      .catch(e => console.error(e))
+  }
+
+  friendsState.handleDelete = friendID => event => {
+    deleteFriend(friendID)
+      .then(() => {
+        let friends = [...friendsState.friends]
+        friends = friends.filter(friend => friend._id !== friendID)
+        setFriendsState({ ...friendsState, friends })
+      })
+      .catch(e => console.error(e))
+  }
+
+  friendsState.setFriends = friends => {
+    setFriendsState({ ...friendsState, friends })
+  }
+
+  /////////////////////////
   // Drawer State
   /////////////////////////
 
@@ -95,6 +145,18 @@ const App = props => {
   }
 
   /////////////////////////
+  // Logout State
+  /////////////////////////
+
+  const [logoutState, setLogoutState] = useState({
+    loggingOut: false
+  })
+
+  logoutState.setLoggingOut = loggingOut => {
+    setLogoutState({ ...logoutState, loggingOut })
+  }
+
+  /////////////////////////
   // Main App
   /////////////////////////
 
@@ -102,46 +164,50 @@ const App = props => {
     <ThemeProvider theme={theme}>
       <UserContext.Provider value={userState}>
         <WorkoutContext.Provider value={workoutState}>
-          <DrawerContext.Provider value={drawerState}>
-            <Router>
-              <div>
-                <Nav />
-                <NavDrawer />
-                <Switch>
-                  <Route exact path="/">
-                    {/* page tags */}
-                    <Landing />
-                  </Route>
-                  <Route path="/home">
-                    {/* page tags */}
-                    <Home />
-                  </Route>
-                  <Route path="/about">
-                    <About />
-                  </Route>
-                  <Route path="/quickstart">
-                    <Quickstart />
-                  </Route>
-                  <Route path="/custom">
-                    <Custom />
-                  </Route>
-                  <Route path="/profile">
-                    <Profile />
-                  </Route>
-                  <Route path="/workout">
-                    <Workout />
-                  </Route>
-                  <Route path="/exercises">
-                    <Exercises />
-                  </Route>
-                  <Route path="/recent">
-                    <Recent />
-                  </Route>
+          <FriendsContext.Provider value={friendsState}>
+            <DrawerContext.Provider value={drawerState}>
+              <LogoutContext.Provider value={logoutState}>
+                <Router>
+                  <div>
+                    <Nav />
+                    <NavDrawer />
+                    <Switch>
+                      <Route exact path="/">
+                        {/* page tags */}
+                        <Landing />
+                      </Route>
+                      <Route path="/home">
+                        {/* page tags */}
+                        <Home />
+                      </Route>
+                      <Route path="/about">
+                        <About />
+                      </Route>
+                      <Route path="/quickstart">
+                        <Quickstart />
+                      </Route>
+                      <Route path="/custom">
+                        <Custom />
+                      </Route>
+                      <Route path="/profile">
+                        <Profile />
+                      </Route>
+                      <Route path="/workout">
+                        <Workout />
+                      </Route>
+                      <Route path="/exercise">
+                        <Exercises />
+                      </Route>
+                      <Route path="/recent">
+                        <Recent />
+                      </Route>
 
-                </Switch>
-              </div>
-            </Router>
-          </DrawerContext.Provider>
+                    </Switch>
+                  </div>
+                </Router>
+              </LogoutContext.Provider>
+            </DrawerContext.Provider>
+          </FriendsContext.Provider>
         </WorkoutContext.Provider>
       </UserContext.Provider>
     </ThemeProvider>

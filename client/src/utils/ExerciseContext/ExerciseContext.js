@@ -2,15 +2,7 @@ import {createContext} from 'react'
 
 
 const ExerciseContext = createContext({
-    exerciseName: '',
-    mainMuscles: '',
-    secondaryMuscles: '',
-    exerciseDespcription: '',
-    exerciseEquipment: '',
-    addFav: [],
-    handleAddFav: () => {},
-    removeFromFav: () => {}
-
-
+    exercises: []
 })
+
 export default ExerciseContext

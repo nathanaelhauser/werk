@@ -9,10 +9,12 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import ModalList from '../ModalList'
+import ub from './qsPictures/ub.jpg'
 
 const useCardStyles = makeStyles({
   card: {
-    maxWidth: 370
+    maxWidth: 370,
+    background: "#f44336"
   },
   media: {
     height: "100%",
@@ -59,16 +61,13 @@ const UBModal = () => {
           className={cardClasses.media}
           component="img"
           alt="upperbody"
-          image={require('./qsPictures/upperbody.jpg')}
+          image={ub}
           height='230'
           title="Upper body"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h5" component="h2" align="center">
             Upper Body
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Don't tri and get bi
           </Typography>
         </CardContent>
       </CardActionArea>

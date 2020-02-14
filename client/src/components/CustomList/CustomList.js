@@ -37,7 +37,7 @@ const CustomList = () => {
     setChecked(prev => !prev)
   }
   const classes = useStyles()
-  const { exercises, handleCustomRemoveExercise, workoutTitle, handleCustomAddWorkout } = useContext(CustomContext)
+  const { exercises, handleCustomRemoveExercise, workoutTitle, handleCustomAddWorkout, handleStartWorkout } = useContext(CustomContext)
 
   return(
   
@@ -49,17 +49,12 @@ const CustomList = () => {
       exercises.length ? exercises.map(exercise => (
         <p className={classes.typography}>
           <span>{exercise.name}</span>
+          <Button onClick={handleStartWorkout}>Start</Button>
           <IconButton size="small" aria-label="delete" onClick={() => handleCustomRemoveExercise(exercise._id)}><RemoveIcon fontSize="small"/></IconButton>
         </p>
         )) 
          : null
-    }
-    {
-      exercises.length ? <FormControlLabel
-      control={<Switch checked={checked} onChange={toggleChecked} />}
-      label={checked ? 'Lower Body' : "Upper Body"}
-    /> : null
-    }
+    },
     {
       exercises.length ? <Button variant="contained" className={classes.typography} onClick={handleCustomAddWorkout}> Create Workout </Button> : null
     }

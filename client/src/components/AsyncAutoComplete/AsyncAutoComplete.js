@@ -10,11 +10,16 @@ import CustomContext from '../../utils/CustomContext'
 import axios from 'axios'
 import 'isomorphic-fetch'
 
+const filterArea = {
+  upper: ['Arms', 'Abs', 'Shoulders', 'Chest', 'Back'],
+  lower: ['Calves', 'Legs']
+}
+
 const AsyncAutoComplete = () => {
   const [open, setOpen] = useState(false)
   const [options, setOptions] = useState([])
   const loading = open && options.length === 0
-  const { handleCustomInputChange } = useContext(CustomContext)
+  const { handleCustomInputChange, area } = useContext(CustomContext)
 
   const handleInputChange = (event, exercise) => {
     const chosenExercise = options.filter(option => option.name === exercise)[0]
@@ -31,9 +36,18 @@ const AsyncAutoComplete = () => {
     (async () => {
       const response = await axios.get('/exercises')
       const { data: exercises } = await response
-
+      console.log(exercises)
       if (active) {
-        setOptions(exercises.map(({ name, _id }) => ({ name, _id })))
+        setOptions(
+          exercises
+            .filter(exercise => {
+              const filter = filterArea[area]
+              console.log(filter)
+              console.log(exercise.category)
+              return filter.includes(exercise.category)
+            })
+            .map(({ name, _id }) => ({ name, _id }))
+        )
       }
     })()
 
@@ -68,6 +82,7 @@ const AsyncAutoComplete = () => {
         <TextField
           {...params}
           label="Search Exercises"
+          size= "small"
           fullWidth
           variant="outlined"
           InputProps={{

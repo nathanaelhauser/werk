@@ -5,5 +5,6 @@ module.exports = app => {
     require('./exerciseRoutes.js')(app)
     require('./userAuthRoutes.js')(app)
     require('./eventRoutes.js')(app)
+    require('./friendRoutes.js')(app)
     require('./htmlRoutes.js')(app)
 }

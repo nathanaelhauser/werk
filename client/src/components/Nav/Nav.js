@@ -17,6 +17,10 @@ import { AppBar,
 import MenuOpenIcon from '@material-ui/icons/MenuOpen'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import DrawerContext from '../../utils/DrawerContext'
+import LogoutContext from '../../utils/LogoutContext'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+
+const { logoutUser } = UserAuthAPI
 
 const theme = createMuiTheme({
   palette: {
@@ -70,8 +74,10 @@ const NavGuts = props => {
   const [auth, setAuth] = useState(true)
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
-  const [goLanding, setGoLanding] = useState(false)
+  // const [goLanding, setGoLanding] = useState(false)
 
+  const { toggleDrawer } = useContext(DrawerContext)
+  const { loggingOut, setLoggingOut } = useContext(LogoutContext)
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget)
@@ -82,18 +88,21 @@ const NavGuts = props => {
   }
 
   const handleSignOut = () => {
-    setAnchorEl(false)
-    sessionStorage.removeItem('werkToken')
-    setGoLanding(true)
+    logoutUser()
+      .then(() => {
+        setAnchorEl(false)
+        sessionStorage.removeItem('werkToken')
+        setLoggingOut(true)
+      })
+      .catch(e => console.error(e))
   }
 
   const renderRedirectLanding = () => {
-    if (goLanding) {
+    if (loggingOut) {
       return <Redirect to="/" />
     }
   }
 
-  const { toggleDrawer } = useContext(DrawerContext)
 
   return (
     <>

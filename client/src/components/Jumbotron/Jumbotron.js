@@ -1,6 +1,7 @@
 import React, 
        { useContext,
-         useState } from 'react'
+         useState,
+         useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { Container,
@@ -16,11 +17,14 @@ import MuiDialogActions from '@material-ui/core/DialogActions'
 import CloseIcon from '@material-ui/icons/Close'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import LandingContext from '../../utils/LandingContext'
+import UserAuthAPI from '../../utils/UserAuthAPI'
+import LogoutContext from '../../utils/LogoutContext'
 import RegForm from '../RegForm'
 import LoginForm from '../LoginForm'
 // photos
 import logo from './JumbotronImages/logo.png'
-import subtitle from './JumbotronImages/subtitle.png'
+import werkSubtitle from './JumbotronImages/werkSubtitle.png'
+import werkLogo from './JumbotronImages/werkLogo.png'
 
 const useStyles = makeStyles({
   root: {
@@ -73,7 +77,9 @@ const Jumbotron = () => {
   const [openRegister, setOpenRegister] = useState(false)
   const [openLogin, setOpenLogin] = useState(false)
   const [toHome, setToHome] = useState(false)
+
   const { name, username, password, confirmPassword, age, weight } = useContext(LandingContext)
+  const { setLoggingOut } = useContext(LogoutContext)
 
   const handleClickOpen = type => event => {
     if (type === 'register') {
@@ -91,19 +97,19 @@ const Jumbotron = () => {
     }
   }
 
-  const handleLogin = async event => {
-    console.log('Trying to login!')
-    const response = await UserAuthAPI.loginUser({ username, password })
-    const { data:{ token }} = await response
-    sessionStorage.setItem('werkToken', token)
-    setToHome(true)
+  const handleLogin = event => {
+    UserAuthAPI.loginUser({ username, password })
+      .then(({ data: { token } }) => {
+        sessionStorage.setItem('werkToken', token)
+        setToHome(true)
+      })
+      .catch(e => console.error(e))
   }
 
   const handleRegister = async event => {
     if (password !== confirmPassword) {
       return
     }
-    console.log('Trying to register!')
     const response = await UserAuthAPI.registerUser({ name, username, password, age, weight })
     const { status } = await response
     if (status === 200) {
@@ -117,6 +123,10 @@ const Jumbotron = () => {
     }
   }
 
+  useEffect(() => {
+    setLoggingOut(false)
+  }, [])
+
   return (
     <Container className={classes.root}>
       {renderRedirect()}
@@ -129,11 +139,11 @@ const Jumbotron = () => {
       >
         <Grid item>
           {/* <Typography variant="h3">WERK</Typography> */}
-          <img src={logo} alt="werk logo"/>
+          <img src={werkLogo} alt="werk logo"/>
         </Grid>
         <Grid item>
           {/* <Typography variant="subtitle1">© the-group 2020</Typography> */}
-          <img src={subtitle} alt="subtitle"/>
+          <img src={werkSubtitle} alt="subtitle"/>
         </Grid>
         <br/><br/><br/><br/><br/><br/>
         <Grid item>
@@ -141,7 +151,7 @@ const Jumbotron = () => {
           <Button onClick={handleClickOpen('login')}color="secondary" variant="contained">Login</Button>
           <Dialog onClose={handleClose('login')} aria-labelledby="customized-dialog-title" open={openLogin}>
             <DialogTitle id="customized-dialog-title" onClose={handleClose('login')}>
-              Welcome back bitch!
+              Welcome back!
             </DialogTitle>
             <DialogContent dividers>
               <LoginForm />

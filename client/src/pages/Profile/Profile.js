@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
@@ -9,14 +9,16 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import MyProfileCard from '../../components/MyProfileCard'
 import CustomCard from '../../components/CustomCard'
+import FriendsCard from '../../components/FriendsCard'
 import SignOutButton from '../../components/SignOutButton'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
 import WorkoutContext from '../../utils/WorkoutContext'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 import ProfileContext from '../../utils/ProfileContext'
+import UserContext from '../../utils/UserContext'
 
-const { getAllWorkouts, deleteWorkout } = WorkoutAPI
+const {getWorkout, deleteWorkout, getUserWorkouts } = WorkoutAPI
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -59,8 +61,18 @@ const useStyles = makeStyles(theme => ({
 
 const Profile = () => {
   const classes = useStyles()
+  const { setWorkout } = useContext(WorkoutContext)
+  const { _id: author } = useContext(UserContext)
   const [value, setValue] = React.useState(0)
   const [authorizedState, setAuthorizedState] = useState(true)
+  const [goWorkout, setGoWorkout] = useState(false)
+
+  const renderRedirectWorkout = () => {
+    if (goWorkout) {
+      return <Redirect to="/workout" />
+    }
+  }
+
   const [ profileState, setProfileState ] = useState({
     name: '',
     age: '',
@@ -88,8 +100,19 @@ const Profile = () => {
   }, [])
 
   const [ workoutState, setWorkoutState ] = useState({
-    workouts: []
+    workouts: [],
+    workout: {}
   })
+
+  workoutState.handleStartWorkout = (id) => {
+    getWorkout(id)
+    .then(({data: workout}) => {
+
+      setWorkout({ ...workout[0], id })
+      setGoWorkout(true)
+    })
+    .catch(e => console.error(e))
+  }
 
   workoutState.handleDeleteWorkout = (id) => {
     let workouts = JSON.parse(JSON.stringify(workoutState.workouts))
@@ -98,10 +121,15 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    getAllWorkouts()
-    .then(({data: workouts}) => setWorkoutState({...workoutState, workouts}))
+    let token = sessionStorage.getItem('werkToken')
+    getUserWorkouts(token)
+    .then(({data: workouts}) => {
+      setWorkoutState({...workoutState, workouts})
+    })
     .catch(e => console.error(e))
   }, [])
+
+  
 
   return (
     <WorkoutContext.Provider value={workoutState}>
@@ -120,6 +148,7 @@ const Profile = () => {
         >
           <Tab label="My Profile" {...a11yProps(0)} />
           <Tab label="My Workouts" {...a11yProps(1)} />
+          <Tab label="My Friends" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -128,6 +157,10 @@ const Profile = () => {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <CustomCard />
+        {renderRedirectWorkout()}
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <FriendsCard />
       </TabPanel>
     </div>
     </ProfileContext.Provider>

@@ -11,6 +11,7 @@ import { Card,
 import RemoveIcon from '@material-ui/icons/Delete'
 import WorkoutContext from '../../utils/WorkoutContext'
 
+
 const useStyles = makeStyles(theme => ({
   card: {
     minWidth: 275,
@@ -36,25 +37,15 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function generate(element) {
-  return [0, 1, 2].map(value =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
-
 const CustomCard = () => {
   const classes = useStyles()
-  const [dense, setDense] = useState(false)
-  const [secondary, setSecondary] = useState(false)
-  const { workouts, handleDeleteWorkout} = useContext(WorkoutContext)
+  const { workouts, handleDeleteWorkout, handleStartWorkout} = useContext(WorkoutContext)
 
   return (
     <Container align="center">
       <Card className={classes.card} variant="outlined">
         <CardContent>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={12}>
             {/* <Typography variant="h6" className={classes.title}>
             WORKOUTS
           </Typography> */}
@@ -62,8 +53,19 @@ const CustomCard = () => {
           {
             workouts.length ? workouts.map(workout => (
               <p>
-             <span>{workout.name}</span> 
-             <IconButton size="small" aria-label="delete" onClick={() => handleDeleteWorkout(workout._id)}><RemoveIcon fontSize="small"/></IconButton>
+              <Grid container>
+              <Grid item xs={6}>
+             {workout.name}
+             </Grid>
+             <Grid item xs={3}>
+             <Button variant="contained" color="primary" onClick={() => handleStartWorkout(workout._id)}>
+                Start
+            </Button>
+            </Grid>
+            <Grid item xs={3}>
+             <IconButton size="small" aria-label="delete" onClick={() => handleDeleteWorkout(workout._id)}><RemoveIcon fontSize="medium"/></IconButton>
+             </Grid>
+             </Grid>
              </p>
             )) : null
           }

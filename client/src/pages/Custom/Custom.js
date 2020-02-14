@@ -5,16 +5,14 @@ import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
-import ExerciseAPI from '../../utils/ExerciseAPI'
 import WorkoutAPI from '../../utils/WorkoutAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
-import UserAPI from '../../utils/UserAPI'
 import WorkoutContext from '../../utils/WorkoutContext'
 import UserContext from '../../utils/UserContext'
-const { getUser } = UserAPI
-const { createWorkout, getWorkout } = WorkoutAPI
-const { deleteExercise, addExercise } = ExerciseAPI
+
+const { createWorkout } = WorkoutAPI
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -46,7 +44,7 @@ const Custom = () => {
   const [customState, setCustomState] = useState({
     workoutTitle: '',
     exercise: {},
-    area: '',
+    area: 'upper',
     exercises: []
   })
 

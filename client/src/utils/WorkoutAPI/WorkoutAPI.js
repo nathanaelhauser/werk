@@ -6,13 +6,14 @@ const WorkoutAPI = {
   getUserWorkouts: (token) => axios({
     method: 'GET',
     url: '/userworkouts',
-    header: {
+    headers: {
       'Authorization': `Bearer ${token}`
     }
   }),
   createWorkout: (workout) => axios.post('/workouts', workout),
   updateWorkout: (id, values) => axios.put(`/workouts/${id}`, values),
-  deleteWorkout: (id) => axios.delete(`/workouts/${id}`)
+  deleteWorkout: (id) => axios.delete(`/workouts/${id}`),
+  getWorkout: (id) => axios.get(`/workouts/${id}`)
 
 }
 

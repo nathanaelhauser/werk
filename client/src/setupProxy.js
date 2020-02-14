@@ -8,10 +8,12 @@ module.exports = function(app) {
         '/workouts', 
         '/userAuth', 
         '/login',
+        '/logout',
         '/authorize',
         '/myuser',
         '/events',
         '/users',
+        '/friends',
         '/userworkouts'
       ], { target: "http://localhost:3001", changeOrigin: true }
     )
