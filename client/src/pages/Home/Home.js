@@ -118,7 +118,7 @@ const Home = () => {
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Create Workout
+                  Create
                 </Typography>
                 {/* <Typography variant="body2" color={classes.text} component="p">
                   Create the workout that is best for you
