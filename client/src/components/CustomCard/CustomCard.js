@@ -1,13 +1,13 @@
 import React, 
-       { useState,
-         useContext } from 'react'
+       { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Card,
          CardActions,
          CardContent,
          Container,
          Grid,
-         IconButton } from '@material-ui/core'
+         IconButton,
+         Button } from '@material-ui/core'
 import RemoveIcon from '@material-ui/icons/Delete'
 import WorkoutContext from '../../utils/WorkoutContext'
 
