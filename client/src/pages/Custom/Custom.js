@@ -44,7 +44,7 @@ const Custom = () => {
   const [customState, setCustomState] = useState({
     workoutTitle: '',
     exercise: {},
-    area: 'lower',
+    area: 'upper',
     exercises: []
   })
 

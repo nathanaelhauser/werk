@@ -18,7 +18,7 @@ import WorkoutAPI from '../../utils/WorkoutAPI'
 import ProfileContext from '../../utils/ProfileContext'
 import UserContext from '../../utils/UserContext'
 
-const {getAllWorkouts, deleteWorkout, getUserWorkouts } = WorkoutAPI
+const {getWorkout, deleteWorkout, getUserWorkouts } = WorkoutAPI
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props
@@ -105,9 +105,13 @@ const Profile = () => {
   })
 
   workoutState.handleStartWorkout = (id) => {
+    getWorkout(id)
+    .then(({data: workout}) => {
 
-    // setWorkout({...workoutsFiltered, id})
-    // setGoWorkout(true)
+      setWorkout({ ...workout[0], id })
+      setGoWorkout(true)
+    })
+    .catch(e => console.error(e))
   }
 
   workoutState.handleDeleteWorkout = (id) => {
