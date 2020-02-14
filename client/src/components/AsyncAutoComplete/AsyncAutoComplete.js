@@ -7,8 +7,8 @@ import axios from 'axios'
 import CustomContext from '../../utils/CustomContext'
 
 const filterArea = {
-  upper: ['arms', 'abs', 'shoulders', 'chest', 'back'],
-  lower: ['calves', 'legs']
+  upper: ['Arms', 'Abs', 'Shoulders', 'Chest', 'Back'],
+  lower: ['Calves', 'Legs']
 }
 
 const AsyncAutoComplete = () => {
