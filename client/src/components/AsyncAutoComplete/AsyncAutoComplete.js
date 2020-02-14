@@ -10,7 +10,7 @@ const AsyncAutoComplete = () => {
   const [open, setOpen] = useState(false)
   const [options, setOptions] = useState([])
   const loading = open && options.length === 0
-  const { handleCustomInputChange } = useContext(CustomContext)
+  const { handleCustomInputChange, area } = useContext(CustomContext)
 
   const handleInputChange = (event, exercise) => {
     const chosenExercise = options.filter(option => option.name === exercise)[0]
@@ -29,7 +29,11 @@ const AsyncAutoComplete = () => {
       const { data: exercises } = await response
 
       if (active) {
-        setOptions(exercises.map(({ name, _id }) => ({ name, _id })))
+        setOptions(
+          exercises
+            .filter(exercise => exercise.area === area)
+            .map(({ name, _id }) => ({ name, _id }))
+        )
       }
     })()
 
