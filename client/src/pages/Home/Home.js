@@ -10,6 +10,9 @@ import FriendsContext from '../../utils/FriendsContext'
 import FriendAPI from '../../utils/FriendAPI'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
+import CardMedia from '@material-ui/core/CardMedia'
+import stopwatch from './homePictures/stopwatch.jpg'
+import create from './homePictures/create.jpg'
 
 const { getFriends } = FriendAPI
 
@@ -82,13 +85,21 @@ const Home = () => {
         <Grid item xs={12} sm={6} align="center">
           <Card className={classes.card} onClick={() => setGoQuickstart(true)} >
             <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                component="img"
+                alt="quickstart"
+                image={stopwatch}
+                height='230'
+                title="Quickstart"
+              />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                   Quick Start
-          </Typography>
-                <Typography variant="body2" color={classes.text} component="p">
+                </Typography>
+                {/* <Typography variant="body2" color={classes.text} component="p">
                   Just choose what area you want to focus and get to work
-          </Typography>
+                </Typography> */}
               </CardContent>
             </CardActionArea>
           </Card>
@@ -97,13 +108,21 @@ const Home = () => {
         <Grid item xs={12} sm={6} align="center">
           <Card className={classes.card} onClick={() => setGoCustom(true)}>
             <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                component="img"
+                alt="create"
+                image={create}
+                height='230'
+                title="Create"
+              />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Create a workout
-        </Typography>
-                <Typography variant="body2" color={classes.text} component="p">
+                  Create Workout
+                </Typography>
+                {/* <Typography variant="body2" color={classes.text} component="p">
                   Create the workout that is best for you
-        </Typography>
+                </Typography> */}
               </CardContent>
             </CardActionArea>
           </Card>

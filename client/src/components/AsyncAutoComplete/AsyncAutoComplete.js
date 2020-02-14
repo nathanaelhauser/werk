@@ -7,8 +7,8 @@ import axios from 'axios'
 import CustomContext from '../../utils/CustomContext'
 
 const filterArea = {
-  upper: ['arms', 'abs', 'shoulders', 'chest', 'back'],
-  lower: ['calves', 'legs']
+  upper: ['Arms', 'Abs', 'Shoulders', 'Chest', 'Back'],
+  lower: ['Calves', 'Legs']
 }
 
 const AsyncAutoComplete = () => {
@@ -32,11 +32,16 @@ const AsyncAutoComplete = () => {
     (async () => {
       const response = await axios.get('/exercises')
       const { data: exercises } = await response
-
+      console.log(exercises)
       if (active) {
         setOptions(
           exercises
-            .filter(exercise => filterArea[area].includes(exercise.category))
+            .filter(exercise => {
+              const filter = filterArea[area]
+              console.log(filter)
+              console.log(exercise.category)
+              return filter.includes(exercise.category)
+            })
             .map(({ name, _id }) => ({ name, _id }))
         )
       }
