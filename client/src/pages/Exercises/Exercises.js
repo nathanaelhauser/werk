@@ -46,7 +46,7 @@ const Exercises = () => {
             <ExerciseContext.Provider value={exerciseState}>
                 <UnauthorizedRedirect authorized={authorizedState} />
                 <Typography variant="h6" align="center">
-                    Excercises
+                    Exercises
                 </Typography>
                 <br />
                 <ExerciseCard />

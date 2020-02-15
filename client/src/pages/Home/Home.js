@@ -21,7 +21,8 @@ const useStyles = makeStyles({
     maxWidth: 345,
     // background: "#86DEB7",
     background: "#f44336",
-    text: '#eceff1'
+    text: '#eceff1',
+    color: 'white'
   }
 });
 

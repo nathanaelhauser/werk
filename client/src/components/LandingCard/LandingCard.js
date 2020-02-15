@@ -12,7 +12,8 @@ const useStyles = makeStyles({
   card: {
     maxWidth: 345,
     // background: "#86DEB7"
-    background: "#f44336"
+    background: "#f44336",
+    color: 'white'
   },
   media: {
     height: 200,
