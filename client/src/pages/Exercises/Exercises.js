@@ -1,5 +1,6 @@
 import React, { useEffect, useState, } from 'react'
 import {makeStyles} from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 import ExerciseCard from '../../components/ExerciseCard'
 import UserAuthAPI from '../../utils/UserAuthAPI'
 import UnauthorizedRedirect from '../../components/UnauthorizedRedirect'
@@ -44,6 +45,9 @@ const Exercises = () => {
         <>
             <ExerciseContext.Provider value={exerciseState}>
                 <UnauthorizedRedirect authorized={authorizedState} />
+                <Typography variant="h6" align="center">
+                    Excercises
+                </Typography>
                 <br />
                 <ExerciseCard />
             </ExerciseContext.Provider>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import moment from 'moment'
 import EventAPI from '../../utils/EventAPI'
 import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 import WorkoutPanel from '../../components/WorkoutPanel'
 
 const Recent = () => {
@@ -26,6 +27,9 @@ const Recent = () => {
   return (
     <Container>
       <br/>
+      <Typography variant="h6" align="center">
+        Your Recent Workouts!
+      </Typography>
       <div>
         {
           recentState.events

@@ -78,7 +78,7 @@ const Quickstart = () => {
       <UnauthorizedRedirect authorized={authorizedState} />
       <Grid container spacing={4} direction='row' justify="space-around" alignItems="center">
         <Grid item xs={12} sm={12} align="center">
-          <Typography variant="h6">pick your poison:</Typography>
+          <Typography variant="h6">Pick Your Poison:</Typography>
         </Grid>
         <Grid
           item
