@@ -1,20 +1,26 @@
-// 
-import React, { useState, useEffect, useContext } from 'react'
-import UserAPI from '../../utils/UserAPI'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import React,
+       { useContext,
+         useState,
+         useEffect } from 'react'
+import { makeStyles, 
+         withStyles } from '@material-ui/core/styles'
+import { Grid,
+         Container,
+         Card,
+         CardActions,
+         CardContent,
+         Button,
+         Typography,
+         IconButton } from '@material-ui/core'
+// modal
 import Dialog from '@material-ui/core/Dialog'
 import MuiDialogTitle from '@material-ui/core/DialogTitle'
 import MuiDialogContent from '@material-ui/core/DialogContent'
 import MuiDialogActions from '@material-ui/core/DialogActions'
-import IconButton from '@material-ui/core/IconButton'
+// icons
 import CloseIcon from '@material-ui/icons/Close'
-import Container from '@material-ui/core/Container'
 import EditForm from '../EditForm'
+import UserAPI from '../../utils/UserAPI'
 import ProfileContext from '../../utils/ProfileContext'
 import UserContext from '../../utils/UserContext'
 
@@ -54,7 +60,7 @@ const DialogTitle = withStyles(styles)(props => {
   const { children, classes, onClose, ...other } = props
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h6">{children}</Typography>
+      <Typography variant="h6">{children} </Typography>
       {onClose ? (
         <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
           <CloseIcon />
@@ -133,7 +139,7 @@ const MyProfileCard = () => {
   }
 
   return (
-    <Container>
+    <Container align="center">
       <Card className={classes.card} variant="outlined">
         <CardContent>
           {/* user's username will populate */}
@@ -151,9 +157,13 @@ const MyProfileCard = () => {
                 <p>Weight: {userState.weight}</p>
               </Typography>
             </CardContent>
-            <CardActions>
+            <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center">
+             <CardActions>
               {/* user can add age and weight here */}
-              <Button size="small" onClick={handleClickOpen('edit')} color="secondary" variant="contained">Edit Information</Button>
+              <Button size="small" onClick={handleClickOpen('edit')} color="secondary" variant="contained" >Edit Information</Button>
               <Dialog onClose={handleClose('edit')} aria-labelledby="customized-dialog-title" open={openEdit}>
                 <DialogTitle id="customized-dialog-title" onClose={handleClose('edit')}>
                   EDIT INFO
@@ -173,6 +183,8 @@ const MyProfileCard = () => {
                 </DialogActions>
               </Dialog>
             </CardActions>
+            </Grid>
+
           </Card>
         </CardContent>
       </Card>

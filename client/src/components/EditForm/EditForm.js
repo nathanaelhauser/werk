@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react'
-import UserAPI from '../../utils/UserAPI'
+import React, 
+       { useContext,
+         useState,
+         useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import TextField from '@material-ui/core/TextField'
-import Container from '@material-ui/core/Container'
-import FormControl from '@material-ui/core/FormControl'
-import Typography from '@material-ui/core/Typography'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
+import { Container,
+         TextField,
+         FormControl,
+         Card,
+         CardContent,
+         Typography } from '@material-ui/core'
+import UserAPI from '../../utils/UserAPI'
 import ProfileContext from '../../utils/ProfileContext'
 
 const useStyles = makeStyles(theme => ({

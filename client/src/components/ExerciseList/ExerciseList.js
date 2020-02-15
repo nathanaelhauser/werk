@@ -8,16 +8,15 @@ const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       margin: theme.spacing(1)
-
     },
   },
   typography: {
     "fontFamily": "\"Bangers\"",
-    "fontSize": 30
+    "fontSize": 25
   },
   titleTypography: {
     "fontFamily": "\"Bangers\"",
-    "fontSize": 36
+    "fontSize": 20
   }
 }))
 
@@ -31,6 +30,7 @@ const ExerciseList = () => {
         exercises
           ? exercises.map(exercise =>  
             <ExerciseListItem
+            className= {classes.titleTypography}
               key={exercise._id}
               name={exercise.name}
               mainMuscles={exercise.mainMuscles}

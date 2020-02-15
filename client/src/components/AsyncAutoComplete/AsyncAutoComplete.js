@@ -1,10 +1,14 @@
-import 'isomorphic-fetch'
-import React, { useState, useEffect, Fragment, useContext } from 'react'
-import TextField from '@material-ui/core/TextField'
-import Autocomplete from '@material-ui/lab/Autocomplete'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import axios from 'axios'
+import React, 
+       { useState, 
+         useEffect, 
+         Fragment, 
+         useContext } from 'react'
+import { TextField,
+         CircularProgress } from '@material-ui/core'
+import { Autocomplete } from '@material-ui/lab'
 import CustomContext from '../../utils/CustomContext'
+import axios from 'axios'
+import 'isomorphic-fetch'
 
 const filterArea = {
   upper: ['Arms', 'Abs', 'Shoulders', 'Chest', 'Back'],
