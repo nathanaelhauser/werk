@@ -57,7 +57,7 @@ const CustomCard = () => {
              {workout.name}
              </Grid>
              <Grid item xs={3}>
-             <Button variant="contained" color="primary" onClick={() => handleStartWorkout(workout._id)}>
+             <Button size="small" variant="contained" color="primary" onClick={() => handleStartWorkout(workout._id)}>
                 Start
             </Button>
             </Grid>
