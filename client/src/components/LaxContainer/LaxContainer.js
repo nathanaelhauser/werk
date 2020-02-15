@@ -1,7 +1,7 @@
 import React from 'react'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
+import { CssBaseline,
+         Container } from '@material-ui/core'
 import Jumbotron from '../Jumbotron'
 
 const useStyles = makeStyles(theme => ({

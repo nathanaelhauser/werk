@@ -1,9 +1,12 @@
-import React, { useContext } from 'react'
-import CustomContext from '../../utils/CustomContext'
+import React, 
+       { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import IconButton from '@material-ui/core/IconButton'
+import { IconButton,
+         Button,
+         Switch,
+         FormControlLabel } from '@material-ui/core'
 import RemoveIcon from '@material-ui/icons/Delete'
-import Button from '@material-ui/core/Button'
+import CustomContext from '../../utils/CustomContext'
 
 const useGridStyles = makeStyles(theme => ({
   root: {

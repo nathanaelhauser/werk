@@ -110,11 +110,14 @@ const Custom = () => {
       <CustomContext.Provider value={customState}>
         <UnauthorizedRedirect authorized={authorizedState} />
         {renderRedirectWorkout()}
-        <Grid container className={classes.root} spacing={2}>
-          <Grid item xs={12} sm={6}>
+        <Grid container className={classes.root} spacing={2} direction="column" justify="center" alignItems="center">
+          <Grid item xs={12} sm={6} justify="center" direction="column" alignItems="center">
             <CustomForm />
           </Grid>
-          <Grid item xs={6} sm={6} >
+          <Grid item xs={6} sm={6}
+            direction="column"
+            justify="center"
+            alignItems="center">
             <CustomList />
           </Grid>
         </Grid>

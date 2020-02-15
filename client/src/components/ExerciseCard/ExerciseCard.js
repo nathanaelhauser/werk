@@ -1,23 +1,19 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Container from '@material-ui/core/Container'
-import Paper from '@material-ui/core/Paper'
+import { Card,
+         CardContent,
+         Grid,
+         Paper } from '@material-ui/core'
 import ExerciseList from '../../components/ExerciseList'
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 250,
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 10,
-  },
+  typography: {"fontFamily": "\"Bangers\"",
+    "fontSize": 20},
+titleTypography: {"fontFamily": "\"Bangers\"",
+    "fontSize": 20},
   pos: {
     marginBottom: 10,
   },
@@ -27,7 +23,7 @@ const ExerciseCard = props => {
   const classes = useStyles()
 
   return (
-    <Container>
+    <Grid container spacing={3} direction="column">
       <Paper>
         <Card className={classes.root} variant="outlined">
           <CardContent>
@@ -35,7 +31,7 @@ const ExerciseCard = props => {
           </CardContent>
         </Card>
       </Paper>
-    </Container>
+      </Grid> 
   )
 }
 

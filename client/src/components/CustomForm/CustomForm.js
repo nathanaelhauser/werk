@@ -1,13 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
-import CustomContext from '../../utils/CustomContext'
-import TextField from '@material-ui/core/TextField'
+import React,
+       { useContext,
+         useEffect,
+         useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import { Button,
+         TextField,
+         Grid,
+         Switch,
+         FormControlLabel } from '@material-ui/core'
 import AsyncAutoComplete from '../AsyncAutoComplete'
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
-import Switch from '@material-ui/core/Switch'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-
+import CustomContext from '../../utils/CustomContext'
 
 
 const useStyles = makeStyles(theme => ({
@@ -48,8 +50,11 @@ const CustomForm = () => {
     <form className={classes.root} noValidate autoComplete="off">
       <TextField id="outlined-basic" label="Name your workout" variant="outlined" value={workoutTitle} onChange={handleCustomTitleChange} />
       <AsyncAutoComplete />
-      <Grid component="label" container alignItems="center" spacing={1}>
-        <Grid item>
+      <Grid component="label" container alignItems="center" spacing={1}direction="column" justify="center" >
+        <Grid item container
+            direction="column"
+            justify="center"
+            alignItems="left">
           {/* <Switch
             checked={checked}
             onChange={toggleChecked}
@@ -62,9 +67,15 @@ const CustomForm = () => {
       </Grid>
       
       <br></br>
-      <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomAddExercise}>
+      <Grid container
+            direction="column"
+            justify="center"
+            alignItems="center">
+        <Button className={buttonClasses.root} variant="contained" color="primary" onClick={handleCustomAddExercise}>
         Add Exercise
       </Button>
+      </Grid>
+      
 
     </form>
   )
