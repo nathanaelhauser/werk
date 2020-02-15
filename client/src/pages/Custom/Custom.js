@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react'
 import { Redirect } from 'react-router-dom'
 import CustomForm from '../../components/CustomForm'
 import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import CustomList from '../../components/CustomList'
 import CustomContext from '../../utils/CustomContext'
@@ -24,6 +26,9 @@ const useStyles = makeStyles(theme => ({
   control: {
     padding: theme.spacing(2),
   },
+  container: {
+    marginTop: 25
+  }
 }))
 
 
@@ -110,17 +115,24 @@ const Custom = () => {
       <CustomContext.Provider value={customState}>
         <UnauthorizedRedirect authorized={authorizedState} />
         {renderRedirectWorkout()}
-        <Grid container className={classes.root} spacing={2} direction="column" justify="center" alignItems="center">
-          <Grid item xs={12} sm={6} justify="center" direction="column" alignItems="center">
-            <CustomForm />
+        <Container className={classes.container}>
+          <Grid container className={classes.root} spacing={2} direction="column" justify="center" alignItems="center">
+            <Typography variant="h6" align="center">
+              Create A Custom Workout!
+            </Typography>
+            <br />
+            <Grid item xs={12} sm={6} justify="center" direction="column" alignItems="center">
+              <CustomForm />
+            </Grid>
+            <Grid item xs={6} sm={6}
+              direction="column"
+              justify="center"
+              alignItems="center">
+              <CustomList />
+            </Grid>
           </Grid>
-          <Grid item xs={6} sm={6}
-            direction="column"
-            justify="center"
-            alignItems="center">
-            <CustomList />
-          </Grid>
-        </Grid>
+        </Container>
+        
       </CustomContext.Provider>
     </WorkoutContext.Provider>
 

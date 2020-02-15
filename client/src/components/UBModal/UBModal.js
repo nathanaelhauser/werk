@@ -14,7 +14,8 @@ import ub from './qsPictures/ub.jpg'
 const useCardStyles = makeStyles({
   card: {
     maxWidth: 370,
-    background: "#f44336"
+    background: "#f44336",
+    color: 'white'
   },
   media: {
     height: "100%",
@@ -26,8 +27,7 @@ const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    
+    justifyContent: 'center'
   },
   paper: {
     backgroundColor: "#f44336",
@@ -37,7 +37,8 @@ const useStyles = makeStyles(theme => ({
     outline: 0,
     fontFamily: 'Bangers',
     borderRadius: '25px'
-  },
+  }
+
 }))
 
 const UBModal = () => {
@@ -65,7 +66,7 @@ const UBModal = () => {
           height='230'
           title="Upper body"
         />
-        <CardContent>
+        <CardContent className={cardClasses.content}>
           <Typography gutterBottom variant="h5" component="h2" align="center">
             Upper Body
           </Typography>
