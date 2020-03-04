@@ -77,7 +77,7 @@ const Jumbotron = () => {
   const [openLogin, setOpenLogin] = useState(false)
   const [toHome, setToHome] = useState(false)
 
-  const { name, username, password, confirmPassword, age, weight } = useContext(LandingContext)
+  const { name, username, age, weight } = useContext(LandingContext)
   const { setLoggingOut } = useContext(LogoutContext)
 
   const handleClickOpen = type => event => {
@@ -96,7 +96,10 @@ const Jumbotron = () => {
     }
   }
 
-  const handleLogin = event => {
+  const handleLogin = password => event => {
+    if (!password) {
+      password = document.getElementById('loginPassword').value
+    }
     UserAuthAPI.loginUser({ username, password })
       .then(({ data: { token } }) => {
         sessionStorage.setItem('werkToken', token)
@@ -106,13 +109,16 @@ const Jumbotron = () => {
   }
 
   const handleRegister = async event => {
+    const password = document.getElementById('regPassword').value
+    const confirmPassword = document.getElementById('regConfirmPassword').value
+
     if (password !== confirmPassword) {
       return
     }
     const response = await UserAuthAPI.registerUser({ name, username, password, age, weight })
     const { status } = await response
     if (status === 200) {
-      handleLogin(event)
+      handleLogin(password)(event)
     }
   }
 
@@ -157,9 +163,8 @@ const Jumbotron = () => {
             </DialogContent>
             <DialogActions>
               <Button 
-                autofocus
-                onClick={handleLogin} 
-                color="black" 
+                autoFocus
+                onClick={handleLogin(null)} 
                 variant="contained"
               >
               Login

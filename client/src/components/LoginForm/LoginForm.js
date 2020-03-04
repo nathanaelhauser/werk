@@ -52,7 +52,6 @@ const LoginForm = () => {
                 <div className={classes.root}>
                   <TextField
                     label="Username"
-                    id="margin-none"
                     name="username"
                     value={username}
                     className={classes.textField}
@@ -61,11 +60,9 @@ const LoginForm = () => {
                   <TextField
                     type="password"
                     label="Password"
-                    id="margin-none"
+                    id="loginPassword"
                     name="password"
-                    value={password}
                     className={classes.textField}
-                    onChange={handleInputChange}
                   />
                 </div>
               </FormControl>

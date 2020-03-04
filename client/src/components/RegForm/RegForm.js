@@ -52,7 +52,6 @@ const RegForm = () => {
                 <div className={classes.root}>
                   <TextField
                     label="username"
-                    id="margin-none"
                     name="username"
                     value={username}
                     onChange={handleInputChange}
@@ -60,7 +59,6 @@ const RegForm = () => {
                   />
                   <TextField
                     label="name"
-                    id="margin-none"
                     name="name"
                     value={name}
                     onChange={handleInputChange}
@@ -69,25 +67,20 @@ const RegForm = () => {
                   <TextField
                     type="password"
                     label="Password"
-                    id="margin-none"
                     name="password"
-                    value={password}
-                    onChange={handleInputChange}
+                    id="regPassword"
                     className={classes.textField}
                   />
                   <TextField
                     type="password"
                     label="confirm pass"
-                    id="margin-none"
                     name="confirmPassword"
-                    value={confirmPassword}
-                    onChange={handleInputChange}
+                    id="regConfirmPassword"
                     className={classes.textField}
                   />
                   <TextField
                     type="number"
                     label="age"
-                    id="margin-none"
                     name="age"
                     value={age}
                     onChange={handleInputChange}
@@ -96,7 +89,6 @@ const RegForm = () => {
                   <TextField
                     type="number"
                     label="weight"
-                    id="margin-none"
                     name="weight"
                     value={weight}
                     onChange={handleInputChange}
